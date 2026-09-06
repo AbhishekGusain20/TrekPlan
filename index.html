@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrekPlan — Plan Your Journey</title>
+<meta name="description" content="TrekPlan helps trekkers plan complete Himalayan journeys — routes, stays, budget, gear and safety, all in one place.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <a href="index.html" class="logo">
+      <span class="logo-badge"><img src="trekplan-icon.png" alt="" width="862" height="674"></span>
+      TrekPlan
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#explore">Explore</a>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <div class="mobile-nav-actions">
+        <a href="login.html" class="login-link">Log in</a>
+        <a href="#planner" class="nav-cta">Start planning</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="login.html" class="login-link">Log in</a>
+      <a href="#planner" class="nav-cta">Start planning</a>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+
+  <div class="hero-bg" style="background-image:url('https://images.pexels.com/photos/34573339/pexels-photo-34573339/free-photo-of-mountain-hiker-admiring-snowy-peaks-at-daybreak.jpeg?cs=tinysrgb&w=1920');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-container">
+
+      <div class="hero-content">
+        <h1>Plan the trek.<br>Not just dream about it.</h1>
+        <p>TrekPlan turns a destination into a complete itinerary — routes, stays, gear and budget — so the only surprises left are the views.</p>
+
+        <div class="hero-buttons">
+          <a href="#planner" class="btn btn-primary">Start planning</a>
+          <a href="#explore" class="btn btn-secondary">See popular treks</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>150+</strong><small>Routes mapped across the Himalayas</small></div>
+          <div class="hero-stat"><strong>₹0</strong><small>Budget surprises on the trail</small></div>
+          <div class="hero-stat"><strong>6,000 ft</strong><small>Average summit elevation planned for</small></div>
+        </div>
+      </div>
+
+      <div class="hero-planner-card">
+        <div class="planner-top">
+          <div>
+            <span class="small-label">Your next trip</span>
+            <h3>Kedarkantha</h3>
+          </div>
+          <span class="status-badge">Ready</span>
+        </div>
+
+        <div class="mini-route">
+          <div class="route-line"></div>
+          <div class="route-item">
+            <div class="route-dot filled"></div>
+            <div><small>Start</small><strong>Dehradun</strong></div>
+          </div>
+          <div class="route-item">
+            <div class="route-dot"></div>
+            <div><small>Base camp</small><strong>Sankri</strong></div>
+          </div>
+          <div class="route-item">
+            <div class="route-dot filled"></div>
+            <div><small>Destination</small><strong>Kedarkantha summit</strong></div>
+          </div>
+        </div>
+
+        <div class="planner-details">
+          <div><span>Duration</span><strong>6 days</strong></div>
+          <div><span>Budget</span><strong>₹7,500</strong></div>
+          <div><span>Difficulty</span><strong>Moderate</strong></div>
+        </div>
+
+        <a href="#planner" class="planner-link">View full itinerary</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="intro-section">
+    <div class="section-container intro-grid">
+      <div class="intro-kicker">The problem with planning</div>
+      <div class="intro-content">
+        <h2>Trekking gets complicated long before the trail does.</h2>
+        <p>Transport, permits, stays, food, gear and unexpected costs can pile up fast. TrekPlan brings all of it into one place, so you know exactly where you're going, what to carry and how much it will cost.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== STATS STRIP ===================== -->
+  <section class="stats-section">
+    <div class="section-container stats-grid">
+      <div class="stat-item">
+        <strong>Complete trip planning</strong>
+        <span>Routes, stays and days mapped out before you leave.</span>
+      </div>
+      <div class="stat-item">
+        <strong>Budget management</strong>
+        <span>Know your costs before you spend a rupee.</span>
+      </div>
+      <div class="stat-item">
+        <strong>Trail intelligence</strong>
+        <span>Difficulty, distance and altitude for every route.</span>
+      </div>
+      <div class="stat-item">
+        <strong>Safety &amp; emergency support</strong>
+        <span>Contacts and alerts on hand throughout your trip.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== EXPLORE ===================== -->
+  <section class="explore-section" id="explore">
+    <div class="section-container">
+
+      <div class="section-heading">
+        <h2>Three routes worth lacing up for.</h2>
+        <p>From a snow-lit winter classic to a weekend ridge walk near Mussoorie.</p>
+      </div>
+
+      <div class="destination-grid">
+
+        <article class="destination-card destination-large">
+          <div class="destination-image" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85');"></div>
+          <div class="destination-gradient"></div>
+          <div class="destination-info">
+            <div class="destination-top"><span>Uttarakhand</span><span>6 days</span></div>
+            <h3>Kedarkantha</h3>
+            <p>Snow-covered trails and open Himalayan views, best done between December and April.</p>
+            <a href="#planner">Plan this trek</a>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <div class="destination-image" style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85');"></div>
+          <div class="destination-gradient"></div>
+          <div class="destination-info">
+            <div class="destination-top"><span>Himachal</span><span>4 days</span></div>
+            <h3>Triund</h3>
+            <p>A beginner-friendly climb above Mcleodganj with sweeping Dhauladhar views.</p>
+            <a href="#planner">Plan this trek</a>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <div class="destination-image" style="background-image:url('https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=900&q=85');"></div>
+          <div class="destination-gradient"></div>
+          <div class="destination-info">
+            <div class="destination-top"><span>Uttarakhand</span><span>3 days</span></div>
+            <h3>Nag Tibba</h3>
+            <p>A quick weekend ridge walk with wide views of the Bandarpoonch range.</p>
+            <a href="#planner">Plan this trek</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="features" id="features">
+    <div class="section-container">
+
+      <div class="section-heading">
+        <h2>One plan. Every detail sorted.</h2>
+        <p>The parts of a trek that usually get forgotten until it's too late.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <article class="feature-card feature-main">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4L3 6.5V20L9 17.5L15 20L21 17.5V4L15 6.5L9 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 4V17.5M15 6.5V20" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Smart itinerary</h3>
+          <p>Create a day-by-day travel plan with routes, activities, stays and travel time.</p>
+          <a href="#planner">Create itinerary</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon icon-marigold">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 4H16M6 9H16M6 4C6 4 15 4 15 9C15 14 6 14 6 14L16 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Budget planner</h3>
+          <p>Estimate your complete trip cost including transport, food, stays and activities.</p>
+          <a href="#planner">Plan your budget</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon icon-rust">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 9C8 6 9.5 4 12 4C14.5 4 16 6 16 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="6" y="9" width="12" height="11" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M9 13H15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Smart gear</h3>
+          <p>Get a practical checklist of trekking gear based on your destination and duration.</p>
+          <a href="#planner">Check your gear</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon icon-sky">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 18L9 8L13 14L16 10L21 18" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Trail intelligence</h3>
+          <p>Understand difficulty, distance, altitude and route conditions ahead of time.</p>
+          <a href="#planner">Explore trail data</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon icon-sky">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 17H16.5C18.4 17 20 15.4 20 13.5C20 11.6 18.4 10 16.5 10C16.3 10 16.1 10 15.9 10.1C15.4 7.7 13.2 6 10.6 6C7.5 6 5 8.5 5 11.6C5 11.8 5 12 5 12.1C3.3 12.5 2 14 2 15.8C2 16.5 2.2 17.2 2.6 17.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Weather risk</h3>
+          <p>Check weather conditions and understand risks before starting your trek.</p>
+          <a href="#planner">Check weather</a>
+        </article>
+
+        <article class="feature-card emergency-card">
+          <div class="feature-icon icon-rust">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3L21 19H3L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10V14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16.7" r="0.9" fill="currentColor"/></svg>
+          </div>
+          <h3>Emergency mode</h3>
+          <p>Keep emergency contacts and safety information available during your trip.</p>
+          <a href="#planner">Safety information</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="how-section" id="how-it-works">
+    <div class="section-container how-grid">
+
+      <div class="how-heading">
+        <h2>Plan less. Explore more.</h2>
+        <p>Create your complete travel plan in four simple steps.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div><h3>Choose your destination</h3><p>Select the trek or destination you want to explore.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div><h3>Set your budget</h3><p>Tell TrekPlan how much you want to spend on your trip.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div><h3>Build your itinerary</h3><p>Get a day-by-day plan with travel, stays, activities and routes.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <div><h3>Pack and go</h3><p>Check gear, weather and safety information before you start.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== PLANNER CTA ===================== -->
+  <section class="planner-section" id="planner">
+    <div class="planner-container">
+
+      <div class="planner-content">
+        <h2>Your next trek starts with one plan.</h2>
+        <p>Pick a destination, set a budget and get a complete day-by-day plan — no spreadsheets required.</p>
+        <a href="#" class="btn btn-light">Start planning</a>
+      </div>
+
+      <div class="planner-decoration">
+        <div class="compass">
+          <span class="dir n">N</span><span class="dir e">E</span><span class="dir s">S</span><span class="dir w">W</span>
+          <div class="compass-needle"></div>
+          <div class="compass-center"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="section-container">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <img src="TrekPlan-logo.png" alt="TrekPlan" class="footer-logo-image" width="1042" height="957">
+        </a>
+        <p>TrekPlan makes trekking and travel planning simple, practical and budget-friendly.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <a href="#home">Home</a>
+        <a href="#explore">Destinations</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Planning</h4>
+        <a href="#planner">Itinerary</a>
+        <a href="#planner">Budget</a>
+        <a href="#planner">Gear checklist</a>
+        <a href="#planner">Safety</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="login.html">Log in</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 TrekPlan. Built for explorers.</span>
+      <div><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
