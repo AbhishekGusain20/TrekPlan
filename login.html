@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — TrekPlan</title>
+<meta name="description" content="Log in to TrekPlan to continue planning your next trek.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="login.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-page">
+
+  <!-- ===================== IMAGE SIDE ===================== -->
+  <div class="auth-visual" style="background-image:url('https://images.pexels.com/photos/34573339/pexels-photo-34573339/free-photo-of-mountain-hiker-admiring-snowy-peaks-at-daybreak.jpeg?cs=tinysrgb&w=1200');">
+    <div class="auth-visual-overlay"></div>
+
+    <a href="index.html" class="auth-logo">
+      <span class="logo-badge"><img src="trekplan-icon.png" alt="" width="862" height="674"></span>
+      TrekPlan
+    </a>
+
+    <div class="auth-visual-content">
+      <h2>Plan better.<br>Travel further.</h2>
+
+      <div class="auth-perks">
+        <div class="auth-perk">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 18L9 8L13 14L16 10L21 18" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Explore destinations
+        </div>
+        <div class="auth-perk">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 4L3 6.5V20L9 17.5L15 20L21 17.5V4L15 6.5L9 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          Plan itineraries
+        </div>
+        <div class="auth-perk">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4H16M6 9H16M6 4C6 4 15 4 15 9C15 14 6 14 6 14L16 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Track expenses
+        </div>
+        <div class="auth-perk">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 9H20" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="13.5" r="1" fill="currentColor"/></svg>
+          Create memories
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FORM SIDE ===================== -->
+  <div class="auth-form-side">
+    <div class="auth-form-wrap">
+
+      <h1>Welcome back</h1>
+      <p class="auth-subtext">Log in to continue planning your next trek.</p>
+
+      <div class="auth-demo-hint">
+        <strong>Demo login</strong>
+        <span>demo@trekplan.com &nbsp;/&nbsp; trekplan123</span>
+      </div>
+
+      <div class="form-error" id="formError" hidden></div>
+
+      <form id="loginForm" novalidate>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
+              <svg class="icon-eye" viewBox="0 0 24 24" fill="none"><path d="M2 12C2 12 5.5 5.5 12 5.5C18.5 5.5 22 12 22 12C22 12 18.5 18.5 12 18.5C5.5 18.5 2 12 2 12Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+              <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none"><path d="M3 3L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10.6 5.63C11.05 5.55 11.52 5.5 12 5.5C18.5 5.5 22 12 22 12C21.4 13.1 20.6 14.16 19.6 15.06M6.6 6.6C4.4 8.02 2.9 10.05 2 12C2 12 5.5 18.5 12 18.5C13.6 18.5 15 18.1 16.2 17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.9 10C9.34 10.53 9 11.23 9 12C9 13.66 10.34 15 12 15C12.79 15 13.5 14.68 14.03 14.16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox-field">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+          <a href="#" id="forgotPassword">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit">Login</button>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <button type="button" class="btn btn-secondary auth-google" id="googleBtn">
+          <span class="google-mark">G</span>
+          Continue with Google
+        </button>
+
+      </form>
+
+      <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up</a></p>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
