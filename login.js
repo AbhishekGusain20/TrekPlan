@@ -155,7 +155,7 @@ if (loginForm) {
         sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
       }
 
-      window.location.href = "index.html";
+      window.location.href = "dashboard.html";
     } catch (err) {
       showError("Login isn't available right now — this page needs to be opened via a local server, not double-clicked as a file.");
       console.error("TrekPlan: login failed, storage error.", err);
