@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trek Details — TrekPlan</title>
+    <meta name="description" content="Explore detailed trek information with TrekPlan.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="trek-details.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <img src="TrekPlan-logo.png" alt="TrekPlan Logo">
+        </a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="explore.html" class="active">Explore</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#">Features</a>
+            <a href="#">About</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="signup.html" class="start-btn">Get Started</a>
+        </div>
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<section class="back-section">
+    <div class="container">
+
+        <a href="explore.html" class="back-btn">
+            ← Back to Explore
+        </a>
+
+    </div>
+</section>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="trek-hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <!-- IMAGE -->
+
+            <div class="trek-image-box">
+                <img id="trekImage" src="" alt="Trek Image">
+
+                <span id="difficultyBadge" class="difficulty-badge">
+                    Moderate
+                </span>
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="trek-info">
+
+                <p class="location" id="trekLocation">
+                    📍 Uttarakhand, India
+                </p>
+
+                <h1 id="trekName">
+                    Nag Tibba Trek
+                </h1>
+
+                <p class="description" id="trekDescription">
+                    Loading trek information...
+                </p>
+
+
+                <!-- QUICK INFO -->
+
+                <div class="quick-info">
+
+                    <div class="info-box">
+                        <span>⏱️</span>
+                        <div>
+                            <small>Duration</small>
+                            <strong id="trekDuration">2 Days</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <span>📏</span>
+                        <div>
+                            <small>Distance</small>
+                            <strong id="trekDistance">16 km</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <span>💰</span>
+                        <div>
+                            <small>Budget</small>
+                            <strong id="trekBudget">₹4,000</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <button class="plan-btn" id="planBtn">
+                    Plan This Trek →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DETAILS ================= -->
+
+<section class="details-section">
+
+    <div class="container">
+
+        <div class="details-grid">
+
+            <!-- MAIN CONTENT -->
+
+            <div class="main-content">
+
+                <div class="content-card">
+
+                    <h2>About This Trek</h2>
+
+                    <p id="aboutTrek">
+                        Nag Tibba is a beautiful weekend trek in Uttarakhand.
+                        It offers mountain views, forest trails and a peaceful
+                        trekking experience.
+                    </p>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <h2>What You Can Expect</h2>
+
+                    <div class="expect-grid">
+
+                        <div class="expect-item">
+                            <span>🏔️</span>
+                            <h3>Mountain Views</h3>
+                            <p>Enjoy beautiful Himalayan landscapes.</p>
+                        </div>
+
+                        <div class="expect-item">
+                            <span>🌲</span>
+                            <h3>Forest Trails</h3>
+                            <p>Walk through peaceful mountain forests.</p>
+                        </div>
+
+                        <div class="expect-item">
+                            <span>📸</span>
+                            <h3>Scenic Spots</h3>
+                            <p>Great locations for photography.</p>
+                        </div>
+
+                        <div class="expect-item">
+                            <span>🥾</span>
+                            <h3>Trekking</h3>
+                            <p>Experience an exciting Himalayan trail.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <h2>Things to Carry</h2>
+
+                    <ul class="packing-list">
+
+                        <li>🎒 Comfortable backpack</li>
+                        <li>🥾 Trekking shoes</li>
+                        <li>💧 Water bottle</li>
+                        <li>🧥 Warm clothes</li>
+                        <li>🔦 Headlamp or flashlight</li>
+                        <li>🧴 Sunscreen</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <div class="budget-card">
+
+                    <p>Estimated Trip Budget</p>
+
+                    <h2 id="sideBudget">
+                        ₹4,000
+                    </h2>
+
+                    <div class="budget-line">
+                        <span>Travel</span>
+                        <strong>₹1,500</strong>
+                    </div>
+
+                    <div class="budget-line">
+                        <span>Food</span>
+                        <strong>₹800</strong>
+                    </div>
+
+                    <div class="budget-line">
+                        <span>Stay</span>
+                        <strong>₹1,000</strong>
+                    </div>
+
+                    <div class="budget-line">
+                        <span>Other</span>
+                        <strong>₹700</strong>
+                    </div>
+
+                    <button class="sidebar-btn" id="sidePlanBtn">
+                        Start Planning
+                    </button>
+
+                </div>
+
+
+                <div class="tips-card">
+
+                    <h3>💡 Trek Tips</h3>
+
+                    <p>
+                        Check weather conditions before starting your trek
+                        and carry enough water and basic first-aid supplies.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <h3>TrekPlan</h3>
+
+        <p>
+            Plan Your Journey. Manage Your Budget. Explore With Confidence.
+        </p>
+
+        <p class="copyright">
+            © 2026 TrekPlan. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="trek-details.js"></script>
+
+</body>
+</html>

@@ -8,6 +8,7 @@
 const treks = [
 
     {
+        id: "nag-tibba",
         name: "Nag Tibba",
         location: "Uttarakhand",
         difficulty: "easy",
@@ -21,8 +22,8 @@ const treks = [
             "A perfect weekend trek offering beautiful Himalayan views and peaceful trails."
     },
 
-
     {
+        id: "kedarkantha",
         name: "Kedarkantha",
         location: "Uttarakhand",
         difficulty: "moderate",
@@ -36,8 +37,8 @@ const treks = [
             "A popular winter trek known for snowy trails, forests and stunning summit views."
     },
 
-
     {
+        id: "valley-of-flowers",
         name: "Valley of Flowers",
         location: "Uttarakhand",
         difficulty: "moderate",
@@ -51,8 +52,8 @@ const treks = [
             "Walk through colourful alpine meadows surrounded by dramatic Himalayan landscapes."
     },
 
-
     {
+        id: "hampta-pass",
         name: "Hampta Pass",
         location: "Himachal Pradesh",
         difficulty: "difficult",
@@ -66,8 +67,8 @@ const treks = [
             "An adventurous high-altitude trek connecting the green Kullu valley with Spiti."
     },
 
-
     {
+        id: "tungnath",
         name: "Tungnath & Chandrashila",
         location: "Uttarakhand",
         difficulty: "moderate",
@@ -81,8 +82,8 @@ const treks = [
             "Experience spectacular Himalayan sunrise views from one of the highest Shiva temples."
     },
 
-
     {
+        id: "roopkund",
         name: "Roopkund",
         location: "Uttarakhand",
         difficulty: "difficult",
@@ -133,12 +134,13 @@ function displayTreks(list) {
     trekGrid.innerHTML = "";
 
 
-    list.forEach((trek, index) => {
+    list.forEach((trek) => {
 
         const card =
             document.createElement("article");
 
         card.className = "trek-card";
+
 
         card.innerHTML = `
 
@@ -238,7 +240,7 @@ function displayTreks(list) {
                     <a
                         href="#"
                         class="view-btn"
-                        data-trek="${trek.name}"
+                        data-trek="${trek.id}"
                     >
                         View Details →
                     </a>
@@ -246,13 +248,14 @@ function displayTreks(list) {
                 </div>
 
             </div>
+
         `;
 
 
         trekGrid.appendChild(card);
 
 
-        /* FAVORITE BUTTON */
+        /* ================= FAVORITE BUTTON ================= */
 
         const favoriteBtn =
             card.querySelector(".favorite-btn");
@@ -272,7 +275,7 @@ function displayTreks(list) {
         );
 
 
-        /* VIEW DETAILS */
+        /* ================= VIEW DETAILS ================= */
 
         const viewBtn =
             card.querySelector(".view-btn");
@@ -283,23 +286,22 @@ function displayTreks(list) {
 
                 event.preventDefault();
 
-                alert(
-                    `Trek details for ${trek.name} will be available soon!`
-                );
+                window.location.href =
+                    `trek-details.html?trek=${trek.id}`;
 
             }
         );
 
-    });
+    }); // END list.forEach
 
 
-    /* COUNT */
+    /* ================= COUNT ================= */
 
     trekCount.textContent =
         list.length;
 
 
-    /* NO RESULTS */
+    /* ================= NO RESULTS ================= */
 
     if (list.length === 0) {
 
@@ -338,7 +340,7 @@ function filterTreks() {
         treks.filter((trek) => {
 
 
-            /* SEARCH */
+            /* ================= SEARCH ================= */
 
             const matchesSearch =
 
@@ -353,7 +355,7 @@ function filterTreks() {
                     .includes(searchValue);
 
 
-            /* DIFFICULTY */
+            /* ================= DIFFICULTY ================= */
 
             const matchesDifficulty =
 
@@ -364,7 +366,7 @@ function filterTreks() {
                 trek.difficulty === difficultyValue;
 
 
-            /* BUDGET */
+            /* ================= BUDGET ================= */
 
             let matchesBudget = true;
 
@@ -393,11 +395,9 @@ function filterTreks() {
 
 
             return (
-
                 matchesSearch &&
                 matchesDifficulty &&
                 matchesBudget
-
             );
 
         });
@@ -430,20 +430,24 @@ searchInput.addEventListener(
     filterTreks
 );
 
+
 difficultyFilter.addEventListener(
     "change",
     filterTreks
 );
+
 
 budgetFilter.addEventListener(
     "change",
     filterTreks
 );
 
+
 resetBtn.addEventListener(
     "click",
     resetFilters
 );
+
 
 clearFilters.addEventListener(
     "click",
