@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Budget Planner — TrekPlan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="budget.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+        <a href="dashboard.html">
+            <img src="trekplan-icon.png" alt="TrekPlan">
+            <span>TREK<span>PLAN</span></span>
+        </a>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html">
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+        <a href="dashboard.html">
+            <span>▣</span>
+            My Trips
+        </a>
+
+        <a href="explore.html">
+            <span>⌕</span>
+            Explore
+        </a>
+
+        <a href="budget.html" class="active">
+            <span>₹</span>
+            Budget Planner
+        </a>
+
+        <a href="#">
+            <span>◷</span>
+            Travel Journal
+        </a>
+
+        <a href="#">
+            <span>⌖</span>
+            Maps
+        </a>
+
+        <a href="#">
+            <span>✓</span>
+            Checklists
+        </a>
+
+        <a href="#">
+            <span>♧</span>
+            Community
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#">
+            <span>⚙</span>
+            Settings
+        </a>
+
+        <button id="logoutBtn">
+            <span>↪</span>
+            Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+    <!-- Mobile Header -->
+
+    <header class="mobile-header">
+
+        <button id="menuBtn" class="menu-btn">
+            ☰
+        </button>
+
+        <div class="mobile-logo">
+            <img src="trekplan-icon.png" alt="TrekPlan">
+            <span>TREK<span>PLAN</span></span>
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+
+        <div>
+            <p class="eyebrow">PLAN SMART</p>
+
+            <h1>Budget Planner 💰</h1>
+
+            <p>
+                Keep track of your trip expenses and stay within your budget.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ================= BUDGET OVERVIEW ================= -->
+
+    <section class="budget-overview">
+
+        <div class="budget-card">
+
+            <div class="card-icon">₹</div>
+
+            <div>
+                <span>Total Budget</span>
+
+                <h2 id="totalBudget">
+                    ₹0
+                </h2>
+            </div>
+
+        </div>
+
+
+        <div class="budget-card">
+
+            <div class="card-icon spent">
+                ↗
+            </div>
+
+            <div>
+                <span>Total Spent</span>
+
+                <h2 id="totalSpent">
+                    ₹0
+                </h2>
+            </div>
+
+        </div>
+
+
+        <div class="budget-card">
+
+            <div class="card-icon remaining">
+                ✓
+            </div>
+
+            <div>
+                <span>Remaining</span>
+
+                <h2 id="remainingBudget">
+                    ₹0
+                </h2>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BUDGET SETUP ================= -->
+
+    <section class="planner-grid">
+
+        <div class="planner-card">
+
+            <div class="card-heading">
+                <div>
+                    <p class="small-title">TRIP BUDGET</p>
+                    <h2>Set Your Budget</h2>
+                </div>
+            </div>
+
+            <form id="budgetForm">
+
+                <label for="budgetInput">
+                    Total Trip Budget
+                </label>
+
+                <div class="input-wrapper">
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        id="budgetInput"
+                        placeholder="Enter your budget"
+                        min="1"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Save Budget
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= ADD EXPENSE ================= -->
+
+        <div class="planner-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <p class="small-title">TRACK EXPENSES</p>
+                    <h2>Add Expense</h2>
+                </div>
+
+            </div>
+
+
+            <form id="expenseForm">
+
+                <label for="expenseName">
+                    Expense Name
+                </label>
+
+                <input
+                    type="text"
+                    id="expenseName"
+                    placeholder="e.g. Bus ticket"
+                    required
+                >
+
+
+                <label for="expenseCategory">
+                    Category
+                </label>
+
+                <select id="expenseCategory" required>
+
+                    <option value="">
+                        Select category
+                    </option>
+
+                    <option value="Travel">
+                        🚗 Travel
+                    </option>
+
+                    <option value="Stay">
+                        🏨 Stay
+                    </option>
+
+                    <option value="Food">
+                        🍔 Food
+                    </option>
+
+                    <option value="Gear">
+                        🎒 Gear
+                    </option>
+
+                    <option value="Other">
+                        📌 Other
+                    </option>
+
+                </select>
+
+
+                <label for="expenseAmount">
+                    Amount
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        placeholder="Enter amount"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="primary-btn">
+                    Add Expense
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section class="progress-card">
+
+        <div class="progress-top">
+
+            <div>
+                <p class="small-title">BUDGET STATUS</p>
+                <h2>Spending Progress</h2>
+            </div>
+
+            <strong id="percentage">
+                0%
+            </strong>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+        <p id="budgetMessage">
+            Set your budget to start tracking your expenses.
+        </p>
+
+    </section>
+
+
+    <!-- ================= EXPENSE LIST ================= -->
+
+    <section class="expenses-section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="small-title">EXPENSE HISTORY</p>
+
+                <h2>Your Expenses</h2>
+            </div>
+
+            <span id="expenseCount">
+                0 expenses
+            </span>
+
+        </div>
+
+
+        <div
+            class="expense-list"
+            id="expenseList"
+        >
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ₹
+                </div>
+
+                <h3>No expenses yet</h3>
+
+                <p>
+                    Add your first expense to start tracking your trip budget.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="budget.js"></script>
+
+</body>
+</html>

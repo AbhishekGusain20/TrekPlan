@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Planner — TrekPlan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="trip-planner.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <a href="dashboard.html">
+                <img src="trekplan-icon.png" alt="TrekPlan Logo">
+                <span>TREK<span>PLAN</span></span>
+            </a>
+        </div>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="dashboard.html#trips">
+                <span>✈</span>
+                My Trips
+            </a>
+
+            <a href="explore.html">
+                <span>◎</span>
+                Explore
+            </a>
+
+            <a href="budget.html">
+                <span>₹</span>
+                Budget Planner
+            </a>
+
+            <a href="#">
+                <span>▤</span>
+                Travel Journal
+            </a>
+
+            <a href="#">
+                <span>⌖</span>
+                Maps
+            </a>
+
+            <a href="#">
+                <span>✓</span>
+                Checklists
+            </a>
+
+            <a href="#">
+                <span>♧</span>
+                Community
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <button id="logoutBtn">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- MOBILE HEADER -->
+
+        <header class="mobile-header">
+
+            <button id="menuBtn">
+                ☰
+            </button>
+
+            <div class="mobile-logo">
+                <img src="trekplan-icon.png" alt="TrekPlan">
+                <strong>TREK<span>PLAN</span></strong>
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="page-header">
+
+            <p class="eyebrow">PLAN YOUR JOURNEY</p>
+
+            <h1>Create Your Trip</h1>
+
+            <p>
+                Plan your next adventure by adding your trip details below.
+            </p>
+
+        </section>
+
+
+        <!-- ================= FORM ================= -->
+
+        <section class="planner-container">
+
+            <form id="tripForm">
+
+                <!-- TRIP INFORMATION -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <p>STEP 01</p>
+
+                        <h2>Trip Information</h2>
+
+                        <span>
+                            Tell us about your upcoming journey.
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+
+                            <label for="tripName">
+                                Trip Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="tripName"
+                                placeholder="e.g. Weekend in Manali"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="startLocation">
+                                Starting Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="startLocation"
+                                placeholder="e.g. Dehradun"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="destination">
+                                Destination
+                            </label>
+
+                            <input
+                                type="text"
+                                id="destination"
+                                placeholder="e.g. Manali"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE & PEOPLE -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <p>STEP 02</p>
+
+                        <h2>Dates & Travelers</h2>
+
+                        <span>
+                            Choose your travel dates and group size.
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="startDate">
+                                Start Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="startDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="endDate">
+                                End Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="endDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="travelers">
+                                Number of Travelers
+                            </label>
+
+                            <input
+                                type="number"
+                                id="travelers"
+                                min="1"
+                                value="1"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUDGET -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <p>STEP 03</p>
+
+                        <h2>Trip Budget</h2>
+
+                        <span>
+                            Set an estimated budget for your trip.
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="budget">
+                                Estimated Budget
+                            </label>
+
+                            <div class="amount-input">
+
+                                <span>₹</span>
+
+                                <input
+                                    type="number"
+                                    id="budget"
+                                    placeholder="15000"
+                                    min="1"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <div class="form-actions">
+
+                    <a href="dashboard.html" class="cancel-btn">
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        Save Trip →
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="trip-planner.js"></script>
+
+</body>
+
+</html>

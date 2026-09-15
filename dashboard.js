@@ -80,19 +80,23 @@ function closeTripModal() {
 
 createTripBtn.addEventListener(
     "click",
-    openTripModal
+    function () {
+        window.location.href = "trip-planner.html";
+    }
 );
-
 
 heroCreateBtn.addEventListener(
     "click",
-    openTripModal
+    function () {
+        window.location.href = "trip-planner.html";
+    }
 );
-
 
 quickCreate.addEventListener(
     "click",
-    openTripModal
+    function () {
+        window.location.href = "trip-planner.html";
+    }
 );
 
 
@@ -414,9 +418,7 @@ document
         "click",
         function () {
 
-            alert(
-                "Budget Planner will be available soon."
-            );
+            window.location.href = "budget.html";
 
         }
     );
