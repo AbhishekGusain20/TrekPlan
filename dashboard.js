@@ -1,26 +1,26 @@
-// ================= TREKPLAN AUTHENTICATION =================
+// =====================================================
+// TREKPLAN — DASHBOARD
+// Day 8: Dynamic Trip + Budget Data
+// =====================================================
+
+
+// ================= AUTHENTICATION =================
 
 const SESSION_KEY = "trekplan_session";
 
-// Check both localStorage and sessionStorage
 const localSession = localStorage.getItem(SESSION_KEY);
 const temporarySession = sessionStorage.getItem(SESSION_KEY);
 
 const session = localSession || temporarySession;
 
-// If user is not logged in, go to login page
 if (!session) {
     window.location.href = "login.html";
 }
 
-/* =========================================================
-   TREKPLAN DASHBOARD JAVASCRIPT
-========================================================= */
 
+// ================= ELEMENTS =================
 
-/* ================= ELEMENTS ================= */
-
-const tripModal = document.getElementById("tripModal");
+const tripGrid = document.getElementById("tripGrid");
 
 const createTripBtn =
     document.getElementById("createTripBtn");
@@ -31,17 +31,14 @@ const heroCreateBtn =
 const quickCreate =
     document.getElementById("quickCreate");
 
-const closeModal =
-    document.getElementById("closeModal");
+const budgetButton =
+    document.getElementById("budgetButton");
 
-const tripForm =
-    document.getElementById("tripForm");
+const mapButton =
+    document.getElementById("mapButton");
 
-const tripGrid =
-    document.getElementById("tripGrid");
-
-const toast =
-    document.getElementById("toast");
+const exploreBtn =
+    document.getElementById("exploreBtn");
 
 const mobileMenu =
     document.getElementById("mobileMenu");
@@ -49,384 +46,452 @@ const mobileMenu =
 const sidebar =
     document.getElementById("sidebar");
 
+const logoutBtn =
+    document.getElementById("logoutBtn");
 
-/* =========================================================
-   OPEN MODAL
-========================================================= */
-
-function openTripModal() {
-
-    tripModal.classList.add("show");
-
-    document.body.style.overflow = "hidden";
-
-}
+const searchInput =
+    document.getElementById("searchInput");
 
 
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
+// ================= GET SAVED TRIPS =================
 
-function closeTripModal() {
+function getTrips() {
 
-    tripModal.classList.remove("show");
-
-    document.body.style.overflow = "";
+    return JSON.parse(
+        localStorage.getItem("trekplanTrips")
+    ) || [];
 
 }
 
 
-/* ================= BUTTONS ================= */
+// ================= FORMAT MONEY =================
 
-createTripBtn.addEventListener(
-    "click",
-    function () {
-        window.location.href = "trip-planner.html";
+function formatMoney(amount) {
+
+    return "₹" + Number(amount || 0)
+        .toLocaleString("en-IN");
+
+}
+
+
+// ================= CALCULATE DAYS =================
+
+function calculateDays(startDate, endDate) {
+
+    if (!startDate || !endDate) {
+        return 1;
     }
-);
 
-heroCreateBtn.addEventListener(
-    "click",
-    function () {
-        window.location.href = "trip-planner.html";
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const difference =
+        end - start;
+
+    const days =
+        Math.ceil(
+            difference / (1000 * 60 * 60 * 24)
+        ) + 1;
+
+    return days > 0 ? days : 1;
+
+}
+
+
+// ================= UPDATE DASHBOARD STATS =================
+
+function updateStats() {
+
+    const trips = getTrips();
+
+    // Total trips
+    const totalTrips =
+        document.getElementById("totalTrips");
+
+    if (totalTrips) {
+        totalTrips.textContent =
+            trips.length;
     }
-);
 
-quickCreate.addEventListener(
-    "click",
-    function () {
-        window.location.href = "trip-planner.html";
+
+    // Upcoming trips
+    const today =
+        new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+    const upcomingTrips =
+        trips.filter(function (trip) {
+
+            if (!trip.startDate) {
+                return false;
+            }
+
+            const start =
+                new Date(trip.startDate);
+
+            return start >= today;
+
+        });
+
+
+    const upcomingElement =
+        document.querySelector(
+            ".stats-grid .stat-card:nth-child(2) strong"
+        );
+
+    if (upcomingElement) {
+
+        upcomingElement.textContent =
+            upcomingTrips.length;
+
     }
-);
 
 
-closeModal.addEventListener(
-    "click",
-    closeTripModal
-);
+    // Total trip budget
+    const totalBudget =
+        trips.reduce(function (total, trip) {
+
+            return total +
+                Number(trip.budget || 0);
+
+        }, 0);
 
 
-/* =========================================================
-   CLOSE WHEN CLICK OUTSIDE
-========================================================= */
+    const budgetElement =
+        document.querySelector(
+            ".stats-grid .stat-card:nth-child(3) strong"
+        );
 
-tripModal.addEventListener(
-    "click",
-    function (event) {
+    if (budgetElement) {
 
-        if (event.target === tripModal) {
-
-            closeTripModal();
-
-        }
+        budgetElement.textContent =
+            formatMoney(totalBudget);
 
     }
-);
 
 
-/* =========================================================
-   CREATE TRIP
-========================================================= */
+    // Places explored
+    const destinations =
+        new Set(
+            trips.map(function (trip) {
 
-tripForm.addEventListener(
-    "submit",
-    function (event) {
+                return trip.destination
+                    ?.trim()
+                    .toLowerCase();
 
-        event.preventDefault();
-
-
-        /* Get form values */
-
-        const tripName =
-            document.getElementById("tripName").value.trim();
-
-        const startLocation =
-            document.getElementById("startLocation").value.trim();
-
-        const destination =
-            document.getElementById("destination").value.trim();
-
-        const startDate =
-            document.getElementById("startDate").value;
-
-        const endDate =
-            document.getElementById("endDate").value;
-
-        const people =
-            document.getElementById("people").value;
-
-        const budget =
-            document.getElementById("budget").value;
-
-
-        /* ================= VALIDATION ================= */
-
-        if (endDate < startDate) {
-
-            alert(
-                "End date cannot be before start date."
-            );
-
-            return;
-
-        }
-
-
-        /* ================= TRIP OBJECT ================= */
-
-        const newTrip = {
-
-            id: Date.now(),
-
-            name: tripName,
-
-            startLocation: startLocation,
-
-            destination: destination,
-
-            startDate: startDate,
-
-            endDate: endDate,
-
-            people: people,
-
-            budget: budget
-
-        };
-
-
-        /* ================= GET EXISTING TRIPS ================= */
-
-        let trips =
-            JSON.parse(
-                localStorage.getItem("trekplanTrips")
-            ) || [];
-
-
-        /* ================= ADD NEW TRIP ================= */
-
-        trips.push(newTrip);
-
-
-        /* ================= SAVE ================= */
-
-        localStorage.setItem(
-            "trekplanTrips",
-            JSON.stringify(trips)
+            }).filter(Boolean)
         );
 
 
-        /* ================= UPDATE UI ================= */
+    const placesElement =
+        document.querySelector(
+            ".stats-grid .stat-card:nth-child(4) strong"
+        );
 
-        renderTrips();
+    if (placesElement) {
 
-
-        /* ================= CLOSE MODAL ================= */
-
-        closeTripModal();
-
-
-        /* ================= RESET FORM ================= */
-
-        tripForm.reset();
-
-
-        /* ================= SHOW MESSAGE ================= */
-
-        showToast();
+        placesElement.textContent =
+            destinations.size;
 
     }
-);
+
+}
 
 
-/* =========================================================
-   RENDER SAVED TRIPS
-========================================================= */
+// ================= RENDER TRIPS =================
 
 function renderTrips() {
 
-    const savedTrips =
-        JSON.parse(
-            localStorage.getItem("trekplanTrips")
-        ) || [];
+    const trips =
+        getTrips();
+
+    if (!tripGrid) {
+        return;
+    }
 
 
-    const defaultCards =
-        tripGrid.querySelectorAll(".trip-card");
+    // Remove only dynamically created cards
+    const oldCards =
+        tripGrid.querySelectorAll(
+            ".dynamic-trip-card"
+        );
+
+    oldCards.forEach(function (card) {
+
+        card.remove();
+
+    });
 
 
-    /* Don't remove original demo cards */
+    // If no trips exist
+    if (trips.length === 0) {
 
-    savedTrips.forEach(
-        function (trip) {
+        return;
 
-            const existing =
-                document.querySelector(
-                    `[data-trip-id="${trip.id}"]`
-                );
-
-            if (existing) return;
+    }
 
 
-            const card =
-                document.createElement("article");
+    trips.forEach(function (trip) {
 
-            card.className = "trip-card";
+        const card =
+            document.createElement("article");
 
-            card.setAttribute(
-                "data-trip-id",
-                trip.id
+        card.className =
+            "trip-card dynamic-trip-card";
+
+
+        const days =
+            calculateDays(
+                trip.startDate,
+                trip.endDate
             );
 
 
-            card.innerHTML = `
+        card.innerHTML = `
 
-                <div class="trip-image rishikesh">
+            <div class="trip-image rishikesh">
 
-                    <span class="trip-status">
-                        New Trip
-                    </span>
+                <span class="trip-status">
+                    Upcoming
+                </span>
+
+            </div>
+
+
+            <div class="trip-info">
+
+                <div>
+
+                    <h3>
+                        ${escapeHTML(
+                            trip.tripName ||
+                            "My Trip"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${days} Days •
+                        ${trip.travelers || 1} People
+                        •
+                        ${escapeHTML(
+                            trip.destination || ""
+                        )}
+                    </p>
 
                 </div>
 
 
-                <div class="trip-info">
+                <strong>
+                    ${formatMoney(trip.budget)}
+                </strong>
 
-                    <div>
-
-                        <h3>
-                            ${escapeHTML(trip.name)}
-                        </h3>
-
-                        <p>
-                            ${trip.people} People
-                            • ${escapeHTML(trip.destination)}
-                        </p>
-
-                    </div>
-
-                    <strong>
-                        ₹${Number(trip.budget).toLocaleString("en-IN")}
-                    </strong>
-
-                </div>
+            </div>
 
 
-                <button class="view-trip">
-                    View Trip →
-                </button>
+           <div class="trip-actions">
 
-            `;
+    <button
+        class="view-trip"
+        type="button"
+        onclick="viewTrip(${trip.id})"
+    >
+        View Trip →
+    </button>
+
+    <button
+        class="delete-trip"
+        type="button"
+        onclick="deleteTrip(${trip.id})"
+    >
+        Delete
+    </button>
+
+</div>
+
+        `;
 
 
-            tripGrid.prepend(card);
+        tripGrid.prepend(card);
 
-        }
+    });
+
+}
+
+
+// ================= VIEW TRIP =================
+
+function viewTrip(id) {
+
+    const trips =
+        getTrips();
+
+    const trip =
+        trips.find(function (item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!trip) {
+        return;
+    }
+
+
+    localStorage.setItem(
+        "trekplan_currentTrip",
+        JSON.stringify(trip)
+    );
+
+
+    alert(
+        "Trip: " +
+        trip.tripName +
+        "\n\nDestination: " +
+        trip.destination +
+        "\nTravelers: " +
+        trip.travelers +
+        "\nBudget: " +
+        formatMoney(trip.budget)
     );
 
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+
+// ================= DELETE TRIP =================
+
+function deleteTrip(id) {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this trip?"
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    let trips = getTrips();
+
+    trips = trips.filter(function (trip) {
+        return trip.id !== id;
+    });
+
+    localStorage.setItem(
+        "trekplanTrips",
+        JSON.stringify(trips)
+    );
+
+    // Remove current trip if it was deleted
+    const currentTrip =
+        JSON.parse(
+            localStorage.getItem("trekplan_currentTrip")
+        );
+
+    if (currentTrip && currentTrip.id === id) {
+
+        localStorage.removeItem(
+            "trekplan_currentTrip"
+        );
+
+    }
+
+    // Refresh dashboard
+    updateStats();
+    renderTrips();
+
+}
+
+
+// ================= ESCAPE HTML =================
 
 function escapeHTML(value) {
 
-    return String(value)
+    return String(value || "")
+
         .replaceAll("&", "&amp;")
+
         .replaceAll("<", "&lt;")
+
         .replaceAll(">", "&gt;")
+
         .replaceAll('"', "&quot;")
+
         .replaceAll("'", "&#039;");
 
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+// ================= CREATE TRIP BUTTONS =================
 
-function showToast() {
+if (createTripBtn) {
 
-    toast.classList.add("show");
-
-
-    setTimeout(
+    createTripBtn.addEventListener(
+        "click",
         function () {
 
-            toast.classList.remove("show");
+            window.location.href =
+                "trip-planner.html";
 
-        },
-        3500
+        }
     );
 
 }
 
 
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
+if (heroCreateBtn) {
 
-mobileMenu.addEventListener(
-    "click",
-    function () {
-
-        sidebar.classList.toggle("open");
-
-    }
-);
-
-
-/* =========================================================
-   CLOSE SIDEBAR AFTER CLICK
-========================================================= */
-
-document
-    .querySelectorAll(".nav-link")
-    .forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    if (
-                        window.innerWidth <= 850
-                    ) {
-
-                        sidebar.classList.remove(
-                            "open"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   QUICK ACTIONS
-========================================================= */
-
-document
-    .getElementById("budgetButton")
-    .addEventListener(
+    heroCreateBtn.addEventListener(
         "click",
         function () {
 
-            window.location.href = "budget.html";
+            window.location.href =
+                "trip-planner.html";
 
         }
     );
 
+}
 
-document
-    .getElementById("mapButton")
-    .addEventListener(
+
+if (quickCreate) {
+
+    quickCreate.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "trip-planner.html";
+
+        }
+    );
+
+}
+
+
+// ================= BUDGET BUTTON =================
+
+if (budgetButton) {
+
+    budgetButton.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "budget.html";
+
+        }
+    );
+
+}
+
+
+// ================= MAP BUTTON =================
+
+if (mapButton) {
+
+    mapButton.addEventListener(
         "click",
         function () {
 
@@ -437,53 +502,70 @@ document
         }
     );
 
+}
 
-document
-    .getElementById("exploreBtn")
-    .addEventListener(
+
+// ================= EXPLORE BUTTON =================
+
+if (exploreBtn) {
+
+    exploreBtn.addEventListener(
         "click",
         function () {
 
-            alert(
-                "Destination Explorer is coming soon."
-            );
+            window.location.href =
+                "explore.html";
 
         }
     );
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchInput =
-    document.getElementById("searchInput");
+}
 
 
-searchInput.addEventListener(
-    "input",
-    function () {
+// ================= MOBILE MENU =================
 
-        const search =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+if (mobileMenu) {
+
+    mobileMenu.addEventListener(
+        "click",
+        function () {
+
+            sidebar.classList.toggle("open");
+
+        }
+    );
+
+}
 
 
-        const cards =
-            document.querySelectorAll(".trip-card");
+// ================= SEARCH =================
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            const search =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
 
 
-        cards.forEach(
-            function (card) {
+            const cards =
+                document.querySelectorAll(
+                    ".trip-card"
+                );
+
+
+            cards.forEach(function (card) {
 
                 const text =
-                    card.innerText.toLowerCase();
+                    card.innerText
+                        .toLowerCase();
 
 
-                if (
-                    text.includes(search)
-                ) {
+                if (text.includes(search)) {
 
                     card.style.display = "";
 
@@ -493,39 +575,45 @@ searchInput.addEventListener(
 
                 }
 
-            }
-        );
+            });
 
-    }
-);
+        }
+    );
 
-
-/* =========================================================
-   LOAD SAVED DATA
-========================================================= */
-
-renderTrips();
-
-
-
-
+}
 
 
 // ================= LOGOUT =================
 
-const logoutBtn = document.getElementById("logoutBtn");
-
 if (logoutBtn) {
 
-    logoutBtn.addEventListener("click", () => {
+    logoutBtn.addEventListener(
+        "click",
+        function () {
 
-        // Remove login session
-        localStorage.removeItem("trekplan_session");
-        sessionStorage.removeItem("trekplan_session");
+            localStorage.removeItem(
+                "trekplan_session"
+            );
 
-        // Go back to login page
-        window.location.href = "login.html";
+            sessionStorage.removeItem(
+                "trekplan_session"
+            );
 
-    });
+            localStorage.removeItem(
+                "trekplan_currentUser"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
 
 }
+
+
+// ================= INITIAL LOAD =================
+
+updateStats();
+
+renderTrips();
