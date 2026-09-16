@@ -2,36 +2,38 @@
 
 ### Plan Your Journey. Manage Your Budget. Explore With Confidence.
 
-TrekPlan is a travel and trekking planning website that helps users plan their trips in one place.
+TrekPlan is a travel and trekking planning website that helps users plan and manage their trips in one place.
 
 ## ✨ Current Features
 
-- 🏠 Landing Page
-- 🔐 Login & Signup
-- 📊 Dashboard
-- 🏔️ Explore Treks
-- 📖 Trek Details
-- 💰 Budget Planner
-- 🧳 Trip Planner
-- 💾 LocalStorage
+* 🏠 Landing Page
+* 🔐 Login & Signup
+* 📊 Dashboard
+* 🏔️ Explore Treks
+* 📖 Trek Details
+* 💰 Budget Planner
+* 🧳 Trip Planner
+* 💾 LocalStorage
+* 🔄 Dynamic Trip Data
+* 🗑️ Delete Trips from Dashboard
 
 ## 🚀 Planned Features
 
-- 📅 Day-by-Day Itinerary
-- 🚗 Transportation Planner
-- 🏨 Stay Planner
-- 🎒 Packing Checklist
-- 🌦️ Weather Information
-- 🗺️ Maps & Routes
-- 🤖 AI Trip Planning
+* 📅 Day-by-Day Itinerary
+* 🚗 Transportation Planner
+* 🏨 Stay Planner
+* 🎒 Packing Checklist
+* 🌦️ Weather Information
+* 🗺️ Maps & Routes
+* 🤖 AI Trip Planning
 
 ## 🛠️ Technologies
 
-- HTML
-- CSS
-- JavaScript
-- LocalStorage
-- Git & GitHub
+* HTML
+* CSS
+* JavaScript
+* LocalStorage
+* Git & GitHub
 
 ## 📌 Status
 
@@ -39,7 +41,7 @@ TrekPlan is a travel and trekking planning website that helps users plan their t
 
 ## 👨‍💻 Developer
 
-**Abhishek Gusain**  
+**Abhishek Gusain**
 B.Tech CSE Student | Aspiring Frontend Developer
 
 ---
