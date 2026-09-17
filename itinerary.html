@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrekPlan - Itinerary</title>
+
+    <link rel="stylesheet" href="itinerary.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            🏔️ TrekPlan
+        </div>
+
+        <a href="dashboard.html" class="back-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <p class="small-title">
+                YOUR TRIP
+            </p>
+
+            <h1 id="tripTitle">
+                Trip Itinerary
+            </h1>
+
+            <p id="tripDestination">
+                Plan your journey day by day.
+            </p>
+
+        </section>
+
+
+        <!-- ================= ADD ACTIVITY ================= -->
+
+        <section class="form-card">
+
+            <h2>Add Activity</h2>
+
+            <form id="itineraryForm">
+
+                <div class="form-group">
+
+                    <label for="day">
+                        Day
+                    </label>
+
+                    <select id="day" required>
+
+                        <option value="">
+                            Select Day
+                        </option>
+
+                        <option value="Day 1">
+                            Day 1
+                        </option>
+
+                        <option value="Day 2">
+                            Day 2
+                        </option>
+
+                        <option value="Day 3">
+                            Day 3
+                        </option>
+
+                        <option value="Day 4">
+                            Day 4
+                        </option>
+
+                        <option value="Day 5">
+                            Day 5
+                        </option>
+
+                        <option value="Day 6">
+                            Day 6
+                        </option>
+
+                        <option value="Day 7">
+                            Day 7
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="time">
+                        Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="time"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="activity">
+                        Activity
+                    </label>
+
+                    <input
+                        type="text"
+                        id="activity"
+                        placeholder="Example: Start Trek"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Example: Base Camp"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Add some notes..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="add-btn"
+                >
+                    + Add Activity
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= ITINERARY ================= -->
+
+        <section class="itinerary-section">
+
+            <div class="section-title">
+
+                <h2>
+                    My Itinerary
+                </h2>
+
+                <span id="activityCount">
+                    0 Activities
+                </span>
+
+            </div>
+
+
+            <div id="itineraryList">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        📅
+                    </div>
+
+                    <h3>
+                        No activities yet
+                    </h3>
+
+                    <p>
+                        Add your first activity to start planning your trip.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="itinerary.js"></script>
+
+</body>
+
+</html>
+

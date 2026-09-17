@@ -1038,17 +1038,17 @@ a {
 
 .view-trip {
 
-    width: calc(100% - 28px);
+    width: auto;
 
-    margin: 0 14px 14px;
+    margin: 0;
 
-    padding: 9px;
+    padding: 10px 8px;
 
     background: #f3f7fa;
 
     color: var(--primary);
 
-    border-radius: 7px;
+    border-radius: 8px;
 
     font-size: 10px;
 
@@ -1759,19 +1759,52 @@ a {
 .trip-actions {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    padding: 0 14px 14px;
+    width: 100%;
 }
 
-.delete-trip {
+
+/* View + Itinerary buttons */
+
+.trip-actions .view-trip {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    padding: 10px 8px;
+}
+
+
+/* Delete button */
+
+.trip-actions .delete-trip {
+    flex: 1;
+    width: auto;
+
     border: none;
     background: #e74c3c;
     color: white;
-    padding: 10px 16px;
+
+    padding: 10px 8px;
+
     border-radius: 8px;
+
     cursor: pointer;
+
+    font-size: 10px;
     font-weight: 600;
+
+    margin: 0;
 }
 
-.delete-trip:hover {
-    opacity: 0.85;
+
+.trip-actions .delete-trip:hover {
+    background: #d93627;
+}
+
+
+/* Hover for buttons */
+
+.trip-actions .view-trip:hover {
+    background: var(--primary);
+    color: white;
 }

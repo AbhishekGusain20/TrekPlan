@@ -300,6 +300,14 @@ function renderTrips() {
     </button>
 
     <button
+        class="view-trip"
+        type="button"
+        onclick="openItinerary(${trip.id})"
+    >
+        Itinerary
+    </button>
+
+    <button
         class="delete-trip"
         type="button"
         onclick="deleteTrip(${trip.id})"
@@ -357,6 +365,41 @@ function viewTrip(id) {
     );
 
 }
+
+
+
+
+// ================= OPEN ITINERARY =================
+
+function openItinerary(id) {
+
+    const trips = getTrips();
+
+    const trip = trips.find(function (item) {
+
+        return item.id === id;
+
+    });
+
+    if (!trip) {
+
+        alert("Trip not found.");
+
+        return;
+
+    }
+
+    // Save selected trip
+    localStorage.setItem(
+        "trekplan_currentTrip",
+        JSON.stringify(trip)
+    );
+
+    // Open itinerary page
+    window.location.href = "itinerary.html";
+
+}
+
 
 
 
