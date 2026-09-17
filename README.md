@@ -6,42 +6,48 @@ TrekPlan is a travel and trekking planning website that helps users plan and man
 
 ## ✨ Current Features
 
-* 🏠 Landing Page
-* 🔐 Login & Signup
-* 📊 Dashboard
-* 🏔️ Explore Treks
-* 📖 Trek Details
-* 💰 Budget Planner
-* 🧳 Trip Planner
-* 💾 LocalStorage
-* 🔄 Dynamic Trip Data
-* 🗑️ Delete Trips from Dashboard
+- 🏠 Landing Page
+- 🔐 Login & Signup
+- 📊 Dynamic Dashboard
+- 👤 User Authentication
+- 🏔️ Explore Treks
+- 📖 Trek Details
+- 💰 Budget Planner
+- 🧳 Trip Planner
+- 💾 LocalStorage Data Storage
+- 🗑️ Delete Trips
+- 📅 Day-by-Day Itinerary
+- ⏰ Add Activity with Time
+- 📍 Add Activity Location
+- 📝 Add Activity Notes
+- 🗑️ Delete Itinerary Activities
 
 ## 🚀 Planned Features
 
-* 📅 Day-by-Day Itinerary
-* 🚗 Transportation Planner
-* 🏨 Stay Planner
-* 🎒 Packing Checklist
-* 🌦️ Weather Information
-* 🗺️ Maps & Routes
-* 🤖 AI Trip Planning
+- 🚗 Transportation Planner
+- 🏨 Stay Planner
+- 🎒 Packing Checklist
+- 🌦️ Weather Information
+- 🗺️ Maps & Routes
+- 🤖 AI Trip Planning
 
 ## 🛠️ Technologies
 
-* HTML
-* CSS
-* JavaScript
-* LocalStorage
-* Git & GitHub
+- HTML
+- CSS
+- JavaScript
+- LocalStorage
+- JSON
+- Git & GitHub
 
-## 📌 Status
+## 📌 Project Status
 
 🚧 **Under Development**
 
 ## 👨‍💻 Developer
 
 **Abhishek Gusain**
+
 B.Tech CSE Student | Aspiring Frontend Developer
 
 ---
