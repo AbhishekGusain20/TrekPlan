@@ -8,8 +8,8 @@ TrekPlan is a travel and trekking planning website that helps users plan and man
 
 - 🏠 Landing Page
 - 🔐 Login & Signup
-- 📊 Dynamic Dashboard
 - 👤 User Authentication
+- 📊 Dynamic Dashboard
 - 🏔️ Explore Treks
 - 📖 Trek Details
 - 💰 Budget Planner
@@ -21,10 +21,15 @@ TrekPlan is a travel and trekking planning website that helps users plan and man
 - 📍 Add Activity Location
 - 📝 Add Activity Notes
 - 🗑️ Delete Itinerary Activities
+- 📖 Travel Journal
+- ✍️ Add Travel Memories
+- ⭐ Add Travel Experience Rating
+- 📍 Save Memory Location
+- 📅 Save Memory Date
+- 🗑️ Delete Journal Memories
 
 ## 🚀 Planned Features
 
-- 🚗 Transportation Planner
 - 🏨 Stay Planner
 - 🎒 Packing Checklist
 - 🌦️ Weather Information
@@ -49,7 +54,3 @@ TrekPlan is a travel and trekking planning website that helps users plan and man
 **Abhishek Gusain**
 
 B.Tech CSE Student | Aspiring Frontend Developer
-
----
-
-### 🏔️ Plan Smart. Travel More. Explore Further.
