@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travel Journal | TrekPlan</title>
+
+    <link rel="stylesheet" href="journal.css">
+</head>
+
+<body>
+
+    <main class="journal-container">
+
+        <!-- HEADER -->
+        <header class="page-header">
+
+            <a href="dashboard.html" class="back-btn">
+                ← Dashboard
+            </a>
+
+            <div class="header-content">
+
+                <p class="small-label">TREKPLAN</p>
+
+                <h1>
+                    Travel Journal <span>✈</span>
+                </h1>
+
+                <p class="subtitle">
+                    Save your travel memories, experiences and special moments.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ADD MEMORY -->
+
+        <section class="journal-card">
+
+            <div class="section-heading">
+
+                <h2>Create a Memory</h2>
+
+                <p>
+                    Write about your travel experience.
+                </p>
+
+            </div>
+
+
+            <form id="journalForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="journalTitle">
+                            Memory Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="journalTitle"
+                            placeholder="e.g. Amazing Day in Rishikesh"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="journalDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="journalDate"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="journalLocation">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="journalLocation"
+                            placeholder="e.g. Rishikesh"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="journalRating">
+                            Rating
+                        </label>
+
+                        <select id="journalRating">
+
+                            <option value="5">
+                                ⭐⭐⭐⭐⭐ 5/5
+                            </option>
+
+                            <option value="4">
+                                ⭐⭐⭐⭐ 4/5
+                            </option>
+
+                            <option value="3">
+                                ⭐⭐⭐ 3/5
+                            </option>
+
+                            <option value="2">
+                                ⭐⭐ 2/5
+                            </option>
+
+                            <option value="1">
+                                ⭐ 1/5
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="journalDescription">
+                        Your Experience
+                    </label>
+
+                    <textarea
+                        id="journalDescription"
+                        rows="6"
+                        placeholder="Write about your trip, memories and experience..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    Save Memory →
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- MEMORIES -->
+
+        <section class="entries-section">
+
+            <div class="entries-header">
+
+                <div>
+
+                    <h2>My Memories</h2>
+
+                    <p id="entryCount">
+                        0 Memories
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="journalList"></div>
+
+        </section>
+
+    </main>
+
+
+    <script src="journal.js"></script>
+
+</body>
+
+</html>

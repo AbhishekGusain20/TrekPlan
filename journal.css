@@ -1,0 +1,822 @@
+/* =====================================================
+   TREKPLAN — TRAVEL JOURNAL
+   Travel Diary Design
+===================================================== */
+
+:root {
+    --primary: #073b5c;
+    --primary-light: #0b587f;
+    --green: #149b67;
+    --green-dark: #0d7950;
+
+    --text: #102536;
+    --text-light: #708295;
+
+    --background: #f3f7f5;
+    --white: #ffffff;
+
+    --border: #dfe8e5;
+
+    --cream: #fffdf7;
+
+    --shadow:
+        0 12px 35px rgba(15, 45, 65, 0.08);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.journal-container {
+    width: min(1050px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 30px 0 70px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.page-header {
+    position: relative;
+
+    min-height: 230px;
+
+    padding: 25px 35px;
+
+    margin-bottom: 25px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(4, 45, 68, 0.97),
+            rgba(7, 59, 92, 0.90),
+            rgba(20, 155, 103, 0.78)
+        );
+}
+
+
+/* Decorative mountain shape */
+
+.page-header::before {
+    content: "";
+
+    position: absolute;
+
+    right: -40px;
+    bottom: -70px;
+
+    width: 330px;
+    height: 180px;
+
+    background: rgba(255,255,255,0.08);
+
+    clip-path: polygon(
+        0 100%,
+        30% 35%,
+        45% 60%,
+        68% 15%,
+        100% 100%
+    );
+}
+
+
+/* Airplane */
+
+.page-header::after {
+    content: "✈";
+
+    position: absolute;
+
+    top: 45px;
+    right: 80px;
+
+    font-size: 25px;
+
+    opacity: 0.8;
+
+    animation: fly 5s ease-in-out infinite;
+}
+
+
+@keyframes fly {
+
+    0% {
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateX(55px)
+            translateY(-18px)
+            rotate(5deg);
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(-5deg);
+    }
+
+}
+
+
+/* Airplane trail */
+
+.header-content::after {
+    content: "•  •  •";
+
+    position: absolute;
+
+    top: 48px;
+    right: 105px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    animation: trail 5s ease-in-out infinite;
+}
+
+
+@keyframes trail {
+
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+
+}
+
+
+.header-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 600px;
+}
+
+
+.back-btn {
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    color: rgba(255,255,255,0.85);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+
+.back-btn:hover {
+    color: white;
+
+    transform: translateX(-5px);
+}
+
+
+.small-label {
+    color: #9be0c4;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.page-header h1 {
+    font-size: 34px;
+
+    line-height: 1.2;
+
+    margin-bottom: 9px;
+}
+
+
+.page-header h1 span {
+    display: inline-block;
+
+    animation: gentleFloat 2.5s ease-in-out infinite;
+}
+
+
+@keyframes gentleFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+.subtitle {
+    color: #dcebef;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    max-width: 540px;
+}
+
+
+/* =====================================================
+   JOURNAL FORM CARD
+===================================================== */
+
+.journal-card {
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    box-shadow: var(--shadow);
+
+    animation: cardAppear 0.6s ease;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+.journal-card::before {
+    content: "✍";
+
+    position: absolute;
+
+    top: 24px;
+    right: 28px;
+
+    font-size: 22px;
+
+    opacity: 0.12;
+}
+
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+
+.section-heading h2,
+.entries-header h2 {
+    font-size: 19px;
+
+    margin-bottom: 5px;
+}
+
+
+.section-heading p,
+.entries-header p {
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: #405666;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #d7e2e0;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    padding: 11px 12px;
+
+    color: var(--text);
+
+    background: #fbfdfc;
+
+    font-size: 12px;
+
+    font-family: inherit;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.form-group input,
+.form-group select {
+    height: 44px;
+}
+
+
+.form-group textarea {
+    min-height: 125px;
+
+    resize: vertical;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    background: white;
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 0 3px rgba(20,155,103,0.10);
+}
+
+
+/* =====================================================
+   SAVE BUTTON
+===================================================== */
+
+.save-btn {
+    width: 100%;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.save-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(7,59,92,0.20);
+}
+
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   MEMORIES SECTION
+===================================================== */
+
+.entries-section {
+    background: transparent;
+
+    border: none;
+
+    padding: 0;
+
+    box-shadow: none;
+}
+
+
+.entries-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 5px 3px 15px;
+}
+
+
+/* =====================================================
+   JOURNAL LIST
+===================================================== */
+
+#journalList {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =====================================================
+   MEMORY CARD
+===================================================== */
+
+.memory-card {
+    position: relative;
+
+    background: var(--cream);
+
+    border: 1px solid #e8e2d4;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 22px rgba(45, 55, 45, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Small diary line */
+
+.memory-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 4px;
+
+    background: var(--green);
+
+    opacity: 0.75;
+}
+
+
+.memory-card:hover {
+    transform: translateY(-6px) rotate(0.2deg);
+
+    box-shadow:
+        0 15px 35px rgba(15,45,65,0.12);
+}
+
+
+.memory-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+
+.memory-title {
+    font-size: 16px;
+
+    margin-bottom: 7px;
+
+    color: var(--text);
+}
+
+
+.memory-location {
+    color: var(--text-light);
+
+    font-size: 10px;
+}
+
+
+.memory-date {
+    color: var(--text-light);
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+
+.memory-rating {
+    margin: 14px 0;
+
+    font-size: 12px;
+}
+
+
+.memory-description {
+    color: #526777;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+}
+
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
+
+.memory-footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 16px;
+}
+
+
+.delete-btn {
+    border: none;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.delete-btn:hover {
+    background: #dc2626;
+
+    color: white;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px dashed #cfded9;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    padding: 55px 20px;
+}
+
+
+.empty-icon {
+    font-size: 38px;
+
+    margin-bottom: 12px;
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+.empty-state h3 {
+    font-size: 15px;
+
+    margin-bottom: 6px;
+}
+
+
+.empty-state p {
+    color: var(--text-light);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .journal-container {
+        width: calc(100% - 30px);
+
+        padding-top: 20px;
+    }
+
+
+    .page-header {
+        min-height: 245px;
+
+        padding: 22px;
+    }
+
+
+    .page-header::after {
+        right: 35px;
+
+        top: 42px;
+
+        font-size: 20px;
+    }
+
+
+    .header-content::after {
+        right: 60px;
+
+        top: 45px;
+    }
+
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    #journalList {
+        grid-template-columns: 1fr;
+    }
+
+
+    .journal-card {
+        padding: 20px;
+    }
+
+
+    .memory-top {
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+
+    .memory-date {
+        white-space: normal;
+    }
+
+}
