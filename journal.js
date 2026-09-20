@@ -14,6 +14,9 @@ const journalList =
 const entryCount =
     document.getElementById("entryCount");
 
+const journalImage =
+    document.getElementById("journalImage");
+
 
 // ================= GET JOURNAL =================
 
@@ -80,40 +83,100 @@ journalForm.addEventListener(
                 .trim();
 
 
-        const newEntry = {
+        const imageFile =
+            journalImage.files[0];
 
-            id: Date.now(),
 
-            title: title,
+        // ================= NO IMAGE =================
 
-            date: date,
+        if (!imageFile) {
 
-            location: location,
+            createJournalEntry(
+                title,
+                date,
+                location,
+                rating,
+                description,
+                ""
+            );
 
-            rating: Number(rating),
+            return;
 
-            description: description
+        }
+
+
+        // ================= READ IMAGE =================
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function () {
+
+            createJournalEntry(
+                title,
+                date,
+                location,
+                rating,
+                description,
+                reader.result
+            );
 
         };
 
 
-        const entries =
-            getJournalEntries();
-
-
-        entries.unshift(newEntry);
-
-
-        saveJournalEntries(entries);
-
-
-        journalForm.reset();
-
-
-        renderJournal();
+        reader.readAsDataURL(imageFile);
 
     }
 );
+
+
+// ================= CREATE JOURNAL ENTRY =================
+
+function createJournalEntry(
+    title,
+    date,
+    location,
+    rating,
+    description,
+    image
+) {
+
+    const newEntry = {
+
+        id: Date.now(),
+
+        title: title,
+
+        date: date,
+
+        location: location,
+
+        rating: Number(rating),
+
+        description: description,
+
+        image: image
+
+    };
+
+
+    const entries =
+        getJournalEntries();
+
+
+    entries.unshift(newEntry);
+
+
+    saveJournalEntries(entries);
+
+
+    journalForm.reset();
+
+
+    renderJournal();
+
+}
 
 
 // ================= RENDER JOURNAL =================
@@ -124,7 +187,7 @@ function renderJournal() {
         getJournalEntries();
 
 
-    // Count
+    // ================= COUNT =================
 
     entryCount.textContent =
         entries.length +
@@ -135,7 +198,7 @@ function renderJournal() {
         );
 
 
-    // Empty state
+    // ================= EMPTY STATE =================
 
     if (entries.length === 0) {
 
@@ -164,14 +227,15 @@ function renderJournal() {
     }
 
 
-    // Clear list
+    // ================= CLEAR LIST =================
 
     journalList.innerHTML = "";
 
 
-    // Display entries
+    // ================= DISPLAY ENTRIES =================
 
     entries.forEach(function (entry) {
+
 
         const card =
             document.createElement("article");
@@ -181,11 +245,28 @@ function renderJournal() {
             "memory-card";
 
 
+        // ================= STARS =================
+
         const stars =
             "⭐".repeat(entry.rating);
 
 
+        // ================= CARD =================
+
         card.innerHTML = `
+
+            ${
+                entry.image
+                    ? `
+                        <img
+                            src="${entry.image}"
+                            class="memory-image"
+                            alt="Travel memory"
+                        >
+                    `
+                    : ""
+            }
+
 
             <div class="memory-top">
 
