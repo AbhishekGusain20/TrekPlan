@@ -300,11 +300,20 @@ function renderTrips() {
     </button>
 
     <button
-        class="view-trip"
+        class="itinerary-btn"
         type="button"
         onclick="openItinerary(${trip.id})"
     >
         Itinerary
+    </button>
+
+    <button
+        class="progress-btn"
+        type="button"
+        onclick="openProgress(${trip.id})"
+    >
+        <span class="progress-icon">◔</span>
+        Progress
     </button>
 
     <button
@@ -317,7 +326,7 @@ function renderTrips() {
 
 </div>
 
-        `;
+           `;
 
 
         tripGrid.prepend(card);
@@ -398,6 +407,31 @@ function openItinerary(id) {
     // Open itinerary page
     window.location.href = "itinerary.html";
 
+}
+
+// ================= TRIP PROGRESS =================
+
+function openProgress(id) {
+
+    const trips = getTrips();
+
+    const trip = trips.find(function (item) {
+        return item.id === id;
+    });
+
+    if (!trip) {
+        alert("Trip not found.");
+        return;
+    }
+
+    // Save selected trip
+    localStorage.setItem(
+        "trekplan_currentTrip",
+        JSON.stringify(trip)
+    );
+
+    // Open progress page
+    window.location.href = "trip-progress.html";
 }
 
 

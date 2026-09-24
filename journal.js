@@ -1,385 +1,546 @@
-// =====================================================
-// TREKPLAN — TRAVEL JOURNAL
-// =====================================================
+/* =========================================
+   TREKPLAN — TRAVEL JOURNAL
+   DAY 13
+========================================= */
 
 
-// ================= ELEMENTS =================
+/* =========================================
+   GET ELEMENTS
+========================================= */
 
-const journalForm =
-    document.getElementById("journalForm");
+const journalForm = document.getElementById("journalForm");
 
-const journalList =
-    document.getElementById("journalList");
+const locationInput = document.getElementById("location");
 
-const entryCount =
-    document.getElementById("entryCount");
+const ratingInput = document.getElementById("rating");
 
-const journalImage =
-    document.getElementById("journalImage");
+const experienceInput = document.getElementById("experience");
 
+const photoInput = document.getElementById("photo");
 
-// ================= GET JOURNAL =================
+const memoriesContainer =
+    document.getElementById("memoriesContainer");
 
-function getJournalEntries() {
+const formTitle =
+    document.getElementById("formTitle");
 
-    return JSON.parse(
-        localStorage.getItem("trekplanJournal")
-    ) || [];
+const saveBtn =
+    document.getElementById("saveBtn");
 
-}
+const cancelBtn =
+    document.getElementById("cancelBtn");
 
-
-// ================= SAVE JOURNAL =================
-
-function saveJournalEntries(entries) {
-
-    localStorage.setItem(
-        "trekplanJournal",
-        JSON.stringify(entries)
-    );
-
-}
+const photoPreview =
+    document.getElementById("photoPreview");
 
 
-// ================= ADD MEMORY =================
+/* =========================================
+   LOCAL STORAGE KEY
+========================================= */
 
-journalForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
+const JOURNAL_KEY = "trekplanTravelJournal";
 
 
-        const title =
-            document
-                .getElementById("journalTitle")
-                .value
-                .trim();
+/* =========================================
+   GET SAVED MEMORIES
+========================================= */
+
+let memories =
+    JSON.parse(localStorage.getItem(JOURNAL_KEY)) || [];
 
 
-        const date =
-            document
-                .getElementById("journalDate")
-                .value;
+/* =========================================
+   EDITING MEMORY ID
+========================================= */
+
+let editingId = null;
 
 
-        const location =
-            document
-                .getElementById("journalLocation")
-                .value
-                .trim();
+/* =========================================
+   DISPLAY MEMORIES
+========================================= */
+
+function displayMemories() {
+
+    memoriesContainer.innerHTML = "";
 
 
-        const rating =
-            document
-                .getElementById("journalRating")
-                .value;
+    /* No memories */
+
+    if (memories.length === 0) {
+
+        memoriesContainer.innerHTML = `
+            <div class="empty-message">
+                <h3>No memories yet 📖</h3>
+                <p>Add your first travel memory above.</p>
+            </div>
+        `;
+
+        return;
+    }
 
 
-        const description =
-            document
-                .getElementById("journalDescription")
-                .value
-                .trim();
+    /* Display every memory */
+
+    memories.forEach(function(memory) {
+
+        const card = document.createElement("div");
+
+        card.className = "memory-card";
 
 
-        const imageFile =
-            journalImage.files[0];
+        /* Image */
 
+        let imageHTML = "";
 
-        // ================= NO IMAGE =================
+        if (memory.photo) {
 
-        if (!imageFile) {
-
-            createJournalEntry(
-                title,
-                date,
-                location,
-                rating,
-                description,
-                ""
-            );
-
-            return;
+            imageHTML = `
+                <img
+                    src="${memory.photo}"
+                    alt="${memory.location}"
+                >
+            `;
 
         }
 
 
-        // ================= READ IMAGE =================
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload = function () {
-
-            createJournalEntry(
-                title,
-                date,
-                location,
-                rating,
-                description,
-                reader.result
-            );
-
-        };
-
-
-        reader.readAsDataURL(imageFile);
-
-    }
-);
-
-
-// ================= CREATE JOURNAL ENTRY =================
-
-function createJournalEntry(
-    title,
-    date,
-    location,
-    rating,
-    description,
-    image
-) {
-
-    const newEntry = {
-
-        id: Date.now(),
-
-        title: title,
-
-        date: date,
-
-        location: location,
-
-        rating: Number(rating),
-
-        description: description,
-
-        image: image
-
-    };
-
-
-    const entries =
-        getJournalEntries();
-
-
-    entries.unshift(newEntry);
-
-
-    saveJournalEntries(entries);
-
-
-    journalForm.reset();
-
-
-    renderJournal();
-
-}
-
-
-// ================= RENDER JOURNAL =================
-
-function renderJournal() {
-
-    const entries =
-        getJournalEntries();
-
-
-    // ================= COUNT =================
-
-    entryCount.textContent =
-        entries.length +
-        (
-            entries.length === 1
-                ? " Memory"
-                : " Memories"
-        );
-
-
-    // ================= EMPTY STATE =================
-
-    if (entries.length === 0) {
-
-        journalList.innerHTML = `
-
-            <div class="empty-state">
-
-                <div class="empty-icon">
-                    📖
-                </div>
-
-                <h3>
-                    No memories yet
-                </h3>
-
-                <p>
-                    Add your first travel memory above.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    // ================= CLEAR LIST =================
-
-    journalList.innerHTML = "";
-
-
-    // ================= DISPLAY ENTRIES =================
-
-    entries.forEach(function (entry) {
-
-
-        const card =
-            document.createElement("article");
-
-
-        card.className =
-            "memory-card";
-
-
-        // ================= STARS =================
+        /* Stars */
 
         const stars =
-            "⭐".repeat(entry.rating);
+            "⭐".repeat(Number(memory.rating));
 
-
-        // ================= CARD =================
 
         card.innerHTML = `
 
-            ${
-                entry.image
-                    ? `
-                        <img
-                            src="${entry.image}"
-                            class="memory-image"
-                            alt="Travel memory"
-                        >
-                    `
-                    : ""
-            }
+            ${imageHTML}
+
+            <div class="memory-content">
+
+                <h3>📍 ${memory.location}</h3>
+
+                <div class="rating">
+                    ${stars}
+                </div>
+
+                <p class="experience">
+                    ${memory.experience}
+                </p>
 
 
-            <div class="memory-top">
+                <div class="memory-buttons">
 
-                <div>
+                    <button
+                        class="edit-btn"
+                        onclick="editMemory('${memory.id}')"
+                    >
+                        ✏️ Edit
+                    </button>
 
-                    <h3 class="memory-title">
-                        ${escapeHTML(entry.title)}
-                    </h3>
 
-                    <p class="memory-location">
-                        📍 ${escapeHTML(entry.location)}
-                    </p>
+                    <button
+                        class="delete-btn"
+                        onclick="deleteMemory('${memory.id}')"
+                    >
+                        🗑️ Delete
+                    </button>
 
                 </div>
 
-
-                <span class="memory-date">
-                    📅 ${escapeHTML(entry.date)}
-                </span>
-
             </div>
-
-
-            <div class="memory-rating">
-                ${stars}
-            </div>
-
-
-            <p class="memory-description">
-                ${escapeHTML(entry.description)}
-            </p>
-
-
-            <div class="memory-footer">
-
-                <button
-                    class="delete-btn"
-                    type="button"
-                    onclick="deleteMemory(${entry.id})"
-                >
-                    Delete
-                </button>
-
-            </div>
-
         `;
 
 
-        journalList.appendChild(card);
+        memoriesContainer.appendChild(card);
 
     });
 
 }
 
 
-// ================= DELETE MEMORY =================
+/* =========================================
+   PHOTO INPUT
+========================================= */
+
+photoInput.addEventListener("change", function() {
+
+    const file = photoInput.files[0];
+
+    if (!file) {
+        return;
+    }
+
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(event) {
+
+        photoPreview.innerHTML = `
+            <img
+                src="${event.target.result}"
+                alt="Photo Preview"
+            >
+        `;
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* =========================================
+   ADD / UPDATE MEMORY
+========================================= */
+
+journalForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const location =
+        locationInput.value.trim();
+
+    const rating =
+        ratingInput.value;
+
+    const experience =
+        experienceInput.value.trim();
+
+
+    /* Check fields */
+
+    if (!location || !rating || !experience) {
+
+        alert("Please fill all required fields.");
+
+        return;
+    }
+
+
+    /* =====================================
+       UPDATE EXISTING MEMORY
+    ===================================== */
+
+    if (editingId !== null) {
+
+        const memory =
+            memories.find(
+                item => item.id === editingId
+            );
+
+
+        if (memory) {
+
+            memory.location = location;
+
+            memory.rating = rating;
+
+            memory.experience = experience;
+
+
+            /*
+                If user selected a new photo,
+                update the photo.
+            */
+
+            if (photoInput.files[0]) {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload = function(event) {
+
+                    memory.photo =
+                        event.target.result;
+
+
+                    saveMemories();
+
+                    resetForm();
+
+                    displayMemories();
+
+                    alert("Memory updated successfully! ✏️");
+
+                };
+
+
+                reader.readAsDataURL(
+                    photoInput.files[0]
+                );
+
+
+                return;
+            }
+
+
+            saveMemories();
+
+            resetForm();
+
+            displayMemories();
+
+            alert("Memory updated successfully! ✏️");
+
+            return;
+        }
+
+    }
+
+
+    /* =====================================
+       ADD NEW MEMORY
+    ===================================== */
+
+    const newMemory = {
+
+        id: Date.now().toString(),
+
+        location: location,
+
+        rating: rating,
+
+        experience: experience,
+
+        photo: ""
+
+    };
+
+
+    /*
+        Check if photo exists
+    */
+
+    if (photoInput.files[0]) {
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(event) {
+
+            newMemory.photo =
+                event.target.result;
+
+
+            memories.push(newMemory);
+
+            saveMemories();
+
+            resetForm();
+
+            displayMemories();
+
+            alert("Travel memory saved! 📸");
+
+        };
+
+
+        reader.readAsDataURL(
+            photoInput.files[0]
+        );
+
+
+    } else {
+
+        memories.push(newMemory);
+
+        saveMemories();
+
+        resetForm();
+
+        displayMemories();
+
+        alert("Travel memory saved! 📖");
+
+    }
+
+});
+
+
+/* =========================================
+   EDIT MEMORY
+========================================= */
+
+function editMemory(id) {
+
+    const memory =
+        memories.find(
+            item => item.id === id
+        );
+
+
+    if (!memory) {
+        return;
+    }
+
+
+    /* Store editing ID */
+
+    editingId = id;
+
+
+    /* Put data inside form */
+
+    locationInput.value =
+        memory.location;
+
+    ratingInput.value =
+        memory.rating;
+
+    experienceInput.value =
+        memory.experience;
+
+
+    /* Show existing photo */
+
+    if (memory.photo) {
+
+        photoPreview.innerHTML = `
+            <p>Current Photo:</p>
+
+            <img
+                src="${memory.photo}"
+                alt="Current Travel Photo"
+            >
+        `;
+
+    } else {
+
+        photoPreview.innerHTML = "";
+
+    }
+
+
+    /* Change form heading */
+
+    formTitle.textContent =
+        "Edit Travel Memory ✏️";
+
+
+    /* Change button */
+
+    saveBtn.textContent =
+        "Update Memory";
+
+
+    /* Show cancel */
+
+    cancelBtn.style.display =
+        "block";
+
+
+    /* Scroll to form */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================
+   DELETE MEMORY
+========================================= */
 
 function deleteMemory(id) {
 
-    const confirmDelete =
+    const confirmed =
         confirm(
             "Are you sure you want to delete this memory?"
         );
 
 
-    if (!confirmDelete) {
+    if (!confirmed) {
 
         return;
 
     }
 
 
-    let entries =
-        getJournalEntries();
-
-
-    entries =
-        entries.filter(
-            function (entry) {
-
-                return entry.id !== id;
-
-            }
+    memories =
+        memories.filter(
+            memory => memory.id !== id
         );
 
 
-    saveJournalEntries(entries);
+    saveMemories();
+
+    displayMemories();
 
 
-    renderJournal();
-
-}
-
-
-// ================= ESCAPE HTML =================
-
-function escapeHTML(value) {
-
-    return String(value || "")
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll("<", "&lt;")
-
-        .replaceAll(">", "&gt;")
-
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
+    alert("Memory deleted successfully! 🗑️");
 
 }
 
 
-// ================= INITIAL LOAD =================
+/* =========================================
+   CANCEL EDIT
+========================================= */
 
-renderJournal();
+cancelBtn.addEventListener("click", function() {
+
+    resetForm();
+
+});
+
+
+/* =========================================
+   RESET FORM
+========================================= */
+
+function resetForm() {
+
+    journalForm.reset();
+
+
+    editingId = null;
+
+
+    formTitle.textContent =
+        "Add Travel Memory";
+
+
+    saveBtn.textContent =
+        "Save Memory";
+
+
+    cancelBtn.style.display =
+        "none";
+
+
+    photoPreview.innerHTML = "";
+
+}
+
+
+/* =========================================
+   SAVE TO LOCAL STORAGE
+========================================= */
+
+function saveMemories() {
+
+    localStorage.setItem(
+
+        JOURNAL_KEY,
+
+        JSON.stringify(memories)
+
+    );
+
+}
+
+
+/* =========================================
+   LOAD MEMORIES WHEN PAGE OPENS
+========================================= */
+
+displayMemories();

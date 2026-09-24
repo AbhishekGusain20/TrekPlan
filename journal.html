@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,204 +11,123 @@
 
 <body>
 
-    <main class="journal-container">
+    <header class="navbar">
+        <div class="logo">🏔️ TrekPlan</div>
 
-        <!-- HEADER -->
-        <header class="page-header">
-
-            <a href="dashboard.html" class="back-btn">
-                ← Dashboard
-            </a>
-
-            <div class="header-content">
-
-                <p class="small-label">TREKPLAN</p>
-
-                <h1>
-                    Travel Journal <span>✈</span>
-                </h1>
-
-                <p class="subtitle">
-                    Save your travel memories, experiences and special moments.
-                </p>
-
-            </div>
-
-        </header>
+        <a href="dashboard.html" class="back-btn">
+            ← Dashboard
+        </a>
+    </header>
 
 
-        <!-- ADD MEMORY -->
+    <main class="container">
 
-        <section class="journal-card">
+        <h1>My Travel Journal 📖</h1>
 
-            <div class="section-heading">
+        <p class="subtitle">
+            Save your favourite travel memories and experiences.
+        </p>
 
-                <h2>Create a Memory</h2>
 
-                <p>
-                    Write about your travel experience.
-                </p>
+        <!-- JOURNAL FORM -->
 
-            </div>
+        <section class="journal-form">
 
+            <h2 id="formTitle">Add Travel Memory</h2>
 
             <form id="journalForm">
 
-                <div class="form-row">
+                <div class="form-group">
+                    <label for="location">Location</label>
 
-                    <div class="form-group">
-
-                        <label for="journalTitle">
-                            Memory Title
-                        </label>
-
-                        <input
-                            type="text"
-                            id="journalTitle"
-                            placeholder="e.g. Amazing Day in Rishikesh"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="journalDate">
-                            Date
-                        </label>
-
-                        <input
-                            type="date"
-                            id="journalDate"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label for="journalLocation">
-                            Location
-                        </label>
-
-                        <input
-                            type="text"
-                            id="journalLocation"
-                            placeholder="e.g. Rishikesh"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="journalRating">
-                            Rating
-                        </label>
-
-                        <select id="journalRating">
-
-                            <option value="5">
-                                ⭐⭐⭐⭐⭐ 5/5
-                            </option>
-
-                            <option value="4">
-                                ⭐⭐⭐⭐ 4/5
-                            </option>
-
-                            <option value="3">
-                                ⭐⭐⭐ 3/5
-                            </option>
-
-                            <option value="2">
-                                ⭐⭐ 2/5
-                            </option>
-
-                            <option value="1">
-                                ⭐ 1/5
-                            </option>
-
-                        </select>
-
-                    </div>
-
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="e.g. Kedarkantha"
+                        required
+                    >
                 </div>
 
 
                 <div class="form-group">
+                    <label for="rating">Rating</label>
 
-                    <label for="journalDescription">
-                        Your Experience
-                    </label>
+                    <select id="rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="1">⭐ 1/5</option>
+                        <option value="2">⭐⭐ 2/5</option>
+                        <option value="3">⭐⭐⭐ 3/5</option>
+                        <option value="4">⭐⭐⭐⭐ 4/5</option>
+                        <option value="5">⭐⭐⭐⭐⭐ 5/5</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="experience">Your Experience</label>
 
                     <textarea
-                        id="journalDescription"
-                        rows="6"
-                        placeholder="Write about your trip, memories and experience..."
+                        id="experience"
+                        rows="5"
+                        placeholder="Write about your trip..."
                         required
                     ></textarea>
-
                 </div>
-
 
 
                 <div class="form-group">
 
-    <label for="journalImage">
-        Travel Photo
-    </label>
+                    <label for="photo">
+                        Travel Photo 📸
+                    </label>
 
-    <input
-        type="file"
-        id="journalImage"
-        accept="image/*"
-    >
+                    <input
+                        type="file"
+                        id="photo"
+                        accept="image/*"
+                    >
 
-    <small class="image-help">
-        Add a photo from your trip (optional)
-    </small>
+                </div>
 
-</div>
 
-                <button
-                    type="submit"
-                    class="save-btn"
-                >
-                    Save Memory →
-                </button>
+                <!-- PHOTO PREVIEW -->
+
+                <div id="photoPreview"></div>
+
+
+                <div class="form-buttons">
+
+                    <button type="submit" id="saveBtn">
+                        Save Memory
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="cancel-btn"
+                        style="display:none;"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
 
             </form>
 
         </section>
 
 
-        <!-- MEMORIES -->
+        <!-- JOURNAL MEMORIES -->
 
-        <section class="entries-section">
+        <section class="memories-section">
 
-            <div class="entries-header">
+            <h2>My Memories ❤️</h2>
 
-                <div>
+            <div id="memoriesContainer">
 
-                    <h2>My Memories</h2>
-
-                    <p id="entryCount">
-                        0 Memories
-                    </p>
-
-                </div>
+                <!-- Memories will appear here -->
 
             </div>
-
-
-            <div id="journalList"></div>
 
         </section>
 
@@ -219,5 +137,4 @@
     <script src="journal.js"></script>
 
 </body>
-
 </html>

@@ -1,0 +1,551 @@
+/* =====================================================
+   TREKPLAN — TRIP PROGRESS
+   DAY 14
+===================================================== */
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f4f0e8;
+    color: #12372a;
+
+    min-height: 100vh;
+}
+
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+    height: 72px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom: 1px solid #e8e4dc;
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+.brand img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+}
+
+
+.back-btn {
+    border: 1px solid #d9d5cd;
+
+    background: #ffffff;
+
+    color: #12372a;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.back-btn:hover {
+    background: #f4f0e8;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container {
+    width: min(1100px, 92%);
+
+    margin: 0 auto;
+
+    padding: 55px 0 70px;
+}
+
+
+/* ================= HEADING ================= */
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+
+.eyebrow {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #e47c45;
+}
+
+
+.page-heading h1 {
+    margin-top: 8px;
+
+    font-size: 38px;
+
+    line-height: 1.1;
+}
+
+
+.page-heading p {
+    margin-top: 10px;
+
+    color: #6c746f;
+
+    font-size: 15px;
+}
+
+
+/* ================= TRIP HERO ================= */
+
+.trip-hero {
+    min-height: 210px;
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    display: flex;
+    align-items: flex-end;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 55, 42, 0.98),
+            rgba(27, 77, 59, 0.92)
+        );
+
+    box-shadow:
+        0 15px 40px rgba(18, 55, 42, 0.15);
+
+    color: white;
+
+    margin-bottom: 22px;
+}
+
+
+.trip-hero-content {
+    width: 100%;
+}
+
+
+.status-badge {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 14px;
+}
+
+
+.trip-hero h2 {
+    font-size: 32px;
+
+    margin-bottom: 6px;
+}
+
+
+.destination {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 15px;
+}
+
+
+/* ================= PROGRESS CARD ================= */
+
+.progress-card {
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 30px rgba(18, 55, 42, 0.07);
+
+    margin-bottom: 22px;
+}
+
+
+.progress-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+
+.card-label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #7b827d;
+}
+
+
+.progress-header h2 {
+    font-size: 42px;
+
+    margin-top: 5px;
+}
+
+
+.progress-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5f0;
+
+    color: #12372a;
+
+    font-size: 28px;
+}
+
+
+.progress-track {
+    height: 13px;
+
+    background: #e9e7e1;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background: #12372a;
+
+    border-radius: 20px;
+
+    transition: width 0.8s ease;
+}
+
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    color: #747b76;
+
+    font-size: 13px;
+}
+
+
+/* ================= DETAILS ================= */
+
+.details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+.detail-card {
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    box-shadow:
+        0 7px 25px rgba(18, 55, 42, 0.05);
+}
+
+
+.detail-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f4f0e8;
+
+    font-size: 18px;
+}
+
+
+.detail-card span {
+    display: block;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+
+    color: #8a918c;
+
+    margin-bottom: 5px;
+}
+
+
+.detail-card strong {
+    font-size: 14px;
+
+    color: #12372a;
+}
+
+
+/* ================= JOURNEY STATUS ================= */
+
+.journey-card {
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 30px rgba(18, 55, 42, 0.07);
+
+    margin-bottom: 25px;
+}
+
+
+.journey-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.journey-header h2 {
+    margin-top: 7px;
+
+    font-size: 21px;
+}
+
+
+.journey-card p {
+    margin-top: 10px;
+
+    color: #707772;
+
+    font-size: 14px;
+}
+
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #e47c45;
+
+    box-shadow: 0 0 0 6px rgba(228, 124, 69, 0.12);
+}
+
+
+/* ================= ACTIONS ================= */
+
+.action-section {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+
+.primary-btn,
+.secondary-btn {
+    padding: 12px 18px;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.primary-btn {
+    border: none;
+
+    background: #12372a;
+
+    color: white;
+}
+
+
+.primary-btn:hover {
+    background: #1b4d3b;
+
+    transform: translateY(-2px);
+}
+
+
+.secondary-btn {
+    border: 1px solid #d8d4cb;
+
+    background: #ffffff;
+
+    color: #12372a;
+}
+
+
+.secondary-btn:hover {
+    background: #f4f0e8;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+    .details-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .topbar {
+        padding: 0 4%;
+    }
+
+
+    .brand span {
+        display: none;
+    }
+
+
+    .container {
+        width: 90%;
+
+        padding-top: 35px;
+    }
+
+
+    .page-heading h1 {
+        font-size: 30px;
+    }
+
+
+    .trip-hero {
+        min-height: 180px;
+
+        padding: 25px;
+    }
+
+
+    .trip-hero h2 {
+        font-size: 25px;
+    }
+
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .action-section {
+        flex-direction: column;
+    }
+
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+}

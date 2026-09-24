@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Progress — TrekPlan</title>
+
+    <link rel="stylesheet" href="trip-progress.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <img src="trekplan-icon.png" alt="TrekPlan">
+            <span>TrekPlan</span>
+        </div>
+
+        <button class="back-btn" id="backBtn">
+            ← Dashboard
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Page Heading -->
+
+        <section class="page-heading">
+
+            <div>
+                <span class="eyebrow">YOUR JOURNEY</span>
+
+                <h1>Trip Progress</h1>
+
+                <p>
+                    Track your journey and see how far you've come.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRIP HERO ================= -->
+
+        <section class="trip-hero">
+
+            <div class="trip-hero-content">
+
+                <span class="status-badge" id="statusBadge">
+                    Upcoming
+                </span>
+
+                <h2 id="tripName">
+                    My Trip
+                </h2>
+
+                <p class="destination" id="destination">
+                    Destination
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section class="progress-card">
+
+            <div class="progress-header">
+
+                <div>
+                    <span class="card-label">
+                        TRIP COMPLETION
+                    </span>
+
+                    <h2 id="progressPercent">
+                        0%
+                    </h2>
+                </div>
+
+                <div class="progress-icon">
+                    ◔
+                </div>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill">
+                </div>
+
+            </div>
+
+
+            <div class="progress-info">
+
+                <span id="daysCompleted">
+                    0 days completed
+                </span>
+
+                <span id="totalDays">
+                    0 days
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRIP DETAILS ================= -->
+
+        <section class="details-grid">
+
+            <!-- Dates -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <span>
+                        TRIP DATES
+                    </span>
+
+                    <strong id="tripDates">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Duration -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    ⏱
+                </div>
+
+                <div>
+
+                    <span>
+                        DURATION
+                    </span>
+
+                    <strong id="duration">
+                        0 Days
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Travelers -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <span>
+                        TRAVELERS
+                    </span>
+
+                    <strong id="travelers">
+                        1 Person
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Budget -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <span>
+                        TRIP BUDGET
+                    </span>
+
+                    <strong id="budget">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= JOURNEY STATUS ================= -->
+
+        <section class="journey-card">
+
+            <div class="journey-header">
+
+                <div>
+
+                    <span class="card-label">
+                        JOURNEY STATUS
+                    </span>
+
+                    <h2 id="statusTitle">
+                        Your trip is coming up
+                    </h2>
+
+                </div>
+
+                <span class="status-dot" id="statusDot"></span>
+
+            </div>
+
+
+            <p id="statusMessage">
+                Get ready for your adventure.
+            </p>
+
+        </section>
+
+
+        <!-- ================= ACTIONS ================= -->
+
+        <section class="action-section">
+
+            <button
+                class="secondary-btn"
+                id="itineraryBtn"
+            >
+                View Itinerary →
+            </button>
+
+            <button
+                class="primary-btn"
+                id="dashboardBtn"
+            >
+                Back to Dashboard
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="trip-progress.js"></script>
+
+</body>
+
+</html>
