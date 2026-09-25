@@ -1,89 +1,60 @@
-🏔️ TrekPlan
+# 🏔️ TrekPlan
 
-Plan Your Journey. Manage Your Budget. Explore With Confidence.
-
+### Plan Your Journey. Manage Your Budget. Explore With Confidence.
 
 TrekPlan is a travel and trekking planning website that helps users plan, manage, and document their trips in one place.
 
+## ✨ Current Features
 
-✨ Current Features
+* 🏠 Landing Page
+* 🔐 Login & Signup
+* 👤 User Authentication
+* 📊 Dynamic Dashboard
+* 🏔️ Explore Treks
+* 📖 Trek Details
+* 💰 Budget Planner
+* 🧳 Trip Planner
+* 💾 LocalStorage Data Storage
+* 🗑️ Delete Trips
+* 📅 Day-by-Day Itinerary
+* ⏰ Add Activities with Time
+* 📍 Add Activity Location
+* 📝 Add Activity Notes
+* 📖 Travel Journal
+* ✍️ Add Travel Memories
+* ⭐ Experience Rating
+* 📍 Memory Location
+* 📅 Memory Date
+* 📸 Travel Photos
+* 🗑️ Delete Journal Memories
+* 📊 Trip Completion Progress
+* 🎒 Trip Checklist
+* ✅ Mark Checklist Items Complete
+* 🗑️ Delete Checklist Items
 
-🏠 Landing Page
+## 🚀 Planned Features
 
-🔐 Login & Signup
+* 🏨 Stay Planner
+* 🌦️ Weather Information
+* 🗺️ Maps & Routes
+* 🤖 AI Trip Planning
+* 🔌 External APIs
 
-👤 User Authentication
+## 🛠️ Technologies
 
-📊 Dynamic Dashboard
+* HTML
+* CSS
+* JavaScript
+* LocalStorage
+* JSON
+* Git & GitHub
 
-🏔️ Explore Treks
-
-📖 Trek Details
-
-💰 Budget Planner
-
-🧳 Trip Planner
-
-💾 LocalStorage Data Storage
-
-🗑️ Delete Trips
-
-📅 Day-by-Day Itinerary
-
-⏰ Add Activities with Time
-
-📍 Add Activity Location
-
-📝 Add Activity Notes
-
-🗑️ Delete Itinerary Activities
-
-📖 Travel Journal
-
-✍️ Add Travel Memories
-
-⭐ Add Experience Rating
-
-📍 Save Memory Location
-
-📅 Save Memory Date
-
-📸 Add Travel Photos
-
-🗑️ Delete Journal Memories
-
-🚀 Planned Features
-
-🏨 Stay Planner
-
-🎒 Packing Checklist
-
-🌦️ Weather Information
-
-🗺️ Maps & Routes
-
-🤖 AI Trip Planning
-
-🛠️ Technologies
-
-HTML
-
-CSS
-
-JavaScript
-
-LocalStorage
-
-JSON
-
-Git & GitHub
-
-📌 Project Status
+## 📌 Project Status
 
 🚧 Under Development
 
-👨‍💻 Developer
+## 👨‍💻 Developer
 
-Abhishek Gusain
+**Abhishek Gusain**
 
 B.Tech CSE Student | Aspiring Frontend Developer
