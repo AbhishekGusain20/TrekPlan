@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Checklist - TrekPlan</title>
+    <link rel="stylesheet" href="checklist.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2>🏔️ TrekPlan</h2>
+        <a href="dashboard.html">← Dashboard</a>
+    </header>
+
+    <main class="container">
+
+        <section class="heading">
+            <h1>🎒 Trip Checklist</h1>
+            <p>Prepare everything you need before your journey.</p>
+        </section>
+
+        <section class="checklist-box">
+
+            <h2>My Checklist</h2>
+
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="itemInput" 
+                    placeholder="Enter item e.g. Trek shoes"
+                >
+                <button id="addBtn">Add</button>
+            </div>
+
+            <ul id="checklist"></ul>
+
+            <p id="emptyMessage">No checklist items yet.</p>
+
+        </section>
+
+    </main>
+
+    <script src="checklist.js"></script>
+</body>
+</html>

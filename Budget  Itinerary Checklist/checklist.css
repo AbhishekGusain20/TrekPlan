@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f0e8;
+    color: #12372a;
+}
+
+.navbar {
+    background: #12372a;
+    color: white;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.heading h1 {
+    margin-bottom: 10px;
+}
+
+.heading p {
+    color: #555;
+}
+
+.checklist-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.checklist-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.input-area button {
+    background: #12372a;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.input-area button:hover {
+    background: #1c513d;
+}
+
+#checklist {
+    list-style: none;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-left span {
+    font-size: 16px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.delete-btn {
+    background: #e47c45;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#emptyMessage {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .container {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    .checklist-box {
+        padding: 20px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    .input-area button {
+        width: 100%;
+    }
+}
