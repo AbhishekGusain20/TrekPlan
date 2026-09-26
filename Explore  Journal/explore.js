@@ -287,7 +287,7 @@ function displayTreks(list) {
                 event.preventDefault();
 
                 window.location.href =
-                    `trek-details.html?trek=${trek.id}`;
+                    `/Trip planner,progess TrekDetails/trek-details.html?trek=${trek.id}`;
 
             }
         );

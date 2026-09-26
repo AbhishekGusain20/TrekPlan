@@ -14,7 +14,7 @@ const temporarySession = sessionStorage.getItem(SESSION_KEY);
 const session = localSession || temporarySession;
 
 if (!session) {
-    window.location.href = "login.html";
+    window.location.href = "/Signup Login/login.html";
 }
 
 
@@ -405,7 +405,7 @@ function openItinerary(id) {
     );
 
     // Open itinerary page
-    window.location.href = "itinerary.html";
+    window.location.href = "../Budget  Itinerary Checklist/itinerary.html";
 
 }
 
@@ -509,7 +509,7 @@ if (createTripBtn) {
         function () {
 
             window.location.href =
-                "trip-planner.html";
+                "../Trip planner,progess TrekDetails/trip-planner.html";
 
         }
     );
@@ -524,7 +524,7 @@ if (heroCreateBtn) {
         function () {
 
             window.location.href =
-                "trip-planner.html";
+                "../Trip planner,progess TrekDetails/trip-planner.html";
 
         }
     );
@@ -539,7 +539,7 @@ if (quickCreate) {
         function () {
 
             window.location.href =
-                "trip-planner.html";
+                "../Trip planner,progess TrekDetails/trip-planner.html";
 
         }
     );
@@ -556,7 +556,7 @@ if (budgetButton) {
         function () {
 
             window.location.href =
-                "budget.html";
+                "../Budget  Itinerary Checklist/budget.html";
 
         }
     );
@@ -591,7 +591,7 @@ if (exploreBtn) {
         function () {
 
             window.location.href =
-                "explore.html";
+                "../Explore  Journal/explore.html";
 
         }
     );
@@ -681,7 +681,7 @@ if (logoutBtn) {
             );
 
             window.location.href =
-                "login.html";
+                "../Signup Login/login.html";
 
         }
     );

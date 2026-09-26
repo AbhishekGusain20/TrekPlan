@@ -73,7 +73,7 @@ if (!currentTrip) {
     alert("No trip selected.");
 
     window.location.href =
-        "dashboard.html";
+        "/Dashboard/dashboard.html";
 
 }
 
@@ -439,7 +439,7 @@ function updateProgressPage() {
 function goToDashboard() {
 
     window.location.href =
-        "dashboard.html";
+        "/Dashboard/dashboard.html";
 
 }
 
@@ -463,7 +463,7 @@ itineraryBtn.addEventListener(
     function () {
 
         window.location.href =
-            "itinerary.html";
+            "/Budget  Itinerary Checklist/itinerary.html";
 
     }
 );

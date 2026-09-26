@@ -434,7 +434,7 @@ if (logoutBtn) {
         localStorage.removeItem("trekplan_currentUser");
 
         window.location.href =
-            "login.html";
+            "../Signup Login/login.html";
 
     });
 

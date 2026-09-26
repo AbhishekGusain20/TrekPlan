@@ -204,7 +204,7 @@ tripForm.addEventListener("submit", function (event) {
 
 
     window.location.href =
-        "dashboard.html#trips";
+        "/Dashboard/dashboard.html#trips";
 
 });
 
@@ -222,7 +222,7 @@ if (logoutBtn) {
         );
 
         window.location.href =
-            "login.html";
+            "/Signup Login/login.html";
 
     });
 

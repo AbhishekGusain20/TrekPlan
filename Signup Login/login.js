@@ -329,7 +329,7 @@ if (loginForm) {
         /* ---------- Go to Dashboard ---------- */
 
         window.location.href =
-          "dashboard.html";
+          "../Dashboard/dashboard.html";
 
       }
 
