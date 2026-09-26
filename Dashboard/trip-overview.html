@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Overview - TrekPlan</title>
+
+    <link rel="stylesheet" href="trip-overview.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <div class="logo">
+            🏔️ TrekPlan
+        </div>
+
+        <a href="/Dashboard/dashboard.html" class="back-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="page-heading">
+            <p class="eyebrow">MY TRIP</p>
+
+            <h1 id="tripName">
+                My Trip
+            </h1>
+
+            <p id="destination">
+                Destination
+            </p>
+        </div>
+
+
+        <!-- Trip Information -->
+        <section class="trip-info">
+
+            <div class="info-card">
+                <span>📍</span>
+                <div>
+                    <small>Destination</small>
+                    <strong id="tripDestination">-</strong>
+                </div>
+            </div>
+
+
+            <div class="info-card">
+                <span>📅</span>
+                <div>
+                    <small>Start Date</small>
+                    <strong id="startDate">-</strong>
+                </div>
+            </div>
+
+
+            <div class="info-card">
+                <span>📅</span>
+                <div>
+                    <small>End Date</small>
+                    <strong id="endDate">-</strong>
+                </div>
+            </div>
+
+
+            <div class="info-card">
+                <span>👥</span>
+                <div>
+                    <small>Travelers</small>
+                    <strong id="travelers">-</strong>
+                </div>
+            </div>
+
+
+            <div class="info-card">
+                <span>💰</span>
+                <div>
+                    <small>Budget</small>
+                    <strong id="budget">-</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Quick Actions -->
+        <section class="actions">
+
+            <h2>Quick Actions</h2>
+
+            <div class="action-grid">
+
+                <button onclick="openItinerary()">
+                    📅
+                    <span>Itinerary</span>
+                </button>
+
+                <button onclick="openBudget()">
+                    💰
+                    <span>Budget</span>
+                </button>
+
+                <button onclick="openProgress()">
+                    📊
+                    <span>Progress</span>
+                </button>
+
+                <button onclick="openJournal()">
+                    📖
+                    <span>Travel Journal</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- No Trip Message -->
+        <div id="noTrip" class="no-trip">
+
+            <h2>⚠️ No Trip Selected</h2>
+
+            <p>
+                Please select a trip from the dashboard first.
+            </p>
+
+            <button onclick="goDashboard()">
+                Go to Dashboard
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="/trip-overview.js"></script>
+
+</body>
+
+</html>

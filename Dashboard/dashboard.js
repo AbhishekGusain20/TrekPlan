@@ -340,21 +340,24 @@ function renderTrips() {
 
 function viewTrip(id) {
 
-    const trips =
-        getTrips();
+    const trips = getTrips();
 
-    const trip =
-        trips.find(function (item) {
+    const trip = trips.find(function (item) {
 
-            return item.id === id;
+        return item.id === id;
 
-        });
+    });
 
 
     if (!trip) {
+
+        alert("Trip not found.");
+
         return;
     }
 
+
+    // Save selected trip
 
     localStorage.setItem(
         "trekplan_currentTrip",
@@ -362,17 +365,10 @@ function viewTrip(id) {
     );
 
 
-    alert(
-        "Trip: " +
-        trip.tripName +
-        "\n\nDestination: " +
-        trip.destination +
-        "\nTravelers: " +
-        trip.travelers +
-        "\nBudget: " +
-        formatMoney(trip.budget)
-    );
+    // Open Trip Overview
 
+    window.location.href =
+        "trip-overview.html";
 }
 
 
@@ -431,7 +427,7 @@ function openProgress(id) {
     );
 
     // Open progress page
-    window.location.href = "trip-progress.html";
+    window.location.href = "../Trip planner,progess TrekDetails/trip-progress.html";
 }
 
 

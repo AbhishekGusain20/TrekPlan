@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f0e8;
+    color: #12372a;
+}
+
+
+/* Navbar */
+
+.navbar {
+    background: #12372a;
+    color: white;
+
+    padding: 18px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 45px auto;
+}
+
+
+/* Heading */
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #e47c45;
+    font-weight: bold;
+}
+
+.page-heading h1 {
+    font-size: 38px;
+    margin: 8px 0;
+}
+
+.page-heading p:last-child {
+    color: #666;
+}
+
+
+/* Information Cards */
+
+.trip-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 18px;
+}
+
+
+.info-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.info-card > span {
+    font-size: 28px;
+}
+
+.info-card div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.info-card small {
+    color: #777;
+}
+
+.info-card strong {
+    font-size: 17px;
+}
+
+
+/* Actions */
+
+.actions {
+    margin-top: 40px;
+}
+
+.actions h2 {
+    margin-bottom: 20px;
+}
+
+.action-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 15px;
+}
+
+.action-grid button {
+    background: white;
+
+    border: none;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 25px;
+
+    color: #12372a;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.07);
+
+    transition: 0.2s;
+}
+
+.action-grid button:hover {
+    transform: translateY(-3px);
+}
+
+.action-grid span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+
+/* No Trip */
+
+.no-trip {
+    display: none;
+
+    background: white;
+
+    padding: 40px;
+
+    margin-top: 30px;
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.no-trip h2 {
+    margin-bottom: 10px;
+}
+
+.no-trip p {
+    color: #666;
+
+    margin-bottom: 20px;
+}
+
+.no-trip button {
+    background: #12372a;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .container {
+        width: 94%;
+
+        margin: 30px auto;
+    }
+
+    .page-heading h1 {
+        font-size: 30px;
+    }
+
+}
