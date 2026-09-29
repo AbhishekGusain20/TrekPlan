@@ -114,72 +114,89 @@ const treks = {
 
 // ================= GET TREK FROM URL =================
 
-const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(
+    window.location.search
+);
 
 const trekId = params.get("trek");
 
 
 // Get selected trek
-const trek = treks[trekId] || treks["nag-tibba"];
+
+const trek =
+    treks[trekId] || treks["nag-tibba"];
 
 
 // ================= DISPLAY TREK =================
 
 // Page title
-document.title = `${trek.name} — TrekPlan`;
+
+document.title =
+    `${trek.name} — TrekPlan`;
 
 
 // Trek name
+
 document.getElementById("trekName").textContent =
     trek.name;
 
 
 // Location
+
 document.getElementById("trekLocation").textContent =
     `📍 ${trek.location}`;
 
 
 // Description
+
 document.getElementById("trekDescription").textContent =
     trek.description;
 
 
 // Duration
+
 document.getElementById("trekDuration").textContent =
     trek.duration;
 
 
 // Distance
+
 document.getElementById("trekDistance").textContent =
     trek.distance;
 
 
 // Budget
+
 document.getElementById("trekBudget").textContent =
     `₹${trek.budget.toLocaleString("en-IN")}`;
 
 
 // Sidebar Budget
+
 document.getElementById("sideBudget").textContent =
     `₹${trek.budget.toLocaleString("en-IN")}`;
 
 
 // About
+
 document.getElementById("aboutTrek").textContent =
     trek.about;
 
 
 // Image
+
 document.getElementById("trekImage").src =
     trek.image;
 
 
 // Image alt
+
 document.getElementById("trekImage").alt =
     trek.name;
 
 
 // Difficulty
+
 document.getElementById("difficultyBadge").textContent =
     trek.difficulty;
 
@@ -198,12 +215,20 @@ function planTrek() {
 
 
 // Main Plan Button
+
 document
     .getElementById("planBtn")
-    .addEventListener("click", planTrek);
+    .addEventListener(
+        "click",
+        planTrek
+    );
 
 
 // Sidebar Plan Button
+
 document
     .getElementById("sidePlanBtn")
-    .addEventListener("click", planTrek);
+    .addEventListener(
+        "click",
+        planTrek
+    );

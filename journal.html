@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,15 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">🏔️ TrekPlan</div>
 
-        <a href="/Dashboard/dashboard.html" class="back-btn">
+        <div class="logo">
+            🏔️ TrekPlan
+        </div>
+
+        <a href="dashboard.html" class="back-btn">
             ← Dashboard
         </a>
+
     </header>
 
 
@@ -33,12 +38,17 @@
 
         <section class="journal-form">
 
-            <h2 id="formTitle">Add Travel Memory</h2>
+            <h2 id="formTitle">
+                Add Travel Memory
+            </h2>
 
             <form id="journalForm">
 
                 <div class="form-group">
-                    <label for="location">Location</label>
+
+                    <label for="location">
+                        Location
+                    </label>
 
                     <input
                         type="text"
@@ -46,25 +56,52 @@
                         placeholder="e.g. Kedarkantha"
                         required
                     >
+
                 </div>
 
 
                 <div class="form-group">
-                    <label for="rating">Rating</label>
+
+                    <label for="rating">
+                        Rating
+                    </label>
 
                     <select id="rating" required>
-                        <option value="">Select Rating</option>
-                        <option value="1">⭐ 1/5</option>
-                        <option value="2">⭐⭐ 2/5</option>
-                        <option value="3">⭐⭐⭐ 3/5</option>
-                        <option value="4">⭐⭐⭐⭐ 4/5</option>
-                        <option value="5">⭐⭐⭐⭐⭐ 5/5</option>
+
+                        <option value="">
+                            Select Rating
+                        </option>
+
+                        <option value="1">
+                            ⭐ 1/5
+                        </option>
+
+                        <option value="2">
+                            ⭐⭐ 2/5
+                        </option>
+
+                        <option value="3">
+                            ⭐⭐⭐ 3/5
+                        </option>
+
+                        <option value="4">
+                            ⭐⭐⭐⭐ 4/5
+                        </option>
+
+                        <option value="5">
+                            ⭐⭐⭐⭐⭐ 5/5
+                        </option>
+
                     </select>
+
                 </div>
 
 
                 <div class="form-group">
-                    <label for="experience">Your Experience</label>
+
+                    <label for="experience">
+                        Your Experience
+                    </label>
 
                     <textarea
                         id="experience"
@@ -72,6 +109,7 @@
                         placeholder="Write about your trip..."
                         required
                     ></textarea>
+
                 </div>
 
 
@@ -97,9 +135,13 @@
 
                 <div class="form-buttons">
 
-                    <button type="submit" id="saveBtn">
+                    <button
+                        type="submit"
+                        id="saveBtn"
+                    >
                         Save Memory
                     </button>
+
 
                     <button
                         type="button"
@@ -121,7 +163,9 @@
 
         <section class="memories-section">
 
-            <h2>My Memories ❤️</h2>
+            <h2>
+                My Memories ❤️
+            </h2>
 
             <div id="memoriesContainer">
 
@@ -137,4 +181,5 @@
     <script src="journal.js"></script>
 
 </body>
+
 </html>

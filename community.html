@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Community — TrekPlan</title>
+
+    <link rel="stylesheet" href="community.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="TrekPlan-logo.png" alt="TrekPlan">
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="dashboard.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="dashboard.html#trips" class="nav-link">
+                <span class="nav-icon">✈</span>
+                <span>My Trips</span>
+            </a>
+
+            <a href="explore.html" class="nav-link">
+                <span class="nav-icon">◎</span>
+                <span>Explore</span>
+            </a>
+
+            <a href="budget.html" class="nav-link">
+                <span class="nav-icon">₹</span>
+                <span>Budget Planner</span>
+            </a>
+
+            <a href="journal.html" class="nav-link">
+                <span class="nav-icon">▤</span>
+                <span>Travel Journal</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⌖</span>
+                <span>Maps</span>
+            </a>
+
+            <a href="checklist.html" class="nav-link">
+                <span class="nav-icon">✓</span>
+                <span>Checklists</span>
+            </a>
+
+            <a href="community.html" class="nav-link active">
+                <span class="nav-icon">♧</span>
+                <span>Community</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <div class="user-profile">
+
+                <div class="user-avatar" id="userAvatar">
+                    A
+                </div>
+
+                <div class="user-info">
+                    <strong id="userName">AVI</strong>
+                    <span>Traveler</span>
+                </div>
+
+                <button
+                    class="logout-button"
+                    id="logoutBtn">
+                    ↪
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu">
+                ☰
+            </button>
+
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search community posts...">
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification-button">
+                    ♢
+                </button>
+
+                <div
+                    class="top-avatar"
+                    id="topAvatar">
+                    A
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="community-content">
+
+
+            <!-- COMMUNITY HEADER -->
+
+            <div class="community-header">
+
+                <div>
+
+                    <p class="small-label">
+                        TREKPLAN COMMUNITY
+                    </p>
+
+                    <h1>
+                        Explore. Share. Connect. 🌍
+                    </h1>
+
+                    <p class="header-text">
+                        Connect with fellow travelers, share your
+                        experiences and discover new adventures.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="create-post-button"
+                    id="scrollPostButton">
+
+                    + Share Experience
+
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY STATS -->
+
+            <div class="community-stats">
+
+                <div class="community-stat">
+
+                    <span class="stat-icon">
+                        👥
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Community Members
+                        </span>
+
+                        <strong>
+                            1,250+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="community-stat">
+
+                    <span class="stat-icon">
+                        🏔️
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Treks Shared
+                        </span>
+
+                        <strong id="trekCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="community-stat">
+
+                    <span class="stat-icon">
+                        💬
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Community Posts
+                        </span>
+
+                        <strong id="postCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CREATE POST -->
+
+            <section
+                class="create-post-card"
+                id="createPostSection">
+
+                <div class="section-title">
+
+                    <h2>
+                        Share Your Adventure
+                    </h2>
+
+                    <p>
+                        Tell the community about your experience.
+                    </p>
+
+                </div>
+
+
+                <form id="postForm">
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="postDestination">
+                                Destination / Trek
+                            </label>
+
+                            <input
+                                type="text"
+                                id="postDestination"
+                                placeholder="e.g. Kedarkantha"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="postType">
+                                Post Type
+                            </label>
+
+                            <select id="postType">
+
+                                <option value="Trek Experience">
+                                    Trek Experience
+                                </option>
+
+                                <option value="Travel Tip">
+                                    Travel Tip
+                                </option>
+
+                                <option value="Gear Advice">
+                                    Gear Advice
+                                </option>
+
+                                <option value="Trail Warning">
+                                    Trail Warning
+                                </option>
+
+                                <option value="Travel Story">
+                                    Travel Story
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="postText">
+                            Your Experience
+                        </label>
+
+                        <textarea
+                            id="postText"
+                            rows="5"
+                            placeholder="Share your experience, tips or advice..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="post-button">
+
+                        Publish Post →
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- POSTS + SIDEBAR -->
+
+            <div class="community-grid">
+
+
+                <!-- POSTS -->
+
+                <section class="posts-section">
+
+                    <div class="section-heading">
+
+                        <h2>
+                            Community Posts
+                        </h2>
+
+                        <p>
+                            See what fellow travelers are sharing.
+                        </p>
+
+                    </div>
+
+
+                    <p
+                        class="no-search-result"
+                        id="noSearchResult">
+
+                        No posts found.
+
+                    </p>
+
+
+                    <div id="postsContainer"></div>
+
+                </section>
+
+
+                <!-- RIGHT SIDE -->
+
+                <aside class="community-sidebar">
+
+
+                    <!-- POPULAR TREKS -->
+
+                    <div class="side-card">
+
+                        <h3>
+                            Popular Treks
+                        </h3>
+
+                        <p class="side-description">
+                            Explore community favorites.
+                        </p>
+
+
+                        <div class="trek-item">
+
+                            <div class="trek-icon">
+                                🏔️
+                            </div>
+
+                            <div>
+                                <strong>Kedarkantha</strong>
+                                <span>Uttarakhand</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="trek-item">
+
+                            <div class="trek-icon">
+                                🌲
+                            </div>
+
+                            <div>
+                                <strong>Nag Tibba</strong>
+                                <span>Uttarakhand</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="trek-item">
+
+                            <div class="trek-icon">
+                                🏕️
+                            </div>
+
+                            <div>
+                                <strong>Valley of Flowers</strong>
+                                <span>Uttarakhand</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="trek-item">
+
+                            <div class="trek-icon">
+                                ⛰️
+                            </div>
+
+                            <div>
+                                <strong>Hampta Pass</strong>
+                                <span>Himachal Pradesh</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GUIDELINES -->
+
+                    <div class="side-card guidelines">
+
+                        <h3>
+                            Community Guidelines
+                        </h3>
+
+                        <p>
+                            Help us keep TrekPlan friendly and useful.
+                        </p>
+
+                        <ul>
+
+                            <li>
+                                ✓ Share genuine experiences
+                            </li>
+
+                            <li>
+                                ✓ Help fellow travelers
+                            </li>
+
+                            <li>
+                                ✓ Respect everyone
+                            </li>
+
+                            <li>
+                                ✓ Share useful trek information
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="community.js"></script>
+
+</body>
+
+</html>

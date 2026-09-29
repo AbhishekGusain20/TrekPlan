@@ -41,7 +41,10 @@ startDate.addEventListener("change", function () {
 
     endDate.min = startDate.value;
 
-    if (endDate.value && endDate.value < startDate.value) {
+    if (
+        endDate.value &&
+        endDate.value < startDate.value
+    ) {
 
         endDate.value = "";
 
@@ -54,7 +57,8 @@ startDate.addEventListener("change", function () {
    LOAD SELECTED TREK FROM URL
 ===================================================== */
 
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams =
+    new URLSearchParams(window.location.search);
 
 const selectedTrek =
     urlParams.get("trek");
@@ -120,7 +124,9 @@ tripForm.addEventListener("submit", function (event) {
         totalBudget <= 0
     ) {
 
-        alert("Please fill all trip details correctly.");
+        alert(
+            "Please fill all trip details correctly."
+        );
 
         return;
 
@@ -129,7 +135,9 @@ tripForm.addEventListener("submit", function (event) {
 
     if (end < start) {
 
-        alert("End date cannot be before start date.");
+        alert(
+            "End date cannot be before start date."
+        );
 
         return;
 
@@ -200,11 +208,19 @@ tripForm.addEventListener("submit", function (event) {
        SUCCESS
     ================================================= */
 
-    alert("Trip created successfully! 🎉");
+    alert(
+        "Trip created successfully! 🎉"
+    );
 
+
+    /*
+       Folder name removed.
+       Dashboard is now in the same folder
+       as this Trip Planner page.
+    */
 
     window.location.href =
-        "/Dashboard/dashboard.html#trips";
+        "dashboard.html#trips";
 
 });
 
@@ -215,16 +231,19 @@ tripForm.addEventListener("submit", function (event) {
 
 if (logoutBtn) {
 
-    logoutBtn.addEventListener("click", function () {
+    logoutBtn.addEventListener(
+        "click",
+        function () {
 
-        localStorage.removeItem(
-            "trekplan_currentUser"
-        );
+            localStorage.removeItem(
+                "trekplan_currentUser"
+            );
 
-        window.location.href =
-            "/Signup Login/login.html";
+            window.location.href =
+                "login.html";
 
-    });
+        }
+    );
 
 }
 
@@ -235,10 +254,13 @@ if (logoutBtn) {
 
 if (menuBtn) {
 
-    menuBtn.addEventListener("click", function () {
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-        sidebar.classList.toggle("open");
+            sidebar.classList.toggle("open");
 
-    });
+        }
+    );
 
 }

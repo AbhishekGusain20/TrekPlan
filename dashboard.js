@@ -8,19 +8,26 @@
 
 const SESSION_KEY = "trekplan_session";
 
-const localSession = localStorage.getItem(SESSION_KEY);
-const temporarySession = sessionStorage.getItem(SESSION_KEY);
+const localSession =
+    localStorage.getItem(SESSION_KEY);
 
-const session = localSession || temporarySession;
+const temporarySession =
+    sessionStorage.getItem(SESSION_KEY);
+
+const session =
+    localSession || temporarySession;
 
 if (!session) {
-    window.location.href = "/Signup Login/login.html";
+
+    window.location.href = "login.html";
+
 }
 
 
 // ================= ELEMENTS =================
 
-const tripGrid = document.getElementById("tripGrid");
+const tripGrid =
+    document.getElementById("tripGrid");
 
 const createTripBtn =
     document.getElementById("createTripBtn");
@@ -68,8 +75,9 @@ function getTrips() {
 
 function formatMoney(amount) {
 
-    return "₹" + Number(amount || 0)
-        .toLocaleString("en-IN");
+    return "₹" +
+        Number(amount || 0)
+            .toLocaleString("en-IN");
 
 }
 
@@ -79,18 +87,24 @@ function formatMoney(amount) {
 function calculateDays(startDate, endDate) {
 
     if (!startDate || !endDate) {
+
         return 1;
+
     }
 
-    const start = new Date(startDate);
-    const end = new Date(endDate);
+    const start =
+        new Date(startDate);
+
+    const end =
+        new Date(endDate);
 
     const difference =
         end - start;
 
     const days =
         Math.ceil(
-            difference / (1000 * 60 * 60 * 24)
+            difference /
+            (1000 * 60 * 60 * 24)
         ) + 1;
 
     return days > 0 ? days : 1;
@@ -102,29 +116,38 @@ function calculateDays(startDate, endDate) {
 
 function updateStats() {
 
-    const trips = getTrips();
+    const trips =
+        getTrips();
+
 
     // Total trips
+
     const totalTrips =
         document.getElementById("totalTrips");
 
     if (totalTrips) {
+
         totalTrips.textContent =
             trips.length;
+
     }
 
 
     // Upcoming trips
+
     const today =
         new Date();
 
     today.setHours(0, 0, 0, 0);
 
+
     const upcomingTrips =
         trips.filter(function (trip) {
 
             if (!trip.startDate) {
+
                 return false;
+
             }
 
             const start =
@@ -140,6 +163,7 @@ function updateStats() {
             ".stats-grid .stat-card:nth-child(2) strong"
         );
 
+
     if (upcomingElement) {
 
         upcomingElement.textContent =
@@ -149,19 +173,24 @@ function updateStats() {
 
 
     // Total trip budget
+
     const totalBudget =
-        trips.reduce(function (total, trip) {
+        trips.reduce(
+            function (total, trip) {
 
-            return total +
-                Number(trip.budget || 0);
+                return total +
+                    Number(trip.budget || 0);
 
-        }, 0);
+            },
+            0
+        );
 
 
     const budgetElement =
         document.querySelector(
             ".stats-grid .stat-card:nth-child(3) strong"
         );
+
 
     if (budgetElement) {
 
@@ -172,8 +201,10 @@ function updateStats() {
 
 
     // Places explored
+
     const destinations =
         new Set(
+
             trips.map(function (trip) {
 
                 return trip.destination
@@ -181,6 +212,7 @@ function updateStats() {
                     .toLowerCase();
 
             }).filter(Boolean)
+
         );
 
 
@@ -188,6 +220,7 @@ function updateStats() {
         document.querySelector(
             ".stats-grid .stat-card:nth-child(4) strong"
         );
+
 
     if (placesElement) {
 
@@ -206,16 +239,21 @@ function renderTrips() {
     const trips =
         getTrips();
 
+
     if (!tripGrid) {
+
         return;
+
     }
 
 
-    // Remove only dynamically created cards
+    // Remove old dynamically created cards
+
     const oldCards =
         tripGrid.querySelectorAll(
             ".dynamic-trip-card"
         );
+
 
     oldCards.forEach(function (card) {
 
@@ -225,6 +263,7 @@ function renderTrips() {
 
 
     // If no trips exist
+
     if (trips.length === 0) {
 
         return;
@@ -236,6 +275,7 @@ function renderTrips() {
 
         const card =
             document.createElement("article");
+
 
         card.className =
             "trip-card dynamic-trip-card";
@@ -289,44 +329,50 @@ function renderTrips() {
             </div>
 
 
-           <div class="trip-actions">
+            <div class="trip-actions">
 
-    <button
-        class="view-trip"
-        type="button"
-        onclick="viewTrip(${trip.id})"
-    >
-        View Trip →
-    </button>
+                <button
+                    class="view-trip"
+                    type="button"
+                    onclick="viewTrip(${trip.id})"
+                >
+                    View Trip →
+                </button>
 
-    <button
-        class="itinerary-btn"
-        type="button"
-        onclick="openItinerary(${trip.id})"
-    >
-        Itinerary
-    </button>
 
-    <button
-        class="progress-btn"
-        type="button"
-        onclick="openProgress(${trip.id})"
-    >
-        <span class="progress-icon">◔</span>
-        Progress
-    </button>
+                <button
+                    class="itinerary-btn"
+                    type="button"
+                    onclick="openItinerary(${trip.id})"
+                >
+                    Itinerary
+                </button>
 
-    <button
-        class="delete-trip"
-        type="button"
-        onclick="deleteTrip(${trip.id})"
-    >
-        Delete
-    </button>
 
-</div>
+                <button
+                    class="progress-btn"
+                    type="button"
+                    onclick="openProgress(${trip.id})"
+                >
+                    <span class="progress-icon">
+                        ◔
+                    </span>
 
-           `;
+                    Progress
+                </button>
+
+
+                <button
+                    class="delete-trip"
+                    type="button"
+                    onclick="deleteTrip(${trip.id})"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `;
 
 
         tripGrid.prepend(card);
@@ -340,13 +386,16 @@ function renderTrips() {
 
 function viewTrip(id) {
 
-    const trips = getTrips();
+    const trips =
+        getTrips();
 
-    const trip = trips.find(function (item) {
 
-        return item.id === id;
+    const trip =
+        trips.find(function (item) {
 
-    });
+            return item.id === id;
+
+        });
 
 
     if (!trip) {
@@ -354,6 +403,7 @@ function viewTrip(id) {
         alert("Trip not found.");
 
         return;
+
     }
 
 
@@ -369,22 +419,25 @@ function viewTrip(id) {
 
     window.location.href =
         "trip-overview.html";
+
 }
-
-
 
 
 // ================= OPEN ITINERARY =================
 
 function openItinerary(id) {
 
-    const trips = getTrips();
+    const trips =
+        getTrips();
 
-    const trip = trips.find(function (item) {
 
-        return item.id === id;
+    const trip =
+        trips.find(function (item) {
 
-    });
+            return item.id === id;
+
+        });
+
 
     if (!trip) {
 
@@ -394,75 +447,113 @@ function openItinerary(id) {
 
     }
 
+
     // Save selected trip
+
     localStorage.setItem(
         "trekplan_currentTrip",
         JSON.stringify(trip)
     );
 
+
     // Open itinerary page
-    window.location.href = "../Budget  Itinerary Checklist/itinerary.html";
+
+    window.location.href =
+        "itinerary.html";
 
 }
+
 
 // ================= TRIP PROGRESS =================
 
 function openProgress(id) {
 
-    const trips = getTrips();
+    const trips =
+        getTrips();
 
-    const trip = trips.find(function (item) {
-        return item.id === id;
-    });
+
+    const trip =
+        trips.find(function (item) {
+
+            return item.id === id;
+
+        });
+
 
     if (!trip) {
+
         alert("Trip not found.");
+
         return;
+
     }
 
+
     // Save selected trip
+
     localStorage.setItem(
         "trekplan_currentTrip",
         JSON.stringify(trip)
     );
 
+
     // Open progress page
-    window.location.href = "../Trip planner,progess TrekDetails/trip-progress.html";
+
+    window.location.href =
+        "trip-progress.html";
+
 }
-
-
 
 
 // ================= DELETE TRIP =================
 
 function deleteTrip(id) {
 
-    const confirmDelete = confirm(
-        "Are you sure you want to delete this trip?"
-    );
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this trip?"
+        );
+
 
     if (!confirmDelete) {
+
         return;
+
     }
 
-    let trips = getTrips();
 
-    trips = trips.filter(function (trip) {
-        return trip.id !== id;
-    });
+    let trips =
+        getTrips();
+
+
+    trips =
+        trips.filter(function (trip) {
+
+            return trip.id !== id;
+
+        });
+
 
     localStorage.setItem(
         "trekplanTrips",
         JSON.stringify(trips)
     );
 
+
     // Remove current trip if it was deleted
+
     const currentTrip =
         JSON.parse(
-            localStorage.getItem("trekplan_currentTrip")
+            localStorage.getItem(
+                "trekplan_currentTrip"
+            )
         );
 
-    if (currentTrip && currentTrip.id === id) {
+
+    if (
+        currentTrip &&
+        currentTrip.id === id
+    ) {
 
         localStorage.removeItem(
             "trekplan_currentTrip"
@@ -470,8 +561,11 @@ function deleteTrip(id) {
 
     }
 
+
     // Refresh dashboard
+
     updateStats();
+
     renderTrips();
 
 }
@@ -505,7 +599,7 @@ if (createTripBtn) {
         function () {
 
             window.location.href =
-                "../Trip planner,progess TrekDetails/trip-planner.html";
+                "trip-planner.html";
 
         }
     );
@@ -520,7 +614,7 @@ if (heroCreateBtn) {
         function () {
 
             window.location.href =
-                "../Trip planner,progess TrekDetails/trip-planner.html";
+                "trip-planner.html";
 
         }
     );
@@ -535,7 +629,7 @@ if (quickCreate) {
         function () {
 
             window.location.href =
-                "../Trip planner,progess TrekDetails/trip-planner.html";
+                "trip-planner.html";
 
         }
     );
@@ -552,7 +646,7 @@ if (budgetButton) {
         function () {
 
             window.location.href =
-                "../Budget  Itinerary Checklist/budget.html";
+                "budget.html";
 
         }
     );
@@ -587,7 +681,7 @@ if (exploreBtn) {
         function () {
 
             window.location.href =
-                "../Explore  Journal/explore.html";
+                "explore.html";
 
         }
     );
@@ -603,7 +697,11 @@ if (mobileMenu) {
         "click",
         function () {
 
-            sidebar.classList.toggle("open");
+            if (sidebar) {
+
+                sidebar.classList.toggle("open");
+
+            }
 
         }
     );
@@ -644,7 +742,8 @@ if (searchInput) {
 
                 } else {
 
-                    card.style.display = "none";
+                    card.style.display =
+                        "none";
 
                 }
 
@@ -676,8 +775,9 @@ if (logoutBtn) {
                 "trekplan_currentUser"
             );
 
+
             window.location.href =
-                "../Signup Login/login.html";
+                "login.html";
 
         }
     );

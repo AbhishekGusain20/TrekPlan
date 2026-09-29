@@ -31,10 +31,15 @@ const activityCount =
 
 // ================= CHECK ELEMENTS =================
 
-if (!tripTitle || !tripDestination || !itineraryList || !activityCount) {
-
-    console.error("Required itinerary elements are missing.");
-
+if (
+    !tripTitle ||
+    !tripDestination ||
+    !itineraryList ||
+    !activityCount
+) {
+    console.error(
+        "Required itinerary elements are missing."
+    );
 }
 
 
@@ -43,7 +48,8 @@ if (!tripTitle || !tripDestination || !itineraryList || !activityCount) {
 if (!currentTrip) {
 
     if (tripTitle) {
-        tripTitle.textContent = "No Trip Selected";
+        tripTitle.textContent =
+            "No Trip Selected";
     }
 
     if (tripDestination) {
@@ -65,7 +71,8 @@ if (currentTrip) {
 
     if (tripDestination) {
         tripDestination.textContent =
-            currentTrip.destination || "Your Destination";
+            currentTrip.destination ||
+            "Your Destination";
     }
 
 }
@@ -112,7 +119,6 @@ if (itineraryForm) {
                 );
 
                 return;
-
             }
 
 
@@ -234,7 +240,6 @@ function renderItinerary() {
             "0 Activities";
 
         return;
-
     }
 
 
@@ -284,7 +289,6 @@ function renderItinerary() {
         `;
 
         return;
-
     }
 
 

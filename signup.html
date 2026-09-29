@@ -2,13 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Sign Up — TrekPlan</title>
 
-    <link rel="stylesheet" href="signup.css">
+    <link
+        rel="stylesheet"
+        href="signup.css"
+    >
+
 </head>
+
 
 <body>
 
@@ -16,26 +26,50 @@
 
         <div class="signup-card">
 
-            <!-- Logo -->
+
+            <!-- ================= LOGO ================= -->
+
             <div class="logo">
-                <img src="/logo/trekplan-icon.png" alt="TrekPlan Logo">
+
+                <img
+                    src="trekplan-icon.png"
+                    alt="TrekPlan Logo"
+                >
+
             </div>
 
-            <h1>Create Account</h1>
+
+            <!-- ================= TITLE ================= -->
+
+            <h1>
+                Create Account
+            </h1>
 
             <p class="subtitle">
                 Start planning your next adventure with TrekPlan.
             </p>
 
-            <!-- Error Message -->
-            <div id="formError" class="form-error"></div>
 
-            <!-- Signup Form -->
+            <!-- ================= ERROR MESSAGE ================= -->
+
+            <div
+                id="formError"
+                class="form-error"
+            ></div>
+
+
+            <!-- ================= SIGNUP FORM ================= -->
+
             <form id="signupForm">
 
-                <!-- Name -->
+
+                <!-- NAME -->
+
                 <div class="form-group">
-                    <label for="name">Full Name</label>
+
+                    <label for="name">
+                        Full Name
+                    </label>
 
                     <input
                         type="text"
@@ -43,11 +77,17 @@
                         placeholder="Enter your full name"
                         required
                     >
+
                 </div>
 
-                <!-- Email -->
+
+                <!-- EMAIL -->
+
                 <div class="form-group">
-                    <label for="email">Email Address</label>
+
+                    <label for="email">
+                        Email Address
+                    </label>
 
                     <input
                         type="email"
@@ -55,11 +95,17 @@
                         placeholder="Enter your email"
                         required
                     >
+
                 </div>
 
-                <!-- Password -->
+
+                <!-- PASSWORD -->
+
                 <div class="form-group">
-                    <label for="password">Password</label>
+
+                    <label for="password">
+                        Password
+                    </label>
 
                     <input
                         type="password"
@@ -67,11 +113,17 @@
                         placeholder="Create a password"
                         required
                     >
+
                 </div>
 
-                <!-- Confirm Password -->
+
+                <!-- CONFIRM PASSWORD -->
+
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
 
                     <input
                         type="password"
@@ -79,33 +131,60 @@
                         placeholder="Confirm your password"
                         required
                     >
+
                 </div>
 
-                <!-- Terms -->
+
+                <!-- TERMS -->
+
                 <div class="terms">
+
                     <label>
-                        <input type="checkbox" id="terms" required>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
 
                         I agree to the Terms & Conditions
+
                     </label>
+
                 </div>
 
-                <!-- Button -->
-                <button type="submit" class="signup-btn">
+
+                <!-- CREATE ACCOUNT BUTTON -->
+
+                <button
+                    type="submit"
+                    class="signup-btn"
+                >
                     Create Account
                 </button>
 
             </form>
 
-            <!-- Login -->
+
+            <!-- ================= LOGIN ================= -->
+
             <p class="login-link">
+
                 Already have an account?
-                <a href="/Signup Login/login.html">Log in</a>
+
+                <a href="login.html">
+                    Log in
+                </a>
+
             </p>
+
 
         </div>
 
     </div>
+
+
+    <!-- JavaScript -->
 
     <script src="signup.js"></script>
 

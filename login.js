@@ -2,6 +2,7 @@
    TREKPLAN LANDING PAGE
 ========================================== */
 
+
 /* ---------- Mobile menu ---------- */
 
 const menuBtn = document.getElementById("menuBtn");
@@ -10,13 +11,21 @@ const navLinks = document.getElementById("navLinks");
 if (menuBtn && navLinks) {
 
   const closeMenu = () => {
+
     navLinks.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", "false");
+
+    menuBtn.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
   };
+
 
   menuBtn.addEventListener("click", () => {
 
-    const isOpen = navLinks.classList.toggle("open");
+    const isOpen =
+      navLinks.classList.toggle("open");
 
     menuBtn.setAttribute(
       "aria-expanded",
@@ -25,16 +34,23 @@ if (menuBtn && navLinks) {
 
   });
 
+
   navLinks.querySelectorAll("a").forEach((link) => {
 
-    link.addEventListener("click", closeMenu);
+    link.addEventListener(
+      "click",
+      closeMenu
+    );
 
   });
+
 
   document.addEventListener("keydown", (event) => {
 
     if (event.key === "Escape") {
+
       closeMenu();
+
     }
 
   });
@@ -44,14 +60,17 @@ if (menuBtn && navLinks) {
 
 /* ---------- Active nav link ---------- */
 
-const navItems = document.querySelectorAll(".nav-links > a");
+const navItems =
+  document.querySelectorAll(".nav-links > a");
 
 navItems.forEach((item) => {
 
   item.addEventListener("click", () => {
 
     navItems.forEach((link) => {
+
       link.classList.remove("active");
+
     });
 
     item.classList.add("active");
@@ -63,7 +82,8 @@ navItems.forEach((item) => {
 
 /* ---------- Scroll-aware navbar ---------- */
 
-const navbar = document.getElementById("navbar");
+const navbar =
+  document.getElementById("navbar");
 
 if (navbar) {
 
@@ -81,7 +101,9 @@ if (navbar) {
   window.addEventListener(
     "scroll",
     updateNavbar,
-    { passive: true }
+    {
+      passive: true
+    }
   );
 
 }
@@ -94,7 +116,8 @@ const yearElement =
 
 if (yearElement) {
 
-  const currentYear = new Date().getFullYear();
+  const currentYear =
+    new Date().getFullYear();
 
   yearElement.textContent =
     `© ${currentYear} TrekPlan. Built for explorers.`;
@@ -112,8 +135,12 @@ const loginForm =
 
 if (loginForm) {
 
-  const USERS_KEY = "trekplan_users";
-  const SESSION_KEY = "trekplan_session";
+  const USERS_KEY =
+    "trekplan_users";
+
+  const SESSION_KEY =
+    "trekplan_session";
+
 
   const emailInput =
     document.getElementById("email");
@@ -133,29 +160,37 @@ if (loginForm) {
   const passwordToggle =
     document.getElementById("passwordToggle");
 
-  if (passwordToggle && passwordInput) {
+  if (
+    passwordToggle &&
+    passwordInput
+  ) {
 
-    passwordToggle.addEventListener("click", () => {
+    passwordToggle.addEventListener(
+      "click",
+      () => {
 
-      const isHidden =
-        passwordInput.type === "password";
+        const isHidden =
+          passwordInput.type === "password";
 
-      passwordInput.type =
-        isHidden ? "text" : "password";
+        passwordInput.type =
+          isHidden
+            ? "text"
+            : "password";
 
-      passwordToggle.setAttribute(
-        "aria-label",
-        isHidden
-          ? "Hide password"
-          : "Show password"
-      );
+        passwordToggle.setAttribute(
+          "aria-label",
+          isHidden
+            ? "Hide password"
+            : "Show password"
+        );
 
-      passwordToggle.classList.toggle(
-        "is-visible",
-        isHidden
-      );
+        passwordToggle.classList.toggle(
+          "is-visible",
+          isHidden
+        );
 
-    });
+      }
+    );
 
   }
 
@@ -163,7 +198,9 @@ if (loginForm) {
   /* ---------- Forgot password ---------- */
 
   const forgotPassword =
-    document.getElementById("forgotPassword");
+    document.getElementById(
+      "forgotPassword"
+    );
 
   if (forgotPassword) {
 
@@ -186,17 +223,22 @@ if (loginForm) {
   /* ---------- Google login ---------- */
 
   const googleBtn =
-    document.getElementById("googleBtn");
+    document.getElementById(
+      "googleBtn"
+    );
 
   if (googleBtn) {
 
-    googleBtn.addEventListener("click", () => {
+    googleBtn.addEventListener(
+      "click",
+      () => {
 
-      alert(
-        "Google sign-in isn't set up yet — coming in a later version."
-      );
+        alert(
+          "Google sign-in isn't set up yet — coming in a later version."
+        );
 
-    });
+      }
+    );
 
   }
 
@@ -205,11 +247,15 @@ if (loginForm) {
 
   const showError = (message) => {
 
-    if (!formError) return;
+    if (!formError) {
+      return;
+    }
 
-    formError.textContent = message;
+    formError.textContent =
+      message;
 
-    formError.hidden = false;
+    formError.hidden =
+      false;
 
   };
 
@@ -217,7 +263,10 @@ if (loginForm) {
   const hideError = () => {
 
     if (formError) {
-      formError.hidden = true;
+
+      formError.hidden =
+        true;
+
     }
 
   };
@@ -249,7 +298,10 @@ if (loginForm) {
 
       /* ---------- Validate ---------- */
 
-      if (!email || !password) {
+      if (
+        !email ||
+        !password
+      ) {
 
         showError(
           "Please enter both email and password."
@@ -266,15 +318,19 @@ if (loginForm) {
 
         const users =
           JSON.parse(
-            localStorage.getItem(USERS_KEY) || "[]"
+            localStorage.getItem(
+              USERS_KEY
+            ) || "[]"
           );
 
 
         const match =
           users.find(
             (user) =>
-              user.email.toLowerCase() === email &&
-              user.password === password
+              user.email.toLowerCase() ===
+                email &&
+              user.password ===
+                password
           );
 
 
@@ -295,11 +351,14 @@ if (loginForm) {
 
         const session = {
 
-          name: match.name,
+          name:
+            match.name,
 
-          email: match.email,
+          email:
+            match.email,
 
-          loggedInAt: Date.now()
+          loggedInAt:
+            Date.now()
 
         };
 
@@ -329,7 +388,7 @@ if (loginForm) {
         /* ---------- Go to Dashboard ---------- */
 
         window.location.href =
-          "../Dashboard/dashboard.html";
+          "dashboard.html";
 
       }
 

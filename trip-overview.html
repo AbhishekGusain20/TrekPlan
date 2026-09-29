@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Overview - TrekPlan</title>
+
+    <link rel="stylesheet" href="trip-overview.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <div class="logo">
+            🏔️ TrekPlan
+        </div>
+
+        <a href="dashboard.html" class="back-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- Heading -->
+
+        <section class="heading">
+
+            <p class="eyebrow">
+                TRIP OVERVIEW
+            </p>
+
+            <h1 id="tripName">
+                My Trip
+            </h1>
+
+            <p id="destination">
+                Destination
+            </p>
+
+        </section>
+
+
+        <!-- Summary Cards -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <span>📍</span>
+
+                <div>
+                    <small>Destination</small>
+                    <strong id="tripDestination">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>📅</span>
+
+                <div>
+                    <small>Duration</small>
+                    <strong id="duration">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>👥</span>
+
+                <div>
+                    <small>Travelers</small>
+                    <strong id="travelers">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>💰</span>
+
+                <div>
+                    <small>Budget</small>
+                    <strong id="budget">-</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Dates -->
+
+        <section class="date-card">
+
+            <div>
+                <small>Start Date</small>
+                <strong id="startDate">-</strong>
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div>
+                <small>End Date</small>
+                <strong id="endDate">-</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Progress -->
+
+        <section class="progress-card">
+
+            <div class="section-title">
+
+                <h2>📊 Trip Progress</h2>
+
+                <strong id="progressText">
+                    0%
+                </strong>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+            <p id="progressMessage">
+                Start planning your trip.
+            </p>
+
+        </section>
+
+
+        <!-- Quick Actions -->
+
+        <section class="actions">
+
+            <h2>Quick Actions</h2>
+
+            <div class="action-grid">
+
+                <button onclick="openItinerary()">
+                    <span>📅</span>
+                    Itinerary
+                </button>
+
+
+                <button onclick="openBudget()">
+                    <span>💰</span>
+                    Budget
+                </button>
+
+
+                <button onclick="openProgress()">
+                    <span>📊</span>
+                    Progress
+                </button>
+
+
+                <button onclick="openJournal()">
+                    <span>📖</span>
+                    Travel Journal
+                </button>
+
+
+                <button onclick="openChecklist()">
+                    <span>🎒</span>
+                    Checklist
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Notes -->
+
+        <section class="notes-card">
+
+            <h2>📝 Trip Notes</h2>
+
+            <textarea
+                id="tripNotes"
+                placeholder="Write something about your trip..."
+            ></textarea>
+
+            <button
+                id="saveNotesBtn"
+                type="button">
+                💾 Save Note
+            </button>
+
+
+            <!-- Saved Notes -->
+
+            <div class="saved-notes">
+
+                <h3>📋 Saved Notes</h3>
+
+                <div id="notesList">
+
+                    <p class="empty-notes">
+                        No notes saved yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- No Trip -->
+
+        <section
+            id="noTrip"
+            class="no-trip">
+
+            <h2>⚠️ No Trip Selected</h2>
+
+            <p>
+                Please select a trip from the dashboard first.
+            </p>
+
+            <button onclick="goDashboard()">
+                Go to Dashboard
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="trip-overview.js"></script>
+
+</body>
+
+</html>

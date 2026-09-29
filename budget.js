@@ -14,49 +14,42 @@ const expenseName = document.getElementById("expenseName");
 const expenseCategory = document.getElementById("expenseCategory");
 const expenseAmount = document.getElementById("expenseAmount");
 
-const totalBudgetElement =
-    document.getElementById("totalBudget");
+const totalBudgetElement = document.getElementById("totalBudget");
+const totalSpentElement = document.getElementById("totalSpent");
+const remainingBudgetElement = document.getElementById("remainingBudget");
 
-const totalSpentElement =
-    document.getElementById("totalSpent");
+const progressFill = document.getElementById("progressFill");
+const percentageElement = document.getElementById("percentage");
+const budgetMessage = document.getElementById("budgetMessage");
 
-const remainingBudgetElement =
-    document.getElementById("remainingBudget");
+const expenseList = document.getElementById("expenseList");
+const expenseCount = document.getElementById("expenseCount");
 
-const progressFill =
-    document.getElementById("progressFill");
-
-const percentageElement =
-    document.getElementById("percentage");
-
-const budgetMessage =
-    document.getElementById("budgetMessage");
-
-const expenseList =
-    document.getElementById("expenseList");
-
-const expenseCount =
-    document.getElementById("expenseCount");
-
-const logoutBtn =
-    document.getElementById("logoutBtn");
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const sidebar =
-    document.getElementById("sidebar");
+const logoutBtn = document.getElementById("logoutBtn");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
 
 /* ================= LOCAL STORAGE ================= */
 
-let budget =
-    Number(localStorage.getItem("trekplanBudget")) || 0;
+let budget = Number(
+    localStorage.getItem("trekplanBudget")
+) || 0;
 
-let expenses =
-    JSON.parse(
-        localStorage.getItem("trekplanExpenses")
-    ) || [];
+let expenses = [];
+
+try {
+
+    expenses =
+        JSON.parse(
+            localStorage.getItem("trekplanExpenses")
+        ) || [];
+
+} catch (error) {
+
+    expenses = [];
+
+}
 
 
 /* ================= FORMAT MONEY ================= */
@@ -70,89 +63,97 @@ function formatMoney(amount) {
 
 /* ================= SAVE BUDGET ================= */
 
-budgetForm.addEventListener("submit", function (event) {
+if (budgetForm) {
 
-    event.preventDefault();
+    budgetForm.addEventListener("submit", function (event) {
 
-    const newBudget =
-        Number(budgetInput.value);
+        event.preventDefault();
 
-    if (newBudget <= 0) {
+        const newBudget =
+            Number(budgetInput.value);
 
-        alert("Please enter a valid budget.");
+        if (newBudget <= 0) {
 
-        return;
-    }
+            alert("Please enter a valid budget.");
 
-    budget = newBudget;
+            return;
+        }
 
-    localStorage.setItem(
-        "trekplanBudget",
-        budget
-    );
+        budget = newBudget;
 
-    budgetInput.value = "";
+        localStorage.setItem(
+            "trekplanBudget",
+            budget
+        );
 
-    updateBudget();
+        budgetInput.value = "";
 
-    alert("Budget saved successfully!");
+        updateBudget();
 
-});
+        alert("Budget saved successfully!");
+
+    });
+
+}
 
 
 /* ================= ADD EXPENSE ================= */
 
-expenseForm.addEventListener("submit", function (event) {
+if (expenseForm) {
 
-    event.preventDefault();
+    expenseForm.addEventListener("submit", function (event) {
 
-    const name =
-        expenseName.value.trim();
+        event.preventDefault();
 
-    const category =
-        expenseCategory.value;
+        const name =
+            expenseName.value.trim();
 
-    const amount =
-        Number(expenseAmount.value);
+        const category =
+            expenseCategory.value;
 
-
-    if (!name || !category || amount <= 0) {
-
-        alert("Please enter valid expense details.");
-
-        return;
-    }
+        const amount =
+            Number(expenseAmount.value);
 
 
-    const expense = {
+        if (!name || !category || amount <= 0) {
 
-        id: Date.now(),
+            alert("Please enter valid expense details.");
 
-        name: name,
-
-        category: category,
-
-        amount: amount
-
-    };
+            return;
+        }
 
 
-    expenses.push(expense);
+        const expense = {
+
+            id: Date.now(),
+
+            name: name,
+
+            category: category,
+
+            amount: amount
+
+        };
 
 
-    localStorage.setItem(
-        "trekplanExpenses",
-        JSON.stringify(expenses)
-    );
+        expenses.push(expense);
 
 
-    expenseForm.reset();
+        localStorage.setItem(
+            "trekplanExpenses",
+            JSON.stringify(expenses)
+        );
 
-    updateBudget();
 
-    renderExpenses();
+        expenseForm.reset();
 
-});
+        updateBudget();
+
+        renderExpenses();
+
+    });
+
+}
 
 
 /* ================= DELETE EXPENSE ================= */
@@ -210,22 +211,35 @@ function updateBudget() {
         budget - totalSpent;
 
 
-    totalBudgetElement.textContent =
-        formatMoney(budget);
+    if (totalBudgetElement) {
 
-    totalSpentElement.textContent =
-        formatMoney(totalSpent);
+        totalBudgetElement.textContent =
+            formatMoney(budget);
+
+    }
 
 
-    if (remaining < 0) {
+    if (totalSpentElement) {
 
-        remainingBudgetElement.textContent =
-            "-" + formatMoney(Math.abs(remaining));
+        totalSpentElement.textContent =
+            formatMoney(totalSpent);
 
-    } else {
+    }
 
-        remainingBudgetElement.textContent =
-            formatMoney(remaining);
+
+    if (remainingBudgetElement) {
+
+        if (remaining < 0) {
+
+            remainingBudgetElement.textContent =
+                "-" + formatMoney(Math.abs(remaining));
+
+        } else {
+
+            remainingBudgetElement.textContent =
+                formatMoney(remaining);
+
+        }
 
     }
 
@@ -245,8 +259,12 @@ function updateBudget() {
     }
 
 
-    percentageElement.textContent =
-        percentage + "%";
+    if (percentageElement) {
+
+        percentageElement.textContent =
+            percentage + "%";
+
+    }
 
 
     /* Don't allow progress bar beyond 100% */
@@ -254,19 +272,29 @@ function updateBudget() {
     const progress =
         Math.min(percentage, 100);
 
-    progressFill.style.width =
-        progress + "%";
+
+    if (progressFill) {
+
+        progressFill.style.width =
+            progress + "%";
 
 
-    /* Reset classes */
+        /* Remove old classes */
 
-    progressFill.classList.remove(
-        "warning",
-        "danger"
-    );
+        progressFill.classList.remove(
+            "warning",
+            "danger"
+        );
+
+    }
 
 
     /* ================= STATUS ================= */
+
+    if (!budgetMessage) {
+        return;
+    }
+
 
     if (budget === 0) {
 
@@ -284,7 +312,11 @@ function updateBudget() {
 
     else if (percentage < 100) {
 
-        progressFill.classList.add("warning");
+        if (progressFill) {
+
+            progressFill.classList.add("warning");
+
+        }
 
         budgetMessage.textContent =
             "You are getting close to your budget limit.";
@@ -293,7 +325,11 @@ function updateBudget() {
 
     else {
 
-        progressFill.classList.add("danger");
+        if (progressFill) {
+
+            progressFill.classList.add("danger");
+
+        }
 
         budgetMessage.textContent =
             "You have reached or exceeded your budget.";
@@ -330,8 +366,15 @@ function getCategoryIcon(category) {
 
 function renderExpenses() {
 
+    if (!expenseList) {
+        return;
+    }
+
+
     expenseList.innerHTML = "";
 
+
+    /* ================= EMPTY STATE ================= */
 
     if (expenses.length === 0) {
 
@@ -353,24 +396,40 @@ function renderExpenses() {
 
         `;
 
-        expenseCount.textContent =
-            "0 expenses";
+
+        if (expenseCount) {
+
+            expenseCount.textContent =
+                "0 expenses";
+
+        }
 
         return;
     }
 
 
-    expenseCount.textContent =
-        expenses.length +
-        (expenses.length === 1
-            ? " expense"
-            : " expenses");
+    /* ================= EXPENSE COUNT ================= */
 
+    if (expenseCount) {
+
+        expenseCount.textContent =
+            expenses.length +
+            (
+                expenses.length === 1
+                    ? " expense"
+                    : " expenses"
+            );
+
+    }
+
+
+    /* ================= CREATE EXPENSE ITEMS ================= */
 
     expenses.forEach(function (expense) {
 
         const expenseItem =
             document.createElement("div");
+
 
         expenseItem.className =
             "expense-item";
@@ -387,11 +446,11 @@ function renderExpenses() {
                 <div>
 
                     <div class="expense-name">
-                        ${expense.name}
+                        ${escapeHTML(expense.name)}
                     </div>
 
                     <div class="expense-type">
-                        ${expense.category}
+                        ${escapeHTML(expense.category)}
                     </div>
 
                 </div>
@@ -425,16 +484,33 @@ function renderExpenses() {
 }
 
 
+/* ================= ESCAPE HTML ================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
 /* ================= LOGOUT ================= */
 
 if (logoutBtn) {
 
     logoutBtn.addEventListener("click", function () {
 
-        localStorage.removeItem("trekplan_currentUser");
+        localStorage.removeItem(
+            "trekplan_currentUser"
+        );
 
         window.location.href =
-            "../Signup Login/login.html";
+            "login.html";
 
     });
 
@@ -443,7 +519,7 @@ if (logoutBtn) {
 
 /* ================= MOBILE MENU ================= */
 
-if (menuBtn) {
+if (menuBtn && sidebar) {
 
     menuBtn.addEventListener("click", function () {
 

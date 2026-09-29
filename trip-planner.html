@@ -25,50 +25,71 @@
     <aside class="sidebar" id="sidebar">
 
         <div class="logo">
-            <a href="/Dashboard/dashboard.html">
-                <img src="/logo/trekplan-icon.png" alt="TrekPlan Logo">
-                <span>TREK<span>PLAN</span></span>
+
+            <a href="dashboard.html">
+
+                <img
+                    src="trekplan-icon.png"
+                    alt="TrekPlan Logo"
+                >
+
+                <span>
+                    TREK<span>PLAN</span>
+                </span>
+
             </a>
+
         </div>
 
-        <p class="menu-title">MAIN MENU</p>
+
+        <p class="menu-title">
+            MAIN MENU
+        </p>
+
 
         <nav>
 
-            <a href="/Dashboard/dashboard.html">
+            <a href="dashboard.html">
                 <span>⌂</span>
                 Dashboard
             </a>
 
-            <a href="/Dashboard/dashboard.html#trips">
+
+            <a href="dashboard.html#trips">
                 <span>✈</span>
                 My Trips
             </a>
 
-            <a href="/Explore  Journal/explore.html">
+
+            <a href="explore.html">
                 <span>◎</span>
                 Explore
             </a>
 
-            <a href="/Budget  Itinerary Checklist/budget.html">
+
+            <a href="budget.html">
                 <span>₹</span>
                 Budget Planner
             </a>
 
-            <a href="#">
+
+            <a href="travel-journal.html">
                 <span>▤</span>
                 Travel Journal
             </a>
+
 
             <a href="#">
                 <span>⌖</span>
                 Maps
             </a>
 
-            <a href="#">
+
+            <a href="checklist.html">
                 <span>✓</span>
                 Checklists
             </a>
+
 
             <a href="#">
                 <span>♧</span>
@@ -77,12 +98,14 @@
 
         </nav>
 
+
         <div class="sidebar-bottom">
 
             <a href="#">
                 <span>⚙</span>
                 Settings
             </a>
+
 
             <button id="logoutBtn">
                 <span>↪</span>
@@ -98,6 +121,7 @@
 
     <main class="main-content">
 
+
         <!-- MOBILE HEADER -->
 
         <header class="mobile-header">
@@ -106,9 +130,18 @@
                 ☰
             </button>
 
+
             <div class="mobile-logo">
-                <img src="/logo/trekplan-icon.png" alt="TrekPlan">
-                <strong>TREK<span>PLAN</span></strong>
+
+                <img
+                    src="trekplan-icon.png"
+                    alt="TrekPlan"
+                >
+
+                <strong>
+                    TREK<span>PLAN</span>
+                </strong>
+
             </div>
 
         </header>
@@ -118,9 +151,15 @@
 
         <section class="page-header">
 
-            <p class="eyebrow">PLAN YOUR JOURNEY</p>
+            <p class="eyebrow">
+                PLAN YOUR JOURNEY
+            </p>
 
-            <h1>Create Your Trip</h1>
+
+            <h1>
+                Create Your Trip
+            </h1>
+
 
             <p>
                 Plan your next adventure by adding your trip details below.
@@ -135,15 +174,22 @@
 
             <form id="tripForm">
 
+
                 <!-- TRIP INFORMATION -->
 
                 <div class="form-card">
 
                     <div class="card-header">
 
-                        <p>STEP 01</p>
+                        <p>
+                            STEP 01
+                        </p>
 
-                        <h2>Trip Information</h2>
+
+                        <h2>
+                            Trip Information
+                        </h2>
+
 
                         <span>
                             Tell us about your upcoming journey.
@@ -154,11 +200,13 @@
 
                     <div class="form-grid">
 
+
                         <div class="form-group full-width">
 
                             <label for="tripName">
                                 Trip Name
                             </label>
+
 
                             <input
                                 type="text"
@@ -176,6 +224,7 @@
                                 Starting Location
                             </label>
 
+
                             <input
                                 type="text"
                                 id="startLocation"
@@ -191,6 +240,7 @@
                             <label for="destination">
                                 Destination
                             </label>
+
 
                             <input
                                 type="text"
@@ -212,9 +262,15 @@
 
                     <div class="card-header">
 
-                        <p>STEP 02</p>
+                        <p>
+                            STEP 02
+                        </p>
 
-                        <h2>Dates & Travelers</h2>
+
+                        <h2>
+                            Dates & Travelers
+                        </h2>
+
 
                         <span>
                             Choose your travel dates and group size.
@@ -225,11 +281,13 @@
 
                     <div class="form-grid">
 
+
                         <div class="form-group">
 
                             <label for="startDate">
                                 Start Date
                             </label>
+
 
                             <input
                                 type="date"
@@ -246,6 +304,7 @@
                                 End Date
                             </label>
 
+
                             <input
                                 type="date"
                                 id="endDate"
@@ -260,6 +319,7 @@
                             <label for="travelers">
                                 Number of Travelers
                             </label>
+
 
                             <input
                                 type="number"
@@ -282,9 +342,15 @@
 
                     <div class="card-header">
 
-                        <p>STEP 03</p>
+                        <p>
+                            STEP 03
+                        </p>
 
-                        <h2>Trip Budget</h2>
+
+                        <h2>
+                            Trip Budget
+                        </h2>
+
 
                         <span>
                             Set an estimated budget for your trip.
@@ -295,15 +361,20 @@
 
                     <div class="form-grid">
 
+
                         <div class="form-group">
 
                             <label for="budget">
                                 Estimated Budget
                             </label>
 
+
                             <div class="amount-input">
 
-                                <span>₹</span>
+                                <span>
+                                    ₹
+                                </span>
+
 
                                 <input
                                     type="number"
@@ -326,9 +397,14 @@
 
                 <div class="form-actions">
 
-                    <a href="/Dashboard/dashboard.html" class="cancel-btn">
+
+                    <a
+                        href="dashboard.html"
+                        class="cancel-btn"
+                    >
                         Cancel
                     </a>
+
 
                     <button
                         type="submit"
@@ -338,6 +414,7 @@
                     </button>
 
                 </div>
+
 
             </form>
 

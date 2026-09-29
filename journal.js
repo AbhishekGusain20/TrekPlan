@@ -8,15 +8,20 @@
    GET ELEMENTS
 ========================================= */
 
-const journalForm = document.getElementById("journalForm");
+const journalForm =
+    document.getElementById("journalForm");
 
-const locationInput = document.getElementById("location");
+const locationInput =
+    document.getElementById("location");
 
-const ratingInput = document.getElementById("rating");
+const ratingInput =
+    document.getElementById("rating");
 
-const experienceInput = document.getElementById("experience");
+const experienceInput =
+    document.getElementById("experience");
 
-const photoInput = document.getElementById("photo");
+const photoInput =
+    document.getElementById("photo");
 
 const memoriesContainer =
     document.getElementById("memoriesContainer");
@@ -38,7 +43,8 @@ const photoPreview =
    LOCAL STORAGE KEY
 ========================================= */
 
-const JOURNAL_KEY = "trekplanTravelJournal";
+const JOURNAL_KEY =
+    "trekplanTravelJournal";
 
 
 /* =========================================
@@ -46,7 +52,9 @@ const JOURNAL_KEY = "trekplanTravelJournal";
 ========================================= */
 
 let memories =
-    JSON.parse(localStorage.getItem(JOURNAL_KEY)) || [];
+    JSON.parse(
+        localStorage.getItem(JOURNAL_KEY)
+    ) || [];
 
 
 /* =========================================
@@ -65,28 +73,35 @@ function displayMemories() {
     memoriesContainer.innerHTML = "";
 
 
-    /* No memories */
-
     if (memories.length === 0) {
 
         memoriesContainer.innerHTML = `
+
             <div class="empty-message">
-                <h3>No memories yet 📖</h3>
-                <p>Add your first travel memory above.</p>
+
+                <h3>
+                    No memories yet 📖
+                </h3>
+
+                <p>
+                    Add your first travel memory above.
+                </p>
+
             </div>
+
         `;
 
         return;
     }
 
 
-    /* Display every memory */
-
     memories.forEach(function(memory) {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
-        card.className = "memory-card";
+        card.className =
+            "memory-card";
 
 
         /* Image */
@@ -96,10 +111,12 @@ function displayMemories() {
         if (memory.photo) {
 
             imageHTML = `
+
                 <img
                     src="${memory.photo}"
                     alt="${memory.location}"
                 >
+
             `;
 
         }
@@ -108,7 +125,9 @@ function displayMemories() {
         /* Stars */
 
         const stars =
-            "⭐".repeat(Number(memory.rating));
+            "⭐".repeat(
+                Number(memory.rating)
+            );
 
 
         card.innerHTML = `
@@ -117,7 +136,9 @@ function displayMemories() {
 
             <div class="memory-content">
 
-                <h3>📍 ${memory.location}</h3>
+                <h3>
+                    📍 ${memory.location}
+                </h3>
 
                 <div class="rating">
                     ${stars}
@@ -148,6 +169,7 @@ function displayMemories() {
                 </div>
 
             </div>
+
         `;
 
 
@@ -162,101 +184,189 @@ function displayMemories() {
    PHOTO INPUT
 ========================================= */
 
-photoInput.addEventListener("change", function() {
+photoInput.addEventListener(
+    "change",
+    function() {
 
-    const file = photoInput.files[0];
+        const file =
+            photoInput.files[0];
 
-    if (!file) {
-        return;
+        if (!file) {
+            return;
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event) {
+
+                photoPreview.innerHTML = `
+
+                    <img
+                        src="${event.target.result}"
+                        alt="Photo Preview"
+                    >
+
+                `;
+
+            };
+
+
+        reader.readAsDataURL(file);
+
     }
-
-
-    const reader = new FileReader();
-
-
-    reader.onload = function(event) {
-
-        photoPreview.innerHTML = `
-            <img
-                src="${event.target.result}"
-                alt="Photo Preview"
-            >
-        `;
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-});
+);
 
 
 /* =========================================
    ADD / UPDATE MEMORY
 ========================================= */
 
-journalForm.addEventListener("submit", function(event) {
+journalForm.addEventListener(
+    "submit",
+    function(event) {
 
-    event.preventDefault();
-
-
-    const location =
-        locationInput.value.trim();
-
-    const rating =
-        ratingInput.value;
-
-    const experience =
-        experienceInput.value.trim();
+        event.preventDefault();
 
 
-    /* Check fields */
+        const location =
+            locationInput.value.trim();
 
-    if (!location || !rating || !experience) {
+        const rating =
+            ratingInput.value;
 
-        alert("Please fill all required fields.");
-
-        return;
-    }
+        const experience =
+            experienceInput.value.trim();
 
 
-    /* =====================================
-       UPDATE EXISTING MEMORY
-    ===================================== */
+        if (
+            !location ||
+            !rating ||
+            !experience
+        ) {
 
-    if (editingId !== null) {
-
-        const memory =
-            memories.find(
-                item => item.id === editingId
+            alert(
+                "Please fill all required fields."
             );
 
-
-        if (memory) {
-
-            memory.location = location;
-
-            memory.rating = rating;
-
-            memory.experience = experience;
+            return;
+        }
 
 
-            /*
-                If user selected a new photo,
-                update the photo.
-            */
+        /* =====================================
+           UPDATE EXISTING MEMORY
+        ===================================== */
 
-            if (photoInput.files[0]) {
+        if (editingId !== null) {
 
-                const reader =
-                    new FileReader();
+            const memory =
+                memories.find(
+                    item =>
+                        item.id === editingId
+                );
 
 
-                reader.onload = function(event) {
+            if (memory) {
 
-                    memory.photo =
+                memory.location =
+                    location;
+
+                memory.rating =
+                    rating;
+
+                memory.experience =
+                    experience;
+
+
+                if (photoInput.files[0]) {
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function(event) {
+
+                            memory.photo =
+                                event.target.result;
+
+
+                            saveMemories();
+
+                            resetForm();
+
+                            displayMemories();
+
+                            alert(
+                                "Memory updated successfully! ✏️"
+                            );
+
+                        };
+
+
+                    reader.readAsDataURL(
+                        photoInput.files[0]
+                    );
+
+
+                    return;
+                }
+
+
+                saveMemories();
+
+                resetForm();
+
+                displayMemories();
+
+                alert(
+                    "Memory updated successfully! ✏️"
+                );
+
+                return;
+            }
+
+        }
+
+
+        /* =====================================
+           ADD NEW MEMORY
+        ===================================== */
+
+        const newMemory = {
+
+            id: Date.now().toString(),
+
+            location: location,
+
+            rating: rating,
+
+            experience: experience,
+
+            photo: ""
+
+        };
+
+
+        if (photoInput.files[0]) {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(event) {
+
+                    newMemory.photo =
                         event.target.result;
 
+
+                    memories.push(
+                        newMemory
+                    );
 
                     saveMemories();
 
@@ -264,19 +374,24 @@ journalForm.addEventListener("submit", function(event) {
 
                     displayMemories();
 
-                    alert("Memory updated successfully! ✏️");
+                    alert(
+                        "Travel memory saved! 📸"
+                    );
 
                 };
 
 
-                reader.readAsDataURL(
-                    photoInput.files[0]
-                );
+            reader.readAsDataURL(
+                photoInput.files[0]
+            );
 
+        }
 
-                return;
-            }
+        else {
 
+            memories.push(
+                newMemory
+            );
 
             saveMemories();
 
@@ -284,82 +399,14 @@ journalForm.addEventListener("submit", function(event) {
 
             displayMemories();
 
-            alert("Memory updated successfully! ✏️");
+            alert(
+                "Travel memory saved! 📖"
+            );
 
-            return;
         }
 
     }
-
-
-    /* =====================================
-       ADD NEW MEMORY
-    ===================================== */
-
-    const newMemory = {
-
-        id: Date.now().toString(),
-
-        location: location,
-
-        rating: rating,
-
-        experience: experience,
-
-        photo: ""
-
-    };
-
-
-    /*
-        Check if photo exists
-    */
-
-    if (photoInput.files[0]) {
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload = function(event) {
-
-            newMemory.photo =
-                event.target.result;
-
-
-            memories.push(newMemory);
-
-            saveMemories();
-
-            resetForm();
-
-            displayMemories();
-
-            alert("Travel memory saved! 📸");
-
-        };
-
-
-        reader.readAsDataURL(
-            photoInput.files[0]
-        );
-
-
-    } else {
-
-        memories.push(newMemory);
-
-        saveMemories();
-
-        resetForm();
-
-        displayMemories();
-
-        alert("Travel memory saved! 📖");
-
-    }
-
-});
+);
 
 
 /* =========================================
@@ -379,12 +426,8 @@ function editMemory(id) {
     }
 
 
-    /* Store editing ID */
-
     editingId = id;
 
-
-    /* Put data inside form */
 
     locationInput.value =
         memory.location;
@@ -401,40 +444,38 @@ function editMemory(id) {
     if (memory.photo) {
 
         photoPreview.innerHTML = `
-            <p>Current Photo:</p>
+
+            <p>
+                Current Photo:
+            </p>
 
             <img
                 src="${memory.photo}"
                 alt="Current Travel Photo"
             >
+
         `;
 
-    } else {
+    }
+
+    else {
 
         photoPreview.innerHTML = "";
 
     }
 
 
-    /* Change form heading */
-
     formTitle.textContent =
         "Edit Travel Memory ✏️";
 
-
-    /* Change button */
 
     saveBtn.textContent =
         "Update Memory";
 
 
-    /* Show cancel */
-
     cancelBtn.style.display =
         "block";
 
-
-    /* Scroll to form */
 
     window.scrollTo({
 
@@ -460,15 +501,14 @@ function deleteMemory(id) {
 
 
     if (!confirmed) {
-
         return;
-
     }
 
 
     memories =
         memories.filter(
-            memory => memory.id !== id
+            memory =>
+                memory.id !== id
         );
 
 
@@ -477,7 +517,9 @@ function deleteMemory(id) {
     displayMemories();
 
 
-    alert("Memory deleted successfully! 🗑️");
+    alert(
+        "Memory deleted successfully! 🗑️"
+    );
 
 }
 
@@ -486,11 +528,14 @@ function deleteMemory(id) {
    CANCEL EDIT
 ========================================= */
 
-cancelBtn.addEventListener("click", function() {
+cancelBtn.addEventListener(
+    "click",
+    function() {
 
-    resetForm();
+        resetForm();
 
-});
+    }
+);
 
 
 /* =========================================
@@ -500,7 +545,6 @@ cancelBtn.addEventListener("click", function() {
 function resetForm() {
 
     journalForm.reset();
-
 
     editingId = null;
 
@@ -517,7 +561,8 @@ function resetForm() {
         "none";
 
 
-    photoPreview.innerHTML = "";
+    photoPreview.innerHTML =
+        "";
 
 }
 

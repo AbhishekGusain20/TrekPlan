@@ -133,7 +133,6 @@ function displayTreks(list) {
 
     trekGrid.innerHTML = "";
 
-
     list.forEach((trek) => {
 
         const card =
@@ -286,13 +285,18 @@ function displayTreks(list) {
 
                 event.preventDefault();
 
+                /*
+                   trek-details.html is in the
+                   same folder as explore.html
+                */
+
                 window.location.href =
-                    `/Trip planner,progess TrekDetails/trek-details.html?trek=${trek.id}`;
+                    `trek-details.html?trek=${trek.id}`;
 
             }
         );
 
-    }); // END list.forEach
+    });
 
 
     /* ================= COUNT ================= */
