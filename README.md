@@ -31,6 +31,15 @@ TrekPlan is a travel and trekking planning website that helps users plan, manage
 * 🎒 Trip Checklist
 * ✅ Mark Checklist Items Complete
 * 🗑️ Delete Checklist Items
+* 👥 Community Page
+* 📝 Create & Share Community Posts
+* ❤️ Like Community Posts
+* 🗑️ Delete Community Posts
+* 🔎 Search Community Posts
+* 🏔️ Popular Treks Section
+* 📋 Community Guidelines
+* 💾 Community Posts using LocalStorage
+* 📱 Responsive Community Page
 
 ## 🚀 Planned Features
 
