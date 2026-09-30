@@ -1,5 +1,11 @@
 /* =====================================================
    TREKPLAN — BUDGET PLANNER
+   Dashboard Blue Theme
+===================================================== */
+
+
+/* =====================================================
+   RESET
 ===================================================== */
 
 * {
@@ -8,88 +14,151 @@
     box-sizing: border-box;
 }
 
+
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+
 :root {
-    --green: #12372a;
-    --green-light: #1d4d3b;
-    --cream: #f4f0e8;
+    --primary: #073b5c;
+    --primary-dark: #052c45;
+    --primary-light: #0b567e;
+
+    --blue: #278bc7;
+    --blue-light: #e8f3ff;
+    --blue-soft: #eef6fb;
+
+    --background: #f5f8fb;
+
     --white: #ffffff;
-    --orange: #e47c45;
-    --text: #1f2a24;
-    --muted: #78827c;
-    --border: #e5e1d8;
+
+    --text: #102536;
+    --muted: #708295;
+
+    --border: #e3eaf0;
+
     --danger: #d9534f;
-    --shadow: 0 10px 30px rgba(18, 55, 42, 0.08);
+
+    --shadow:
+        0 10px 30px rgba(7, 59, 92, 0.08);
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body {
     font-family: "DM Sans", sans-serif;
-    background: #f7f6f2;
+
+    background: var(--background);
+
     color: var(--text);
+
+    min-height: 100vh;
 }
 
 
-/* ================= SIDEBAR ================= */
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .sidebar {
     position: fixed;
+
     left: 0;
     top: 0;
 
     width: 250px;
     height: 100vh;
 
-    background: var(--green);
+    background:
+        linear-gradient(
+            180deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
     color: white;
 
     padding: 28px 18px;
 
     display: flex;
+
     flex-direction: column;
 
     z-index: 1000;
+
+    box-shadow:
+        5px 0 20px rgba(7, 59, 92, 0.10);
 }
+
+
+/* =====================================================
+   SIDEBAR LOGO
+===================================================== */
 
 .sidebar-logo a {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     text-decoration: none;
+
     color: white;
 
     padding: 0 10px 30px;
 }
 
+
 .sidebar-logo img {
     width: 38px;
+
     height: 38px;
+
     object-fit: contain;
 }
 
+
 .sidebar-logo span {
     font-family: "Manrope", sans-serif;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
+
+/* TrekPlan logo accent */
+
 .sidebar-logo span span {
-    color: var(--orange);
+    color: var(--blue);
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+   SIDEBAR NAVIGATION
+===================================================== */
 
 .sidebar-nav {
     display: flex;
+
     flex-direction: column;
+
     gap: 6px;
 }
+
 
 .sidebar-nav a,
 .sidebar-bottom a,
 .sidebar-bottom button {
+
     display: flex;
+
     align-items: center;
+
     gap: 13px;
 
     width: 100%;
@@ -98,13 +167,16 @@ body {
 
     border-radius: 10px;
 
-    color: #dce7e1;
+    color: #dceaf3;
+
     text-decoration: none;
 
     background: transparent;
+
     border: none;
 
     font-family: inherit;
+
     font-size: 14px;
 
     cursor: pointer;
@@ -112,82 +184,144 @@ body {
     transition: 0.2s ease;
 }
 
+
 .sidebar-nav a span,
 .sidebar-bottom span {
+
     width: 20px;
+
     text-align: center;
 }
+
+
+/* =====================================================
+   SIDEBAR HOVER
+===================================================== */
 
 .sidebar-nav a:hover,
 .sidebar-nav a.active,
 .sidebar-bottom a:hover,
 .sidebar-bottom button:hover {
-    background: rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
     color: white;
 }
 
+
+/* =====================================================
+   ACTIVE NAV
+===================================================== */
+
 .sidebar-nav a.active {
-    background: rgba(255, 255, 255, 0.15);
+
+    background:
+        rgba(39, 139, 199, 0.20);
+
+    color: white;
+
+    border-left:
+        3px solid var(--blue);
 }
+
+
+/* =====================================================
+   SIDEBAR BOTTOM
+===================================================== */
 
 .sidebar-bottom {
     margin-top: auto;
 }
 
 
-/* ================= MAIN ================= */
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
 
 .main-content {
+
     margin-left: 250px;
+
     padding: 40px 50px;
 
     min-height: 100vh;
 }
 
 
-/* ================= MOBILE HEADER ================= */
+/* =====================================================
+   MOBILE HEADER
+===================================================== */
 
 .mobile-header {
     display: none;
 }
 
 
-/* ================= PAGE HEADER ================= */
+/* =====================================================
+   PAGE HEADER
+===================================================== */
 
 .page-header {
     margin-bottom: 30px;
 }
 
+
+/* =====================================================
+   EYEBROW / SMALL TITLE
+===================================================== */
+
 .eyebrow,
 .small-title {
-    color: var(--orange);
+
+    color: var(--blue);
+
     font-size: 11px;
+
     font-weight: 700;
+
     letter-spacing: 1.5px;
 }
 
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
 .page-header h1 {
+
     margin-top: 7px;
 
     font-family: "Manrope", sans-serif;
 
     font-size: 34px;
+
     font-weight: 800;
 
-    color: var(--green);
+    color: var(--primary);
 }
 
+
+/* =====================================================
+   PAGE DESCRIPTION
+===================================================== */
+
 .page-header p:last-child {
+
     margin-top: 8px;
 
     color: var(--muted);
+
     font-size: 15px;
 }
 
 
-/* ================= OVERVIEW ================= */
+/* =====================================================
+   BUDGET OVERVIEW
+===================================================== */
 
 .budget-overview {
+
     display: grid;
 
     grid-template-columns:
@@ -198,68 +332,127 @@ body {
     margin-bottom: 25px;
 }
 
+
+/* =====================================================
+   BUDGET CARD
+===================================================== */
+
 .budget-card {
+
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: 16px;
 
     padding: 24px;
 
     display: flex;
+
     align-items: center;
+
     gap: 17px;
 
     box-shadow: var(--shadow);
+
+    transition: 0.25s ease;
 }
 
+
+.budget-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(7, 59, 92, 0.10);
+}
+
+
+/* =====================================================
+   CARD ICON
+===================================================== */
+
 .card-icon {
+
     width: 48px;
+
     height: 48px;
 
     border-radius: 12px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: #eef5f1;
+    background: var(--blue-light);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-weight: 800;
+
     font-size: 19px;
+
+    flex-shrink: 0;
 }
+
+
+/* =====================================================
+   SPENT ICON
+===================================================== */
 
 .card-icon.spent {
-    background: #fff2ea;
-    color: var(--orange);
+
+    background: #eaf4fb;
+
+    color: var(--blue);
 }
+
+
+/* =====================================================
+   REMAINING ICON
+===================================================== */
 
 .card-icon.remaining {
-    background: #edf6ef;
-    color: #39704f;
+
+    background: var(--blue-soft);
+
+    color: var(--primary-light);
 }
 
+
+/* =====================================================
+   BUDGET CARD TEXT
+===================================================== */
+
 .budget-card span {
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
+
 .budget-card h2 {
+
     margin-top: 5px;
 
     font-family: "Manrope", sans-serif;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 23px;
 }
 
 
-/* ================= PLANNER GRID ================= */
+/* =====================================================
+   PLANNER GRID
+===================================================== */
 
 .planner-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -270,12 +463,19 @@ body {
     margin-bottom: 25px;
 }
 
+
+/* =====================================================
+   COMMON CARDS
+===================================================== */
+
 .planner-card,
 .progress-card,
 .expenses-section {
+
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 16px;
 
@@ -284,56 +484,75 @@ body {
     box-shadow: var(--shadow);
 }
 
+
+/* =====================================================
+   CARD HEADING
+===================================================== */
+
 .card-heading {
+
     margin-bottom: 23px;
 }
+
 
 .card-heading h2,
 .progress-top h2,
 .section-heading h2 {
+
     margin-top: 5px;
 
     font-family: "Manrope", sans-serif;
 
     font-size: 21px;
 
-    color: var(--green);
+    color: var(--primary);
 }
 
 
-/* ================= FORMS ================= */
+/* =====================================================
+   FORMS
+===================================================== */
 
 form {
+
     display: flex;
+
     flex-direction: column;
 }
 
+
 label {
+
     margin-bottom: 7px;
 
     font-size: 13px;
+
     font-weight: 600;
 
     color: var(--text);
 }
 
+
 input,
 select {
+
     width: 100%;
 
     height: 47px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 9px;
 
     padding: 0 14px;
 
-    background: #fcfcfa;
+    background: #fbfdff;
 
     color: var(--text);
 
     font-family: inherit;
+
     font-size: 14px;
 
     outline: none;
@@ -343,48 +562,80 @@ select {
     transition: 0.2s ease;
 }
 
+
+/* =====================================================
+   INPUT FOCUS
+===================================================== */
+
 input:focus,
 select:focus {
-    border-color: var(--green);
+
+    border-color: var(--primary);
+
     background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(7, 59, 92, 0.07);
 }
 
+
+/* =====================================================
+   INPUT WRAPPER
+===================================================== */
+
 .input-wrapper {
+
     position: relative;
 }
 
+
 .input-wrapper span {
+
     position: absolute;
 
     left: 14px;
+
     top: 14px;
 
     font-weight: 600;
 
-    color: var(--green);
+    color: var(--primary);
 }
 
+
 .input-wrapper input {
+
     padding-left: 32px;
 }
 
 
-/* ================= BUTTON ================= */
+/* =====================================================
+   PRIMARY BUTTON
+===================================================== */
 
 .primary-btn {
+
     width: 100%;
 
     height: 47px;
 
     border: none;
+
     border-radius: 9px;
 
-    background: var(--green);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
     color: white;
 
     font-family: inherit;
 
     font-size: 14px;
+
     font-weight: 600;
 
     cursor: pointer;
@@ -392,65 +643,125 @@ select:focus {
     transition: 0.2s ease;
 
     margin-top: 2px;
+
+    box-shadow:
+        0 7px 18px rgba(7, 59, 92, 0.15);
 }
+
 
 .primary-btn:hover {
-    background: var(--green-light);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
     transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 22px rgba(7, 59, 92, 0.20);
 }
 
 
-/* ================= PROGRESS ================= */
+/* =====================================================
+   PROGRESS
+===================================================== */
 
 .progress-card {
+
     margin-bottom: 25px;
 }
 
+
 .progress-top {
+
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
 
     margin-bottom: 18px;
 }
 
+
 .progress-top strong {
-    color: var(--green);
+
+    color: var(--blue);
+
     font-size: 20px;
 }
 
+
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
+
 .progress-bar {
+
     width: 100%;
+
     height: 11px;
 
     border-radius: 20px;
 
-    background: #ebe9e3;
+    background: #e6edf2;
 
     overflow: hidden;
 }
 
+
+/* =====================================================
+   PROGRESS FILL
+===================================================== */
+
 .progress-fill {
+
     height: 100%;
+
     width: 0%;
 
     border-radius: inherit;
 
-    background: var(--green);
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--blue)
+        );
 
     transition: width 0.3s ease;
 }
 
+
+/* =====================================================
+   WARNING PROGRESS
+===================================================== */
+
 .progress-fill.warning {
-    background: var(--orange);
+
+    background: var(--blue);
 }
 
+
+/* =====================================================
+   DANGER PROGRESS
+===================================================== */
+
 .progress-fill.danger {
+
     background: var(--danger);
 }
 
+
+/* =====================================================
+   BUDGET MESSAGE
+===================================================== */
+
 #budgetMessage {
+
     margin-top: 12px;
 
     color: var(--muted);
@@ -459,85 +770,159 @@ select:focus {
 }
 
 
-/* ================= EXPENSES ================= */
+/* =====================================================
+   EXPENSES
+===================================================== */
 
 .expenses-section {
+
     margin-bottom: 30px;
 }
 
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
 .section-heading {
+
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 20px;
 }
 
+
+/* =====================================================
+   EXPENSE COUNT
+===================================================== */
+
 #expenseCount {
+
     padding: 7px 12px;
 
     border-radius: 20px;
 
-    background: #eef5f1;
+    background: var(--blue-light);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 12px;
+
     font-weight: 600;
 }
 
 
-/* ================= EXPENSE ITEM ================= */
+/* =====================================================
+   EXPENSE LIST
+===================================================== */
 
 .expense-list {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
 }
 
+
+/* =====================================================
+   EXPENSE ITEM
+===================================================== */
+
 .expense-item {
+
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     padding: 15px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 11px;
 
-    background: #fcfcfa;
+    background: #fbfdff;
+
+    transition: 0.2s ease;
 }
 
+
+.expense-item:hover {
+
+    border-color: #c9dce8;
+
+    background: #fafdff;
+}
+
+
+/* =====================================================
+   EXPENSE INFO
+===================================================== */
+
 .expense-info {
+
     display: flex;
+
     align-items: center;
+
     gap: 13px;
 }
 
+
+/* =====================================================
+   EXPENSE CATEGORY
+===================================================== */
+
 .expense-category {
+
     width: 42px;
+
     height: 42px;
 
     border-radius: 10px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: #eef5f1;
+    background: var(--blue-light);
+
+    color: var(--blue);
 
     font-size: 18px;
 }
 
+
+/* =====================================================
+   EXPENSE NAME
+===================================================== */
+
 .expense-name {
+
     font-weight: 600;
+
     font-size: 14px;
+
+    color: var(--text);
 }
 
+
+/* =====================================================
+   EXPENSE TYPE
+===================================================== */
+
 .expense-type {
+
     margin-top: 3px;
 
     color: var(--muted);
@@ -545,19 +930,39 @@ select:focus {
     font-size: 12px;
 }
 
+
+/* =====================================================
+   EXPENSE RIGHT
+===================================================== */
+
 .expense-right {
+
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 }
 
+
+/* =====================================================
+   EXPENSE AMOUNT
+===================================================== */
+
 .expense-amount {
-    color: var(--green);
+
+    color: var(--primary);
 
     font-weight: 700;
 }
 
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
+
 .delete-btn {
+
     border: none;
 
     background: transparent;
@@ -567,12 +972,25 @@ select:focus {
     font-size: 18px;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 
-/* ================= EMPTY ================= */
+.delete-btn:hover {
+
+    color: #c9302c;
+
+    transform: scale(1.08);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
 
 .empty-state {
+
     text-align: center;
 
     padding: 40px 20px;
@@ -580,8 +998,15 @@ select:focus {
     color: var(--muted);
 }
 
+
+/* =====================================================
+   EMPTY ICON
+===================================================== */
+
 .empty-icon {
+
     width: 50px;
+
     height: 50px;
 
     margin: 0 auto 12px;
@@ -589,67 +1014,100 @@ select:focus {
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: #eef5f1;
+    background: var(--blue-light);
 
-    color: var(--green);
+    color: var(--blue);
 
     font-weight: 700;
 }
 
+
+/* =====================================================
+   EMPTY TITLE
+===================================================== */
+
 .empty-state h3 {
-    color: var(--green);
+
+    color: var(--primary);
 
     margin-bottom: 5px;
 }
 
+
+/* =====================================================
+   EMPTY TEXT
+===================================================== */
+
 .empty-state p {
+
     font-size: 13px;
+
+    color: var(--muted);
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
 
 @media (max-width: 1000px) {
 
     .sidebar {
+
         width: 220px;
     }
 
+
     .main-content {
+
         margin-left: 220px;
 
         padding: 35px 25px;
     }
 
+
     .budget-overview {
+
         grid-template-columns: 1fr;
     }
-
 }
 
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+===================================================== */
 
 @media (max-width: 768px) {
 
     .sidebar {
+
         transform: translateX(-100%);
 
         transition: 0.3s ease;
     }
 
+
     .sidebar.open {
+
         transform: translateX(0);
     }
 
+
     .main-content {
+
         margin-left: 0;
 
         padding: 20px;
     }
 
+
     .mobile-header {
+
         display: flex;
 
         align-items: center;
@@ -659,13 +1117,22 @@ select:focus {
         margin-bottom: 30px;
     }
 
+
     .menu-btn {
+
         border: none;
 
-        background: var(--green);
+        background:
+            linear-gradient(
+                135deg,
+                var(--primary),
+                var(--primary-light)
+            );
+
         color: white;
 
         width: 40px;
+
         height: 40px;
 
         border-radius: 9px;
@@ -675,58 +1142,84 @@ select:focus {
         font-size: 18px;
     }
 
+
     .mobile-logo {
+
         display: flex;
+
         align-items: center;
+
         gap: 8px;
 
         font-family: "Manrope", sans-serif;
+
         font-weight: 800;
 
-        color: var(--green);
+        color: var(--primary);
     }
 
+
     .mobile-logo img {
+
         width: 30px;
+
         height: 30px;
     }
 
+
     .mobile-logo span span {
-        color: var(--orange);
+
+        color: var(--blue);
     }
 
+
     .page-header h1 {
+
         font-size: 28px;
     }
 
+
     .planner-grid {
+
         grid-template-columns: 1fr;
     }
-
 }
 
+
+/* =====================================================
+   RESPONSIVE — SMALL MOBILE
+===================================================== */
 
 @media (max-width: 500px) {
 
     .main-content {
+
         padding: 17px;
     }
 
+
     .page-header h1 {
+
         font-size: 25px;
     }
+
 
     .planner-card,
     .progress-card,
     .expenses-section {
+
         padding: 20px;
     }
 
+
     .expense-item {
+
         align-items: flex-start;
     }
 
+
     .expense-right {
+
         flex-direction: column;
 
         align-items: flex-end;
@@ -734,4 +1227,15 @@ select:focus {
         gap: 6px;
     }
 
+
+    .budget-card {
+
+        padding: 20px;
+    }
+
+
+    .section-heading {
+
+        gap: 10px;
+    }
 }

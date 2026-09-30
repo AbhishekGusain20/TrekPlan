@@ -563,11 +563,10 @@ a {
 
 
 /* =========================================================
-   HERO
+   HERO — FIXED BACKGROUND IMAGE
 ========================================================= */
 
 .hero-card {
-
     min-height: 275px;
 
     border-radius: var(--radius);
@@ -576,133 +575,272 @@ a {
 
     position: relative;
 
-    background:
+    background-color: #032335;
 
+    /*
+       Keep the original image ratio.
+       Do NOT use background-size: cover
+       because it crops/enlarges the logo.
+    */
+    background-image:
         linear-gradient(
             90deg,
-            rgba(3,35,53,0.95),
-            rgba(3,35,53,0.70),
-            rgba(3,35,53,0.15)
+            rgba(3, 35, 53, 0.98) 0%,
+            rgba(3, 35, 53, 0.82) 30%,
+            rgba(3, 35, 53, 0.35) 60%,
+            rgba(3, 35, 53, 0.05) 100%
         ),
-
         url("TrekPlan-logo.png");
 
-    background-size: cover;
+    background-size:
+        100% 100%,
+        auto 100%;
 
-    background-position: center;
+    background-position:
+        center,
+        right center;
 
-    margin-bottom: 25px;
-
+    background-repeat:
+        no-repeat,
+        no-repeat;
 }
 
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .hero-content {
+    position: relative;
 
-    max-width: 580px;
+    z-index: 2;
 
-    padding: 38px;
+    padding: 40px 38px;
 
-    color: white;
-
+    max-width: 760px;
 }
 
+
+/* =========================================================
+   HERO TAG
+========================================================= */
 
 .hero-tag {
 
-    display: inline-block;
+    display: inline-flex;
 
-    padding: 6px 10px;
+    align-items: center;
 
-    background: rgba(255,255,255,0.12);
+    gap: 6px;
 
-    border: 1px solid rgba(255,255,255,0.18);
+    padding: 9px 14px;
 
     border-radius: 30px;
 
-    font-size: 9px;
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 600;
 
     letter-spacing: 1px;
 
-    margin-bottom: 16px;
+    margin-bottom: 25px;
 
+    backdrop-filter: blur(5px);
 }
 
 
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
 .hero-content h2 {
 
-    font-size: 32px;
+    color: white;
 
-    line-height: 1.15;
+    font-size: 40px;
 
-    margin-bottom: 12px;
+    line-height: 1.1;
 
+    margin-bottom: 18px;
 }
 
 
 .hero-content h2 span {
 
-    color: #7fd7b2;
-
+    color: #68d5b0;
 }
 
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
 
 .hero-content p {
 
-    color: #d9e8ef;
+    color: #e2edf3;
 
-    font-size: 12px;
+    font-size: 14px;
 
     line-height: 1.7;
 
-    max-width: 500px;
+    max-width: 700px;
 
+    margin-bottom: 28px;
 }
 
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons {
 
     display: flex;
 
-    gap: 10px;
+    align-items: center;
 
-    margin-top: 22px;
-
+    gap: 14px;
 }
 
+
+/* =========================================================
+   PRIMARY HERO BUTTON
+========================================================= */
 
 .hero-primary {
 
     background: white;
 
-    color: var(--primary);
+    color: #073b5c;
 
-    padding: 11px 16px;
+    padding: 14px 24px;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    font-size: 11px;
+    font-size: 13px;
 
     font-weight: 700;
 
+    cursor: pointer;
+
+    transition: 0.25s ease;
 }
 
+
+.hero-primary:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   SECONDARY HERO BUTTON
+========================================================= */
 
 .hero-secondary {
 
-    background: rgba(255,255,255,0.12);
-
-    border: 1px solid rgba(255,255,255,0.3);
+    background:
+        rgba(255, 255, 255, 0.08);
 
     color: white;
 
-    padding: 11px 16px;
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
 
-    border-radius: 8px;
+    padding: 14px 24px;
 
-    font-size: 11px;
+    border-radius: 10px;
 
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+    backdrop-filter: blur(5px);
 }
 
+
+.hero-secondary:hover {
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MOBILE HERO
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero-card {
+
+        min-height: 350px;
+
+        background-size:
+            100% 100%,
+            auto 70%;
+
+        background-position:
+            center,
+            right bottom;
+    }
+
+
+    .hero-content {
+
+        padding: 25px;
+
+        max-width: 100%;
+    }
+
+
+    .hero-content h2 {
+
+        font-size: 27px;
+    }
+
+
+    .hero-content p {
+
+        font-size: 12px;
+
+        max-width: 95%;
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        width: 100%;
+    }
+
+
+    .hero-primary,
+    .hero-secondary {
+
+        width: 100%;
+
+        text-align: center;
+    }
+}
 
 /* =========================================================
    STATS

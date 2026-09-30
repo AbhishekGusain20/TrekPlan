@@ -1,6 +1,37 @@
-
 /* =====================================================
    TREKPLAN — ITINERARY
+   Dashboard Blue Theme
+===================================================== */
+
+
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+
+:root {
+    --primary: #073b5c;
+    --primary-dark: #052c45;
+    --primary-light: #0b567e;
+
+    --blue: #278bc7;
+    --blue-light: #e8f3ff;
+
+    --background: #f5f8fb;
+
+    --text: #102536;
+    --text-light: #708295;
+
+    --border: #e3eaf0;
+
+    --white: #ffffff;
+
+    --shadow:
+        0 5px 20px rgba(15, 45, 65, 0.06);
+}
+
+
+/* =====================================================
+   RESET
 ===================================================== */
 
 * {
@@ -9,254 +40,585 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #e6e1dc;
-    color: #12372a;
+
+html {
+    scroll-behavior: smooth;
 }
 
 
-/* ================= HEADER ================= */
+body {
+    font-family: Arial, sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header {
     height: 70px;
-    background: #163f33;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
     color: white;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 7%;
+
+    box-shadow:
+        0 4px 15px rgba(7, 59, 92, 0.15);
 }
+
+
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo {
     font-size: 22px;
+
     font-weight: bold;
+
+    color: white;
+
+    letter-spacing: 0.3px;
 }
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
 .back-btn {
     color: white;
+
     text-decoration: none;
+
     padding: 10px 18px;
-    border: 1px solid white;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.55);
+
     border-radius: 8px;
+
+    font-size: 13px;
+
+    transition: 0.25s ease;
+
+    background:
+        rgba(255, 255, 255, 0.06);
 }
 
 
-/* ================= CONTAINER ================= */
+.back-btn:hover {
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container {
     width: 90%;
+
     max-width: 1000px;
+
     margin: 40px auto;
 }
 
 
-/* ================= PAGE HEADER ================= */
+/* =====================================================
+   PAGE HEADER
+===================================================== */
 
 .page-header {
     margin-bottom: 30px;
 }
 
+
+/* =====================================================
+   SMALL TITLE
+===================================================== */
+
 .small-title {
     font-size: 13px;
+
     font-weight: bold;
+
     letter-spacing: 1px;
+
     margin-bottom: 8px;
+
+    color: var(--blue);
 }
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
 
 .page-header h1 {
     font-size: 36px;
+
     margin-bottom: 8px;
+
+    color: var(--primary);
 }
+
 
 .page-header p {
-    color: #666;
+    color: var(--text-light);
+
+    font-size: 14px;
 }
 
 
-/* ================= FORM CARD ================= */
+/* =====================================================
+   FORM CARD
+===================================================== */
 
 .form-card {
     background: white;
+
     padding: 30px;
+
     border-radius: 15px;
+
     margin-bottom: 35px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+
+    border:
+        1px solid var(--border);
+
+    box-shadow: var(--shadow);
 }
+
 
 .form-card h2 {
     margin-bottom: 25px;
+
+    color: var(--primary);
+
+    font-size: 21px;
 }
 
 
-/* ================= FORM ================= */
+/* =====================================================
+   FORM
+===================================================== */
 
 #itineraryForm {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 18px;
 }
 
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
 .form-group {
     display: flex;
+
     flex-direction: column;
 }
 
+
 .form-group label {
     margin-bottom: 7px;
+
     font-weight: 600;
+
+    color: #43596a;
+
+    font-size: 13px;
 }
+
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
+
     padding: 12px;
 
-    border: 1px solid #ddd;
+    border:
+        1px solid #dce5eb;
+
     border-radius: 8px;
 
     font-size: 15px;
+
+    font-family: inherit;
+
+    color: var(--text);
+
+    background: white;
+
+    outline: none;
+
+    transition: 0.2s ease;
 }
+
+
+/* =====================================================
+   INPUT PLACEHOLDER
+===================================================== */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa9b4;
+}
+
+
+/* =====================================================
+   INPUT FOCUS
+===================================================== */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(7, 59, 92, 0.08);
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
 
 .form-group textarea {
     min-height: 100px;
+
     resize: vertical;
 }
+
+
+/* =====================================================
+   FULL WIDTH FIELD
+===================================================== */
 
 .form-group:nth-child(5) {
     grid-column: 1 / -1;
 }
 
+
+/* =====================================================
+   ADD BUTTON
+===================================================== */
+
 .add-btn {
     grid-column: 1 / -1;
 
     border: none;
-    background: #12372a;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
     color: white;
 
     padding: 13px 20px;
+
     border-radius: 8px;
 
     font-size: 15px;
+
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.25s ease;
+
+    box-shadow:
+        0 7px 18px rgba(7, 59, 92, 0.15);
 }
+
 
 .add-btn:hover {
-    opacity: 0.9;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(7, 59, 92, 0.20);
 }
 
 
-/* ================= SECTION TITLE ================= */
+/* =====================================================
+   SECTION TITLE
+===================================================== */
 
 .section-title {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 20px;
 }
 
+
 .section-title h2 {
     font-size: 25px;
+
+    color: var(--primary);
 }
+
 
 #activityCount {
-    color: #666;
+    color: var(--text-light);
+
+    font-size: 13px;
 }
 
 
-/* ================= ACTIVITY CARD ================= */
+/* =====================================================
+   ACTIVITY CARD
+===================================================== */
 
 .activity-card {
     background: white;
+
     padding: 22px;
+
     border-radius: 12px;
 
     margin-bottom: 15px;
 
     display: flex;
+
     justify-content: space-between;
+
     gap: 20px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 4px 15px rgba(15, 45, 65, 0.05);
+
+    transition: 0.25s ease;
 }
+
+
+.activity-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(15, 45, 65, 0.09);
+}
+
+
+/* =====================================================
+   ACTIVITY LEFT
+===================================================== */
 
 .activity-left {
     flex: 1;
 }
 
+
+/* =====================================================
+   ACTIVITY DAY
+===================================================== */
+
 .activity-day {
     font-size: 13px;
+
     font-weight: bold;
+
     margin-bottom: 6px;
+
+    color: var(--blue);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
 }
+
+
+/* =====================================================
+   ACTIVITY TIME
+===================================================== */
 
 .activity-time {
     font-size: 14px;
-    color: #777;
+
+    color: var(--text-light);
+
     margin-bottom: 8px;
 }
+
+
+/* =====================================================
+   ACTIVITY TITLE
+===================================================== */
 
 .activity-title {
     font-size: 20px;
+
     margin-bottom: 5px;
+
+    color: var(--primary);
 }
+
+
+/* =====================================================
+   ACTIVITY LOCATION
+===================================================== */
 
 .activity-location {
-    color: #666;
+    color: #617486;
+
     margin-bottom: 8px;
+
+    font-size: 14px;
 }
 
+
+/* =====================================================
+   ACTIVITY NOTES
+===================================================== */
+
 .activity-notes {
-    color: #555;
+    color: #536675;
+
     line-height: 1.5;
+
+    font-size: 14px;
 }
+
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
 
 .delete-btn {
     height: fit-content;
 
     border: none;
+
     background: #e74c3c;
+
     color: white;
 
     padding: 9px 14px;
+
     border-radius: 7px;
 
     cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
 }
 
 
-/* ================= EMPTY STATE ================= */
+.delete-btn:hover {
+
+    background: #d93627;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
 
 .empty-state {
     background: white;
+
     text-align: center;
 
     padding: 50px 20px;
 
     border-radius: 12px;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow: var(--shadow);
 }
+
+
+/* =====================================================
+   EMPTY ICON
+===================================================== */
 
 .empty-icon {
     font-size: 40px;
+
     margin-bottom: 15px;
+
+    color: var(--blue);
 }
+
+
+/* =====================================================
+   EMPTY TITLE
+===================================================== */
 
 .empty-state h3 {
     margin-bottom: 8px;
+
+    color: var(--primary);
 }
+
+
+/* =====================================================
+   EMPTY TEXT
+===================================================== */
 
 .empty-state p {
-    color: #777;
+    color: var(--text-light);
+
+    font-size: 14px;
 }
 
 
-/* ================= MOBILE ================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 700px) {
 
@@ -264,34 +626,113 @@ body {
         padding: 0 5%;
     }
 
+
     .container {
         width: 92%;
+
         margin: 25px auto;
     }
+
 
     .page-header h1 {
         font-size: 28px;
     }
 
+
+    .page-header p {
+        font-size: 13px;
+    }
+
+
     #itineraryForm {
         grid-template-columns: 1fr;
     }
+
 
     .form-group:nth-child(5) {
         grid-column: auto;
     }
 
+
     .add-btn {
         grid-column: auto;
     }
+
+
+    .form-card {
+        padding: 22px;
+    }
+
 
     .activity-card {
         flex-direction: column;
     }
 
+
     .delete-btn {
         width: 100%;
     }
 
+
+    .section-title {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        flex-direction: column;
+    }
 }
 
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+    .header {
+        height: 65px;
+    }
+
+
+    .logo {
+        font-size: 19px;
+    }
+
+
+    .back-btn {
+        padding: 8px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .container {
+        width: 94%;
+    }
+
+
+    .page-header h1 {
+        font-size: 25px;
+    }
+
+
+    .form-card {
+        padding: 18px;
+    }
+
+
+    .form-card h2 {
+        font-size: 18px;
+    }
+
+
+    .activity-card {
+        padding: 18px;
+    }
+
+
+    .activity-title {
+        font-size: 18px;
+    }
+}

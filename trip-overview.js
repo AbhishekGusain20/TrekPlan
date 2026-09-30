@@ -688,7 +688,7 @@ function openProgress() {
 function openJournal() {
 
     window.location.href =
-        "travel-journal.html";
+        "journal.html";
 }
 
 

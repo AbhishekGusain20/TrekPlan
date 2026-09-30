@@ -1,5 +1,7 @@
 /* =====================================================
    TREKPLAN — COMMUNITY
+   DAY 19
+   Community Comments
 ===================================================== */
 
 
@@ -54,20 +56,22 @@ const topAvatar =
     document.getElementById("topAvatar");
 
 
-/* ================= STORAGE KEY ================= */
+/* ================= STORAGE ================= */
 
 const STORAGE_KEY =
     "trekplan_community_posts";
 
 
-/* ================= USER ================= */
+/* ================= GET USER ================= */
 
 function getCurrentUser() {
 
     let name = "AVI";
 
+
     const savedUser =
         localStorage.getItem("trekplan_user");
+
 
     if (savedUser) {
 
@@ -76,35 +80,48 @@ function getCurrentUser() {
             const user =
                 JSON.parse(savedUser);
 
+
             if (user.name) {
+
                 name = user.name;
+
             }
 
-        } catch (error) {
+        }
 
-            console.log("User data error");
+        catch (error) {
+
+            console.log(
+                "User data error"
+            );
 
         }
 
     }
 
+
     return name;
+
 }
 
 
-/* ================= USER DISPLAY ================= */
+/* ================= CURRENT USER ================= */
 
 const currentUser =
     getCurrentUser();
 
+
 userName.textContent =
     currentUser.toUpperCase();
+
 
 userAvatar.textContent =
     currentUser.charAt(0).toUpperCase();
 
+
 topAvatar.textContent =
     currentUser.charAt(0).toUpperCase();
+
 
 
 /* ================= GET POSTS ================= */
@@ -112,7 +129,10 @@ topAvatar.textContent =
 function getPosts() {
 
     const savedPosts =
-        localStorage.getItem(STORAGE_KEY);
+        localStorage.getItem(
+            STORAGE_KEY
+        );
+
 
     if (savedPosts) {
 
@@ -120,7 +140,9 @@ function getPosts() {
 
     }
 
+
     return [];
+
 }
 
 
@@ -142,15 +164,19 @@ function displayPosts(posts) {
 
     postsContainer.innerHTML = "";
 
+
     if (posts.length === 0) {
 
         noSearchResult.style.display =
             "block";
 
+
         noSearchResult.textContent =
             "No community posts yet. Be the first to share your adventure!";
 
+
         return;
+
     }
 
 
@@ -160,20 +186,97 @@ function displayPosts(posts) {
 
     posts.forEach(function (post) {
 
+
+        /* ================= POST CARD ================= */
+
         const card =
             document.createElement("div");
+
 
         card.className =
             "post-card";
 
+
+        /* ================= COMMENTS ================= */
+
+        let commentsHTML = "";
+
+
+        if (
+            post.comments &&
+            post.comments.length > 0
+        ) {
+
+            commentsHTML =
+                `<div class="comments-box">`;
+
+
+            post.comments.forEach(
+                function (comment) {
+
+                    commentsHTML += `
+
+                        <div class="comment">
+
+                            <div class="comment-avatar">
+
+                                ${comment.user
+                                    .charAt(0)
+                                    .toUpperCase()}
+
+                            </div>
+
+
+                            <div class="comment-content">
+
+                                <strong>
+                                    ${comment.user}
+                                </strong>
+
+                                <p>
+                                    ${comment.text}
+                                </p>
+
+                                <button
+                                    onclick="deleteComment(
+                                        ${post.id},
+                                        ${comment.id}
+                                    )">
+
+                                    Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+
+            commentsHTML +=
+                `</div>`;
+
+        }
+
+
+        /* ================= POST HTML ================= */
 
         card.innerHTML = `
 
             <div class="post-user">
 
                 <div class="post-avatar">
-                    ${post.user.charAt(0).toUpperCase()}
+
+                    ${post.user
+                        .charAt(0)
+                        .toUpperCase()}
+
                 </div>
+
 
                 <div class="post-user-info">
 
@@ -191,26 +294,35 @@ function displayPosts(posts) {
 
 
             <span class="post-tag">
+
                 ${post.type}
+
             </span>
 
 
             <h3>
+
                 ${post.destination}
+
             </h3>
 
 
             <p>
+
                 ${post.text}
+
             </p>
 
 
             <div class="post-location">
+
                 📍 ${post.destination}
+
             </div>
 
 
             <div class="post-actions">
+
 
                 <button
                     class="${post.liked ? "liked" : ""}"
@@ -221,8 +333,14 @@ function displayPosts(posts) {
                 </button>
 
 
-                <button>
-                    💬 Comment
+                <button
+                    onclick="showCommentBox(${post.id})">
+
+                    💬
+                    ${post.comments
+                        ? post.comments.length
+                        : 0}
+
                 </button>
 
 
@@ -234,7 +352,34 @@ function displayPosts(posts) {
 
                 </button>
 
+
             </div>
+
+
+            <!-- COMMENT FORM -->
+
+            <div
+                class="comment-form"
+                id="commentForm-${post.id}"
+                style="display:none;">
+
+                <input
+                    type="text"
+                    id="commentInput-${post.id}"
+                    placeholder="Write a comment...">
+
+
+                <button
+                    onclick="addComment(${post.id})">
+
+                    Add Comment
+
+                </button>
+
+            </div>
+
+
+            ${commentsHTML}
 
         `;
 
@@ -258,8 +403,10 @@ postForm.addEventListener(
         const destination =
             postDestination.value.trim();
 
+
         const type =
             postType.value;
+
 
         const text =
             postText.value.trim();
@@ -275,6 +422,7 @@ postForm.addEventListener(
             );
 
             return;
+
         }
 
 
@@ -298,19 +446,24 @@ postForm.addEventListener(
 
             liked: false,
 
-            date: new Date().toLocaleDateString(
-                "en-IN",
-                {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric"
-                }
-            )
+            comments: [],
+
+            date:
+                new Date().toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric"
+                    }
+                )
 
         };
 
 
-        posts.unshift(newPost);
+        posts.unshift(
+            newPost
+        );
 
 
         savePosts(posts);
@@ -320,6 +473,7 @@ postForm.addEventListener(
 
 
         displayPosts(posts);
+
 
         updateStats(posts);
 
@@ -332,7 +486,7 @@ postForm.addEventListener(
 );
 
 
-/* ================= LIKE ================= */
+/* ================= LIKE POST ================= */
 
 function likePost(id) {
 
@@ -341,15 +495,19 @@ function likePost(id) {
 
 
     const post =
-        posts.find(function (item) {
+        posts.find(
+            function (item) {
 
-            return item.id === id;
+                return item.id === id;
 
-        });
+            }
+        );
 
 
     if (!post) {
+
         return;
+
     }
 
 
@@ -359,7 +517,9 @@ function likePost(id) {
 
         post.liked = false;
 
-    } else {
+    }
+
+    else {
 
         post.likes++;
 
@@ -370,12 +530,176 @@ function likePost(id) {
 
     savePosts(posts);
 
+
     displayPosts(posts);
 
 }
 
 
-/* ================= DELETE ================= */
+/* ================= SHOW COMMENT BOX ================= */
+
+function showCommentBox(id) {
+
+    const box =
+        document.getElementById(
+            "commentForm-" + id
+        );
+
+
+    if (box.style.display === "none") {
+
+        box.style.display =
+            "flex";
+
+    }
+
+    else {
+
+        box.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* ================= ADD COMMENT ================= */
+
+function addComment(id) {
+
+    const input =
+        document.getElementById(
+            "commentInput-" + id
+        );
+
+
+    const text =
+        input.value.trim();
+
+
+    if (text === "") {
+
+        alert(
+            "Please write a comment."
+        );
+
+        return;
+
+    }
+
+
+    const posts =
+        getPosts();
+
+
+    const post =
+        posts.find(
+            function (item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!post) {
+
+        return;
+
+    }
+
+
+    if (!post.comments) {
+
+        post.comments = [];
+
+    }
+
+
+    const newComment = {
+
+        id: Date.now(),
+
+        user: currentUser,
+
+        text: text
+
+    };
+
+
+    post.comments.push(
+        newComment
+    );
+
+
+    savePosts(posts);
+
+
+    displayPosts(posts);
+
+}
+
+
+/* ================= DELETE COMMENT ================= */
+
+function deleteComment(
+    postId,
+    commentId
+) {
+
+    const posts =
+        getPosts();
+
+
+    const post =
+        posts.find(
+            function (item) {
+
+                return item.id === postId;
+
+            }
+        );
+
+
+    if (!post) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Delete this comment?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    post.comments =
+        post.comments.filter(
+            function (comment) {
+
+                return comment.id !== commentId;
+
+            }
+        );
+
+
+    savePosts(posts);
+
+
+    displayPosts(posts);
+
+}
+
+
+/* ================= DELETE POST ================= */
 
 function deletePost(id) {
 
@@ -386,7 +710,9 @@ function deletePost(id) {
 
 
     if (!confirmDelete) {
+
         return;
+
     }
 
 
@@ -395,23 +721,27 @@ function deletePost(id) {
 
 
     posts =
-        posts.filter(function (post) {
+        posts.filter(
+            function (post) {
 
-            return post.id !== id;
+                return post.id !== id;
 
-        });
+            }
+        );
 
 
     savePosts(posts);
 
+
     displayPosts(posts);
+
 
     updateStats(posts);
 
 }
 
 
-/* ================= STATS ================= */
+/* ================= UPDATE STATS ================= */
 
 function updateStats(posts) {
 
@@ -422,21 +752,28 @@ function updateStats(posts) {
     const destinations = [];
 
 
-    posts.forEach(function (post) {
+    posts.forEach(
+        function (post) {
 
-        const destination =
-            post.destination.toLowerCase();
+            const destination =
+                post.destination
+                    .toLowerCase();
 
 
-        if (
-            !destinations.includes(destination)
-        ) {
+            if (
+                !destinations.includes(
+                    destination
+                )
+            ) {
 
-            destinations.push(destination);
+                destinations.push(
+                    destination
+                );
+
+            }
 
         }
-
-    });
+    );
 
 
     trekCount.textContent =
@@ -450,6 +787,7 @@ function updateStats(posts) {
 searchInput.addEventListener(
     "input",
     function () {
+
 
         const value =
             searchInput.value
@@ -471,50 +809,61 @@ searchInput.addEventListener(
 
 
         const filteredPosts =
-            posts.filter(function (post) {
+            posts.filter(
+                function (post) {
 
-                return (
+                    return (
 
-                    post.destination
-                        .toLowerCase()
-                        .includes(value)
+                        post.destination
+                            .toLowerCase()
+                            .includes(value)
 
-                    ||
+                        ||
 
-                    post.text
-                        .toLowerCase()
-                        .includes(value)
+                        post.text
+                            .toLowerCase()
+                            .includes(value)
 
-                    ||
+                        ||
 
-                    post.type
-                        .toLowerCase()
-                        .includes(value)
+                        post.type
+                            .toLowerCase()
+                            .includes(value)
 
-                    ||
+                        ||
 
-                    post.user
-                        .toLowerCase()
-                        .includes(value)
+                        post.user
+                            .toLowerCase()
+                            .includes(value)
 
-                );
+                    );
 
-            });
+                }
+            );
 
 
-        if (filteredPosts.length === 0) {
+        if (
+            filteredPosts.length === 0
+        ) {
 
-            postsContainer.innerHTML = "";
+            postsContainer.innerHTML =
+                "";
+
 
             noSearchResult.style.display =
                 "block";
 
+
             noSearchResult.textContent =
                 "No posts found.";
 
-        } else {
+        }
 
-            displayPosts(filteredPosts);
+        else {
+
+            displayPosts(
+                filteredPosts
+            );
 
         }
 
@@ -529,7 +878,9 @@ scrollPostButton.addEventListener(
     function () {
 
         document
-            .getElementById("createPostSection")
+            .getElementById(
+                "createPostSection"
+            )
             .scrollIntoView({
                 behavior: "smooth"
             });
@@ -547,7 +898,9 @@ mobileMenu.addEventListener(
     "click",
     function () {
 
-        sidebar.classList.toggle("show");
+        sidebar.classList.toggle(
+            "show"
+        );
 
     }
 );
@@ -559,6 +912,7 @@ logoutBtn.addEventListener(
     "click",
     function () {
 
+
         const confirmLogout =
             confirm(
                 "Do you want to logout?"
@@ -566,13 +920,16 @@ logoutBtn.addEventListener(
 
 
         if (!confirmLogout) {
+
             return;
+
         }
 
 
         localStorage.removeItem(
             "trekplan_session"
         );
+
 
         sessionStorage.removeItem(
             "trekplan_session"
@@ -593,5 +950,6 @@ const posts =
 
 
 displayPosts(posts);
+
 
 updateStats(posts);

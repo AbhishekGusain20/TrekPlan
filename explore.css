@@ -1,5 +1,6 @@
 /* =====================================================
    TREKPLAN — EXPLORE PAGE
+   BLUE DASHBOARD THEME
 ===================================================== */
 
 
@@ -7,20 +8,20 @@
 
 :root {
 
-    --forest: #12372a;
-    --forest-dark: #0b281e;
-    --forest-light: #1c4b39;
+    --forest: #073b5c;
+    --forest-dark: #052d46;
+    --forest-light: #0b527d;
 
-    --cream: #f4f0e8;
+    --cream: #f5f8fb;
     --white: #ffffff;
 
-    --orange: #e47c45;
-    --orange-dark: #c96331;
+    --orange: #149b67;
+    --orange-dark: #108357;
 
-    --text: #18231e;
-    --muted: #6d7771;
+    --text: #172b3a;
+    --muted: #667788;
 
-    --border: #ddd9d0;
+    --border: #dce6ed;
 
     --radius: 18px;
 
@@ -73,11 +74,11 @@ select {
 
     z-index: 1000;
 
-    background: rgba(244, 240, 232, 0.94);
+    background: rgba(245, 248, 251, 0.94);
 
     backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(18, 55, 42, 0.08);
+    border-bottom: 1px solid rgba(7, 59, 92, 0.08);
 }
 
 
@@ -152,7 +153,7 @@ select {
 
     font-weight: 600;
 
-    color: #58635d;
+    color: #586b78;
 
     transition: 0.25s ease;
 }
@@ -293,9 +294,9 @@ select {
     background:
         linear-gradient(
             90deg,
-            rgba(9, 34, 25, 0.90),
-            rgba(9, 34, 25, 0.40),
-            rgba(9, 34, 25, 0.10)
+            rgba(5, 45, 70, 0.92),
+            rgba(7, 59, 92, 0.48),
+            rgba(7, 59, 92, 0.12)
         );
 }
 
@@ -350,7 +351,7 @@ select {
 
 .hero-content h1 span {
 
-    color: #f2c39f;
+    color: #8ed6b8;
 }
 
 
@@ -455,7 +456,7 @@ select {
 
     margin-bottom: 42px;
 
-    box-shadow: 0 10px 35px rgba(18, 55, 42, 0.06);
+    box-shadow: 0 10px 35px rgba(7, 59, 92, 0.07);
 }
 
 
@@ -471,7 +472,7 @@ select {
 
     padding: 0 16px;
 
-    background: #f8f6f1;
+    background: #eef4f8;
 
     border-radius: 11px;
 }
@@ -511,7 +512,7 @@ select {
 
     padding: 0 12px;
 
-    background: #f8f6f1;
+    background: #eef4f8;
 
     border-radius: 11px;
 }
@@ -612,7 +613,7 @@ select {
 
     box-shadow:
         0 18px 45px
-        rgba(18, 55, 42, 0.13);
+        rgba(7, 59, 92, 0.13);
 }
 
 
@@ -772,9 +773,9 @@ select {
 
     padding: 14px 0;
 
-    border-top: 1px solid #ece9e2;
+    border-top: 1px solid #e2eaf0;
 
-    border-bottom: 1px solid #ece9e2;
+    border-bottom: 1px solid #e2eaf0;
 
     margin-bottom: 17px;
 }
@@ -993,7 +994,7 @@ select {
 
 .footer {
 
-    background: #0b281e;
+    background: #052d46;
 
     color: white;
 

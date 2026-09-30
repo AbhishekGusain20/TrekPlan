@@ -6,12 +6,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f0e8;
-    color: #12372a;
+    background: #f5f8fb;
+    color: #073b5c;
 }
 
 .navbar {
-    background: #12372a;
+    background: #073b5c;
     color: white;
     padding: 18px 8%;
     display: flex;
@@ -37,21 +37,23 @@ body {
 
 .heading h1 {
     margin-bottom: 10px;
+    color: #073b5c;
 }
 
 .heading p {
-    color: #555;
+    color: #667785;
 }
 
 .checklist-box {
     background: white;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(7, 59, 92, 0.08);
 }
 
 .checklist-box h2 {
     margin-bottom: 20px;
+    color: #073b5c;
 }
 
 .input-area {
@@ -63,13 +65,21 @@ body {
 .input-area input {
     flex: 1;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #d5dfe7;
     border-radius: 6px;
     font-size: 16px;
+    color: #073b5c;
+    background: #ffffff;
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: #149b67;
+    box-shadow: 0 0 0 2px rgba(20, 155, 103, 0.1);
 }
 
 .input-area button {
-    background: #12372a;
+    background: #149b67;
     color: white;
     border: none;
     padding: 12px 22px;
@@ -78,7 +88,7 @@ body {
 }
 
 .input-area button:hover {
-    background: #1c513d;
+    background: #108456;
 }
 
 #checklist {
@@ -90,7 +100,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e1e8ee;
 }
 
 .item-left {
@@ -101,15 +111,16 @@ body {
 
 .item-left span {
     font-size: 16px;
+    color: #073b5c;
 }
 
 .completed {
     text-decoration: line-through;
-    color: #888;
+    color: #8896a3;
 }
 
 .delete-btn {
-    background: #e47c45;
+    background: #d9534f;
     color: white;
     border: none;
     padding: 7px 12px;
@@ -117,9 +128,13 @@ body {
     cursor: pointer;
 }
 
+.delete-btn:hover {
+    background: #c43d39;
+}
+
 #emptyMessage {
     text-align: center;
-    color: #888;
+    color: #8896a3;
     margin-top: 20px;
 }
 
