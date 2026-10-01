@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrekPlan - Maps & Routes</title>
+
+    <link rel="stylesheet" href="map.css">
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <h1>TrekPlan</h1>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <section class="map-section">
+
+            <h2>Maps & Routes</h2>
+
+            <p>
+                Explore your trek destination on the map.
+            </p>
+
+            <!-- Search Area -->
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Enter destination"
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+
+            <!-- Map -->
+            <div id="map"></div>
+
+
+            <!-- Location Information -->
+            <div class="location-info">
+
+                <h3 id="locationName">
+                    Select a destination
+                </h3>
+
+                <p id="locationDetails">
+                    Search for a place to see it on the map.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Leaflet JS -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <script src="map.js"></script>
+
+</body>
+</html>
