@@ -1,38 +1,48 @@
-/* =====================================================
+/* ============================================================
    TREKPLAN — TRIP OVERVIEW
-   Dashboard Blue Theme
-===================================================== */
+   ALPINE EXPLORER THEME
+   ============================================================ */
 
 
-/* =====================================================
+/* =========================
    ROOT VARIABLES
-===================================================== */
+========================= */
 
 :root {
-    --primary: #073b5c;
-    --primary-dark: #052c45;
-    --primary-light: #0b567e;
+    --forest-950: #173d3a;
+    --forest-900: #1d5148;
+    --forest-800: #28675a;
+    --forest-700: #3f8060;
 
-    --blue: #278bc7;
-    --blue-light: #e8f3ff;
+    --mountain-blue: #2f7778;
+    --mountain-blue-soft: #e5f1ef;
 
-    --background: #f5f8fb;
+    --sand: #f4f1e8;
+    --sand-light: #faf8f1;
+    --cream: #fffdf8;
 
-    --text: #102536;
-    --text-light: #708295;
+    --sun: #d99445;
+    --sun-soft: #fbefdf;
 
-    --border: #e3eaf0;
+    --text: #203f3c;
+    --text-light: #708580;
+    --muted: #92a39f;
 
-    --white: #ffffff;
+    --border: rgba(23, 61, 58, 0.10);
+    --border-strong: rgba(63, 128, 96, 0.20);
 
-    --shadow:
-        0 5px 20px rgba(15, 45, 65, 0.06);
+    --white: #fff;
+
+    --shadow: 0 16px 40px rgba(36, 65, 57, 0.09);
+    --shadow-hover: 0 22px 48px rgba(36, 65, 57, 0.14);
+
+    --radius: 20px;
 }
 
 
-/* =====================================================
-   RESET
-===================================================== */
+/* =========================
+   GLOBAL RESET
+========================= */
 
 * {
     margin: 0;
@@ -40,204 +50,316 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
 
-body {
-    font-family: Arial, sans-serif;
+/* =========================
+   BODY
+========================= */
 
-    background: var(--background);
+body {
+    font-family: "Manrope", "DM Sans", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 92% 7%,
+            rgba(63, 128, 96, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 4% 88%,
+            rgba(217, 148, 69, 0.07),
+            transparent 24%
+        ),
+        var(--sand);
 
     color: var(--text);
 
     min-height: 100vh;
+
+    overflow-x: hidden;
 }
 
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* =========================
+   TOPOGRAPHIC BACKGROUND
+========================= */
 
-.navbar {
+body::before,
+body::after {
+    content: "";
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-light)
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 23px,
+            rgba(47, 119, 120, 0.055) 24px 25px
         );
+}
 
-    color: white;
 
-    padding: 18px 8%;
+body::before {
+    width: 620px;
+    height: 620px;
+
+    top: -310px;
+    right: -220px;
+}
+
+
+body::after {
+    width: 560px;
+    height: 560px;
+
+    bottom: -310px;
+    left: -250px;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 22px,
+            rgba(63, 128, 96, 0.045) 23px 24px
+        );
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    min-height: 74px;
+
+    padding: 13px 7%;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
-    box-shadow:
-        0 4px 15px rgba(7, 59, 92, 0.15);
+    background: rgba(250, 248, 241, 0.94);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 8px 25px rgba(36, 65, 57, 0.06);
+
+    backdrop-filter: blur(18px);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
 }
 
 
-/* =====================================================
+/* =========================
    LOGO
-===================================================== */
+========================= */
 
 .logo {
+    display: flex;
+    align-items: center;
 
-    font-size: 22px;
+    gap: 10px;
 
-    font-weight: bold;
+    color: var(--forest-950);
 
-    color: white;
+    font-size: 21px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
 }
 
 
-/* =====================================================
+.logo img {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+
+.logo > span span {
+    color: var(--forest-700);
+}
+
+
+/* =========================
    BACK BUTTON
-===================================================== */
+========================= */
 
 .back-btn {
-
-    color: white;
+    color: var(--forest-900);
 
     text-decoration: none;
 
-    padding: 9px 15px;
+    padding: 10px 16px;
 
-    border:
-        1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(31, 103, 91, 0.16);
 
-    border-radius: 8px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.70);
 
     font-size: 13px;
+    font-weight: 700;
 
     transition: 0.25s ease;
-
-    background:
-        rgba(255, 255, 255, 0.05);
 }
 
 
 .back-btn:hover {
+    background: var(--forest-900);
 
-    background:
-        rgba(255, 255, 255, 0.15);
+    color: #fff;
 
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(29, 81, 72, 0.16);
 }
 
 
-/* =====================================================
-   CONTAINER
-===================================================== */
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .container {
-
     width: 90%;
+    max-width: 1120px;
 
-    max-width: 1100px;
-
-    margin: 45px auto;
+    margin: 42px auto 70px;
 }
 
 
-/* =====================================================
+/* =========================
    HEADING
-===================================================== */
+========================= */
 
 .heading {
-
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 
-/* =====================================================
-   EYEBROW
-===================================================== */
+.heading-top {
+    display: flex;
 
-.eyebrow {
+    justify-content: space-between;
+    align-items: flex-start;
 
-    color: var(--blue);
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
+    gap: 25px;
 }
 
 
-/* =====================================================
-   MAIN HEADING
-===================================================== */
+.eyebrow,
+.section-eyebrow {
+    color: var(--mountain-blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2.3px;
+}
+
 
 .heading h1 {
+    margin: 7px 0 6px;
 
-    font-size: 38px;
+    color: var(--forest-950);
 
-    margin: 8px 0;
+    font-size: clamp(34px, 5vw, 52px);
 
-    color: var(--primary);
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
 }
 
 
-/* =====================================================
-   HEADING DESCRIPTION
-===================================================== */
+.destination-line {
+    display: flex;
+    align-items: center;
 
-.heading p:last-child {
+    gap: 8px;
 
     color: var(--text-light);
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
 
-/* =====================================================
+.pin {
+    color: var(--sun);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   TRIP BADGE
+========================= */
+
+.trip-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border-radius: 999px;
+
+    background: var(--cream);
+
+    border: 1px solid var(--border);
+
+    color: var(--forest-800);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 22px rgba(36, 65, 57, 0.06);
+}
+
+
+/* =========================
    SUMMARY GRID
-===================================================== */
+========================= */
 
 .summary-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px, 1fr)
-        );
+        repeat(4, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 15px;
 }
 
 
-/* =====================================================
-   SUMMARY CARD
-===================================================== */
-
 .summary-card {
+    min-height: 108px;
 
-    background: white;
-
-    padding: 22px;
-
-    border-radius: 14px;
+    padding: 20px;
 
     display: flex;
-
     align-items: center;
 
-    gap: 15px;
+    gap: 14px;
 
-    border:
-        1px solid var(--border);
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
 
     box-shadow: var(--shadow);
 
@@ -246,50 +368,65 @@ body {
 
 
 .summary-card:hover {
+    transform: translateY(-5px);
 
-    transform: translateY(-3px);
+    border-color: var(--border-strong);
 
-    box-shadow:
-        0 10px 25px rgba(15, 45, 65, 0.09);
+    box-shadow: var(--shadow-hover);
 }
 
 
-/* =====================================================
-   SUMMARY ICON
-===================================================== */
+/* =========================
+   SUMMARY ICONS
+========================= */
 
 .summary-card > span {
-
-    width: 46px;
-
-    height: 46px;
-
-    border-radius: 12px;
-
-    background: var(--blue-light);
-
-    color: var(--blue);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 24px;
+    width: 48px;
+    height: 48px;
 
     flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: var(--mountain-blue-soft);
+
+    color: var(--mountain-blue);
+
+    font-size: 20px;
 }
 
 
-/* =====================================================
-   SUMMARY CONTENT
-===================================================== */
+.summary-card:nth-child(2) > span {
+    background: #e8f0e6;
+
+    color: var(--forest-700);
+}
+
+
+.summary-card:nth-child(3) > span {
+    background: var(--sun-soft);
+
+    color: #c67d2e;
+}
+
+
+.summary-card:nth-child(4) > span {
+    background: #eef0f6;
+
+    color: #687da8;
+}
+
+
+/* =========================
+   SUMMARY TEXT
+========================= */
 
 .summary-card div {
-
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
@@ -297,569 +434,532 @@ body {
 
 
 .summary-card small {
-
     color: var(--text-light);
 
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
 }
 
 
 .summary-card strong {
+    color: var(--forest-950);
 
     font-size: 17px;
-
-    color: var(--primary);
 }
 
 
-/* =====================================================
+/* =========================
    DATE CARD
-===================================================== */
+========================= */
 
 .date-card {
+    margin-top: 16px;
 
-    background: white;
-
-    margin-top: 20px;
-
-    padding: 25px;
-
-    border-radius: 14px;
+    padding: 22px 25px;
 
     display: flex;
-
+    align-items: center;
     justify-content: center;
 
-    align-items: center;
+    gap: 38px;
 
-    gap: 70px;
+    background: rgba(255, 255, 255, 0.90);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
 
     box-shadow: var(--shadow);
 }
 
 
-/* =====================================================
-   DATE CONTENT
-===================================================== */
-
 .date-card div:not(.arrow) {
-
     display: flex;
-
     flex-direction: column;
 
-    gap: 5px;
+    gap: 4px;
 }
 
 
 .date-card small {
-
     color: var(--text-light);
 
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
 }
 
 
 .date-card strong {
-
-    color: var(--primary);
+    color: var(--forest-950);
 
     font-size: 15px;
 }
 
 
-/* =====================================================
-   DATE ARROW
-===================================================== */
-
 .arrow {
+    color: var(--sun);
 
-    font-size: 25px;
-
-    color: var(--blue);
-
-    font-weight: bold;
+    font-size: 23px;
+    font-weight: 800;
 }
 
 
-/* =====================================================
+/* =========================
    PROGRESS CARD
-===================================================== */
+========================= */
 
 .progress-card {
+    margin-top: 16px;
 
-    background: white;
+    padding: 26px;
 
-    margin-top: 20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(238, 244, 236, 0.94)
+        );
 
-    padding: 25px;
+    border: 1px solid var(--border-strong);
 
-    border-radius: 14px;
-
-    border:
-        1px solid var(--border);
+    border-radius: var(--radius);
 
     box-shadow: var(--shadow);
-}
 
-
-/* =====================================================
-   SECTION TITLE
-===================================================== */
-
-.section-title {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 15px;
-}
-
-
-.section-title h2 {
-
-    color: var(--primary);
-}
-
-
-.section-title strong {
-
-    font-size: 22px;
-
-    color: var(--blue);
-}
-
-
-/* =====================================================
-   PROGRESS BAR
-===================================================== */
-
-.progress-bar {
-
-    width: 100%;
-
-    height: 14px;
-
-    background: #e6edf2;
-
-    border-radius: 20px;
+    position: relative;
 
     overflow: hidden;
 }
 
 
-/* =====================================================
-   PROGRESS FILL
-===================================================== */
+.progress-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -80px;
+    top: -150px;
+
+    width: 330px;
+    height: 330px;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 19px,
+            rgba(47, 119, 120, 0.07) 20px 21px
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 17px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.section-title h2 {
+    color: var(--forest-950);
+
+    font-size: 19px;
+}
+
+
+.section-title > strong {
+    color: var(--forest-800);
+
+    font-size: 25px;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress-bar {
+    width: 100%;
+
+    height: 13px;
+
+    background: #e4eae4;
+
+    border-radius: 99px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    z-index: 2;
+}
+
 
 .progress-fill {
-
-    width: 0%;
+    width: 0;
 
     height: 100%;
+
+    border-radius: inherit;
 
     background:
         linear-gradient(
             90deg,
-            var(--primary),
-            var(--blue)
+            var(--forest-800),
+            var(--mountain-blue)
         );
 
-    border-radius: 20px;
-
-    transition: width 0.4s ease;
+    transition: width 0.6s ease;
 }
 
 
-/* =====================================================
-   PROGRESS DESCRIPTION
-===================================================== */
-
-.progress-card p {
-
+.progress-card > p {
     margin-top: 12px;
 
     color: var(--text-light);
 
     font-size: 13px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 
-/* =====================================================
-   ACTIONS
-===================================================== */
+/* =========================
+   QUICK ACTIONS
+========================= */
 
 .actions {
-
-    margin-top: 35px;
+    margin-top: 28px;
 }
 
 
-.actions h2 {
-
-    margin-bottom: 18px;
-
-    color: var(--primary);
+.actions > h2 {
+    color: var(--forest-950);
 
     font-size: 22px;
+
+    margin-bottom: 13px;
 }
 
 
-/* =====================================================
-   ACTION GRID
-===================================================== */
-
 .action-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(180px, 1fr)
-        );
-
-    gap: 15px;
-}
-
-
-/* =====================================================
-   ACTION BUTTON
-===================================================== */
-
-.action-grid button {
-
-    border:
-        1px solid var(--border);
-
-    background: white;
-
-    padding: 25px 15px;
-
-    border-radius: 14px;
-
-    cursor: pointer;
-
-    color: var(--primary);
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    box-shadow: var(--shadow);
-
-    transition: 0.25s ease;
-}
-
-
-.action-grid button:hover {
-
-    transform: translateY(-3px);
-
-    border-color: #c4dce9;
-
-    background: var(--blue-light);
-
-    box-shadow:
-        0 10px 25px rgba(15, 45, 65, 0.09);
-}
-
-
-/* =====================================================
-   ACTION ICON
-===================================================== */
-
-.action-grid span {
-
-    display: block;
-
-    width: 45px;
-
-    height: 45px;
-
-    margin: 0 auto 8px;
-
-    border-radius: 12px;
-
-    background: var(--blue-light);
-
-    color: var(--blue);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 23px;
-}
-
-
-/* =====================================================
-   NOTES CARD
-===================================================== */
-
-.notes-card {
-
-    background: white;
-
-    margin-top: 35px;
-
-    padding: 25px;
-
-    border-radius: 14px;
-
-    border:
-        1px solid var(--border);
-
-    box-shadow: var(--shadow);
-}
-
-
-.notes-card h2 {
-
-    margin-bottom: 15px;
-
-    color: var(--primary);
-}
-
-
-/* =====================================================
-   NOTES TEXTAREA
-===================================================== */
-
-.notes-card textarea {
-
-    width: 100%;
-
-    min-height: 120px;
-
-    padding: 15px;
-
-    border:
-        1px solid #dce5eb;
-
-    border-radius: 8px;
-
-    resize: vertical;
-
-    font-family: inherit;
-
-    font-size: 14px;
-
-    color: var(--text);
-
-    outline: none;
-
-    margin-bottom: 12px;
-
-    transition: 0.2s ease;
-}
-
-
-.notes-card textarea::placeholder {
-
-    color: #9aa9b4;
-}
-
-
-.notes-card textarea:focus {
-
-    border-color: var(--primary);
-
-    box-shadow:
-        0 0 0 3px rgba(7, 59, 92, 0.08);
-}
-
-
-/* =====================================================
-   NOTE SAVE BUTTON
-===================================================== */
-
-.notes-card button,
-.no-trip button {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-light)
-        );
-
-    color: white;
-
-    border: none;
-
-    padding: 11px 20px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    transition: 0.25s ease;
-}
-
-
-.notes-card button:hover,
-.no-trip button:hover {
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary-dark),
-            var(--primary)
-        );
-
-    transform: translateY(-1px);
-}
-
-
-/* =====================================================
-   NO TRIP
-===================================================== */
-
-.no-trip {
-
-    display: none;
-
-    background: white;
-
-    padding: 40px;
-
-    margin-top: 30px;
-
-    border-radius: 14px;
-
-    text-align: center;
-
-    border:
-        1px solid var(--border);
-
-    box-shadow: var(--shadow);
-}
-
-
-.no-trip h2 {
-
-    color: var(--primary);
-
-    margin-bottom: 8px;
-}
-
-
-.no-trip p {
-
-    margin: 10px 0 20px;
-
-    color: var(--text-light);
-}
-
-
-/* =====================================================
-   SAVED NOTES
-===================================================== */
-
-.saved-notes {
-
-    margin-top: 30px;
-
-    border-top:
-        1px solid var(--border);
-
-    padding-top: 20px;
-}
-
-
-.saved-notes h3 {
-
-    margin-bottom: 15px;
-
-    color: var(--primary);
-
-    font-size: 18px;
-}
-
-
-/* =====================================================
-   NOTES LIST
-===================================================== */
-
-#notesList {
-
-    display: flex;
-
-    flex-direction: column;
+        repeat(5, 1fr);
 
     gap: 12px;
 }
 
 
-/* =====================================================
-   NOTE ITEM
-===================================================== */
+.action-grid button {
+    min-height: 96px;
 
-.note-item {
-
-    background: var(--blue-light);
-
-    padding: 15px;
-
-    border-radius: 10px;
+    padding: 17px 12px;
 
     display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
 
     justify-content: space-between;
 
-    align-items: center;
-
     gap: 15px;
 
-    border:
-        1px solid #d9eaf5;
+    background: rgba(255, 255, 255, 0.90);
+
+    color: var(--forest-950);
+
+    border: 1px solid var(--border);
+
+    border-radius: 17px;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-align: left;
+
+    box-shadow:
+        0 9px 24px rgba(36, 65, 57, 0.06);
+
+    transition: 0.25s ease;
 }
 
 
-/* =====================================================
-   NOTE TEXT
-===================================================== */
+/* =========================
+   ACTION ICONS
+========================= */
+
+.action-grid button span {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mountain-blue-soft);
+
+    color: var(--mountain-blue);
+
+    border-radius: 10px;
+
+    font-size: 17px;
+}
+
+
+.action-grid button:nth-child(2) span {
+    background: var(--sun-soft);
+
+    color: #c67d2e;
+}
+
+
+.action-grid button:nth-child(3) span {
+    background: #e8f0e6;
+
+    color: var(--forest-700);
+}
+
+
+.action-grid button:nth-child(4) span {
+    background: #f0ede6;
+
+    color: #846c48;
+}
+
+
+.action-grid button:nth-child(5) span {
+    background: #eef0f6;
+
+    color: #687da8;
+}
+
+
+.action-grid button:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--border-strong);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =========================
+   NOTES CARD
+========================= */
+
+.notes-card {
+    margin-top: 28px;
+
+    padding: 27px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+
+.notes-card > h2 {
+    color: var(--forest-950);
+
+    font-size: 20px;
+
+    margin-bottom: 14px;
+}
+
+
+.notes-card textarea {
+    width: 100%;
+
+    min-height: 125px;
+
+    resize: vertical;
+
+    padding: 15px 16px;
+
+    border:
+        1px solid rgba(23, 61, 58, 0.12);
+
+    border-radius: 14px;
+
+    background: var(--sand-light);
+
+    color: var(--text);
+
+    font: inherit;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+
+.notes-card textarea:focus {
+    background: #fff;
+
+    border-color: var(--mountain-blue);
+
+    box-shadow:
+        0 0 0 4px rgba(47, 119, 120, 0.07);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.notes-card > button,
+.no-trip button {
+    margin-top: 12px;
+
+    padding: 11px 19px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: var(--forest-800);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+
+.notes-card > button:hover,
+.no-trip button:hover {
+    background: var(--forest-950);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(23, 61, 58, 0.16);
+}
+
+
+/* =========================
+   SAVED NOTES
+========================= */
+
+.saved-notes {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+.saved-notes h3 {
+    margin-bottom: 12px;
+
+    color: var(--forest-950);
+
+    font-size: 16px;
+}
+
+
+#notesList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.note-item {
+    padding: 14px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: #edf3ed;
+
+    border: 1px solid #dbe7dc;
+
+    border-radius: 13px;
+}
+
 
 .note-text {
-
-    color: #334b5c;
+    color: #3f5d56;
 
     line-height: 1.5;
 
     word-break: break-word;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 
-/* =====================================================
-   DELETE NOTE
-===================================================== */
+.note-text small {
+    color: #82948e;
+}
+
 
 .delete-note {
-
     border: none;
 
-    background: #d9534f;
+    background: #f3e2d8;
 
-    color: white;
+    color: #a85d3e;
 
-    padding: 7px 10px;
+    padding: 7px 9px;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     cursor: pointer;
 
@@ -870,162 +970,150 @@ body {
 
 
 .delete-note:hover {
+    background: #b96949;
 
-    background: #c9302c;
+    color: #fff;
 
     transform: translateY(-1px);
 }
 
 
-/* =====================================================
-   EMPTY NOTES
-===================================================== */
-
 .empty-notes {
-
     color: var(--text-light);
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* =========================
+   NO TRIP
+========================= */
 
-@media (max-width: 600px) {
+.no-trip {
+    display: none;
 
-    .navbar {
+    margin-top: 25px;
 
-        padding: 15px 5%;
-    }
+    padding: 45px 25px;
 
+    text-align: center;
 
-    .container {
+    background: rgba(255, 255, 255, 0.94);
 
-        width: 94%;
+    border: 1px solid var(--border);
 
-        margin: 30px auto;
-    }
+    border-radius: var(--radius);
 
-
-    .heading h1 {
-
-        font-size: 30px;
-    }
+    box-shadow: var(--shadow);
+}
 
 
-    .heading p:last-child {
+.no-trip h2 {
+    color: var(--forest-950);
 
-        font-size: 13px;
-    }
+    margin-bottom: 8px;
+}
 
 
-    .date-card {
+.no-trip p {
+    margin: 10px 0 18px;
 
-        gap: 25px;
+    color: var(--text-light);
+}
 
-        padding: 20px;
-    }
 
+/* =========================
+   RESPONSIVE — TABLET
+========================= */
+
+@media (max-width: 900px) {
 
     .summary-grid {
-
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
-
-
-    .summary-card {
-
-        padding: 18px;
-    }
-
 
     .action-grid {
-
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
+/* =========================
+   RESPONSIVE — MOBILE
+========================= */
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
 
     .navbar {
-
-        padding: 14px 4%;
+        padding: 12px 5%;
     }
-
 
     .logo {
-
-        font-size: 19px;
+        font-size: 18px;
     }
 
-
-    .back-btn {
-
-        font-size: 11px;
-
-        padding: 8px 11px;
+    .logo img {
+        width: 38px;
+        height: 38px;
     }
-
 
     .container {
+        width: 92%;
 
-        width: 94%;
-
-        margin: 25px auto;
+        margin: 30px auto 50px;
     }
 
-
-    .heading h1 {
-
-        font-size: 26px;
-    }
-
-
-    .date-card {
-
+    .heading-top {
         flex-direction: column;
 
-        gap: 15px;
-
-        text-align: center;
+        gap: 14px;
     }
 
-
-    .arrow {
-
-        transform: rotate(90deg);
+    .heading h1 {
+        font-size: 34px;
     }
 
-
-    .action-grid {
-
+    .summary-grid {
         grid-template-columns: 1fr;
     }
 
+    .date-card {
+        flex-wrap: wrap;
 
-    .notes-card {
+        justify-content: flex-start;
 
-        padding: 20px;
+        gap: 18px;
     }
 
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-    .note-item {
 
-        align-items: flex-start;
+/* =========================
+   RESPONSIVE — SMALL MOBILE
+========================= */
 
-        flex-direction: column;
+@media (max-width: 430px) {
+
+    .back-btn {
+        padding: 8px 11px;
+
+        font-size: 12px;
     }
 
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
 
-    .delete-note {
+    .action-grid button {
+        min-height: 75px;
 
-        width: 100%;
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: flex-start;
     }
 }

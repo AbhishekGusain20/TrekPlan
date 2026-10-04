@@ -1,266 +1,318 @@
 /* =====================================================
-   TREKPLAN — TRIP PLANNER
+   TREKPLAN — DAY 21
+   SMART TRIP PLANNER
 ===================================================== */
 
 
-/* ================= ELEMENTS ================= */
+/* =========================
+   GET ELEMENTS
+========================= */
 
-const tripForm = document.getElementById("tripForm");
+const tripForm =
+    document.getElementById("tripForm");
 
-const tripName = document.getElementById("tripName");
-const startLocation = document.getElementById("startLocation");
-const destination = document.getElementById("destination");
+const tripResult =
+    document.getElementById("tripResult");
 
-const startDate = document.getElementById("startDate");
-const endDate = document.getElementById("endDate");
+const saveTripBtn =
+    document.getElementById("saveTripBtn");
 
-const travelers = document.getElementById("travelers");
-const budget = document.getElementById("budget");
 
-const logoutBtn = document.getElementById("logoutBtn");
+/* =========================
+   FORM SUBMIT
+========================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.getElementById("sidebar");
+tripForm.addEventListener(
+    "submit",
+    function (event) {
 
+        event.preventDefault();
 
-/* =====================================================
-   SET MINIMUM DATE
-===================================================== */
 
-const today = new Date().toISOString().split("T")[0];
+        /* =========================
+           GET VALUES
+        ========================= */
 
-startDate.min = today;
-endDate.min = today;
+        const tripName =
+            document.getElementById("tripName").value;
 
+        const destination =
+            document.getElementById("destination").value;
 
-/* =====================================================
-   UPDATE END DATE
-===================================================== */
+        const startDate =
+            document.getElementById("startDate").value;
 
-startDate.addEventListener("change", function () {
+        const endDate =
+            document.getElementById("endDate").value;
 
-    endDate.min = startDate.value;
-
-    if (
-        endDate.value &&
-        endDate.value < startDate.value
-    ) {
-
-        endDate.value = "";
-
-    }
-
-});
-
-
-/* =====================================================
-   LOAD SELECTED TREK FROM URL
-===================================================== */
-
-const urlParams =
-    new URLSearchParams(window.location.search);
-
-const selectedTrek =
-    urlParams.get("trek");
-
-
-/*
-   If Trek Details sends a trek name/id
-   through the URL, put it into destination.
-*/
-
-if (selectedTrek) {
-
-    destination.value =
-        selectedTrek
-            .replaceAll("-", " ")
-            .replace(/\b\w/g, function (letter) {
-                return letter.toUpperCase();
-            });
-
-}
-
-
-/* =====================================================
-   SAVE TRIP
-===================================================== */
-
-tripForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-
-    const name =
-        tripName.value.trim();
-
-    const startingPoint =
-        startLocation.value.trim();
-
-    const place =
-        destination.value.trim();
-
-    const start =
-        startDate.value;
-
-    const end =
-        endDate.value;
-
-    const people =
-        Number(travelers.value);
-
-    const totalBudget =
-        Number(budget.value);
-
-
-    /* ================= VALIDATION ================= */
-
-    if (
-        !name ||
-        !startingPoint ||
-        !place ||
-        !start ||
-        !end ||
-        people < 1 ||
-        totalBudget <= 0
-    ) {
-
-        alert(
-            "Please fill all trip details correctly."
-        );
-
-        return;
-
-    }
-
-
-    if (end < start) {
-
-        alert(
-            "End date cannot be before start date."
-        );
-
-        return;
-
-    }
-
-
-    /* =================================================
-       GET EXISTING TRIPS
-    ================================================= */
-
-    let trips =
-        JSON.parse(
-            localStorage.getItem("trekplanTrips")
-        ) || [];
-
-
-    /* =================================================
-       CREATE NEW TRIP
-    ================================================= */
-
-    const newTrip = {
-
-        id: Date.now(),
-
-        tripName: name,
-
-        startLocation: startingPoint,
-
-        destination: place,
-
-        startDate: start,
-
-        endDate: end,
-
-        travelers: people,
-
-        budget: totalBudget,
-
-        createdAt: new Date().toISOString()
-
-    };
-
-
-    /* =================================================
-       SAVE
-    ================================================= */
-
-    trips.push(newTrip);
-
-
-    localStorage.setItem(
-        "trekplanTrips",
-        JSON.stringify(trips)
-    );
-
-
-    /* =================================================
-       ALSO SAVE CURRENT TRIP
-    ================================================= */
-
-    localStorage.setItem(
-        "trekplan_currentTrip",
-        JSON.stringify(newTrip)
-    );
-
-
-    /* =================================================
-       SUCCESS
-    ================================================= */
-
-    alert(
-        "Trip created successfully! 🎉"
-    );
-
-
-    /*
-       Folder name removed.
-       Dashboard is now in the same folder
-       as this Trip Planner page.
-    */
-
-    window.location.href =
-        "dashboard.html#trips";
-
-});
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-if (logoutBtn) {
-
-    logoutBtn.addEventListener(
-        "click",
-        function () {
-
-            localStorage.removeItem(
-                "trekplan_currentUser"
+        const travelers =
+            Number(
+                document.getElementById("travelers").value
             );
 
-            window.location.href =
-                "login.html";
+        const budget =
+            Number(
+                document.getElementById("budget").value
+            );
 
+
+        /* =========================
+           CALCULATE DURATION
+        ========================= */
+
+        const start =
+            new Date(startDate);
+
+        const end =
+            new Date(endDate);
+
+
+        const difference =
+            end - start;
+
+
+        const duration =
+            Math.ceil(
+                difference /
+                (1000 * 60 * 60 * 24)
+            ) + 1;
+
+
+        if (duration <= 0) {
+
+            alert(
+                "End date must be after start date."
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           PER PERSON BUDGET
+        ========================= */
+
+        const perPerson =
+            Math.round(
+                budget / travelers
+            );
+
+
+        /* =========================
+           DISPLAY RESULT
+        ========================= */
+
+        document.getElementById(
+            "resultName"
+        ).textContent = tripName;
+
+
+        document.getElementById(
+            "resultDestination"
+        ).textContent = destination;
+
+
+        document.getElementById(
+            "resultDuration"
+        ).textContent =
+            duration + " Days";
+
+
+        document.getElementById(
+            "resultTravelers"
+        ).textContent =
+            travelers;
+
+
+        document.getElementById(
+            "resultBudget"
+        ).textContent =
+            "₹" + budget.toLocaleString();
+
+
+        document.getElementById(
+            "resultPerPerson"
+        ).textContent =
+            "₹" + perPerson.toLocaleString();
+
+
+        document.getElementById(
+            "resultStart"
+        ).textContent =
+            formatDate(startDate);
+
+
+        document.getElementById(
+            "resultEnd"
+        ).textContent =
+            formatDate(endDate);
+
+
+        /* =========================
+           SMART TIP
+        ========================= */
+
+        let tip = "";
+
+
+        if (perPerson < 5000) {
+
+            tip =
+                "Your budget is quite tight. Focus on affordable transport, stays and local food.";
+
+        } else if (perPerson < 10000) {
+
+            tip =
+                "You have a balanced budget. Compare transport and accommodation prices before booking.";
+
+        } else {
+
+            tip =
+                "You have a comfortable budget. You can consider better stays and experiences.";
+        }
+
+
+        if (duration >= 7) {
+
+            tip +=
+                " Since this is a longer trip, keep some extra emergency budget.";
+        }
+
+
+        document.getElementById(
+            "recommendationText"
+        ).textContent = tip;
+
+
+        /* =========================
+           SHOW RESULT
+        ========================= */
+
+        tripResult.classList.remove(
+            "hidden"
+        );
+
+
+        /* =========================
+           SAVE TEMP DATA
+        ========================= */
+
+        const tripData = {
+
+            tripName: tripName,
+
+            destination: destination,
+
+            startDate: startDate,
+
+            endDate: endDate,
+
+            travelers: travelers,
+
+            budget: budget,
+
+            duration: duration,
+
+            perPerson: perPerson
+        };
+
+
+        localStorage.setItem(
+            "trekplan_currentTrip",
+            JSON.stringify(tripData)
+        );
+
+    }
+);
+
+
+/* =========================
+   SAVE TRIP
+========================= */
+
+saveTripBtn.addEventListener(
+    "click",
+    function () {
+
+        const currentTrip =
+            JSON.parse(
+                localStorage.getItem(
+                    "trekplan_currentTrip"
+                )
+            );
+
+
+        if (!currentTrip) {
+
+            alert(
+                "Please create a trip first."
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           GET OLD TRIPS
+        ========================= */
+
+        let trips =
+            JSON.parse(
+                localStorage.getItem(
+                    "trekplanTrips"
+                )
+            ) || [];
+
+
+        /* =========================
+           ADD NEW TRIP
+        ========================= */
+
+        trips.push(currentTrip);
+
+
+        /* =========================
+           SAVE TRIPS
+        ========================= */
+
+        localStorage.setItem(
+            "trekplanTrips",
+            JSON.stringify(trips)
+        );
+
+
+        alert(
+            "Trip saved successfully! 🎉"
+        );
+
+
+        /* =========================
+           GO DASHBOARD
+        ========================= */
+
+        window.location.href =
+            "dashboard.html";
+
+    }
+);
+
+
+/* =========================
+   DATE FORMAT
+========================= */
+
+function formatDate(date) {
+
+    const d =
+        new Date(date);
+
+
+    return d.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
         }
     );
-
-}
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-if (menuBtn) {
-
-    menuBtn.addEventListener(
-        "click",
-        function () {
-
-            sidebar.classList.toggle("open");
-
-        }
-    );
-
 }

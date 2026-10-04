@@ -2503,3 +2503,1055 @@ body::after {
 
 }
 
+
+
+/* =========================================================
+   TREKPLAN — ALPINE EXPLORER THEME
+   Day 22 visual refresh
+   Warm natural background • Forest green • Mountain blue
+   Topographic details • Outdoor/traveller feel
+   ========================================================= */
+
+/* ---------- NEW COLOR SYSTEM ---------- */
+
+:root {
+    --bg: #f4f1e8;
+    --bg-light: #faf8f1;
+    --bg-card: #ffffff;
+
+    --navy: #173d3a;
+    --navy-light: #24564f;
+
+    --cyan: #1f7a78;
+    --cyan-dark: #155d5b;
+    --cyan-soft: rgba(31, 122, 120, 0.10);
+
+    --orange: #d98b3a;
+    --orange-light: #e7aa63;
+    --orange-soft: rgba(217, 139, 58, 0.12);
+
+    --green: #3f8060;
+    --green-soft: rgba(63, 128, 96, 0.11);
+
+    --purple: #6578a8;
+    --purple-soft: rgba(101, 120, 168, 0.11);
+
+    --white: #ffffff;
+    --text: #183b3a;
+    --text-light: #647c79;
+    --text-muted: #8ca09d;
+
+    --border: rgba(23, 61, 58, 0.10);
+    --border-light: rgba(31, 122, 120, 0.20);
+
+    --shadow: 0 18px 45px rgba(37, 66, 58, 0.10);
+    --glow: 0 0 25px rgba(31, 122, 120, 0.10);
+
+    --radius: 18px;
+}
+
+
+/* ---------- PAGE ---------- */
+
+body {
+    font-family: "Manrope", "Trebuchet MS", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(125, 167, 153, 0.13),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(217, 139, 58, 0.08),
+            transparent 25%
+        ),
+        #f4f1e8;
+
+    color: var(--text);
+}
+
+/* Subtle topographic-map pattern */
+body::before {
+    width: 700px;
+    height: 700px;
+    top: -300px;
+    right: -260px;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 25px,
+            rgba(31, 122, 120, 0.055) 26px 27px
+        );
+
+    opacity: 0.9;
+    filter: none;
+    border-radius: 50%;
+}
+
+body::after {
+    width: 600px;
+    height: 600px;
+    bottom: -300px;
+    left: -280px;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 22px,
+            rgba(63, 128, 96, 0.045) 23px 24px
+        );
+
+    opacity: 0.8;
+    filter: none;
+    border-radius: 50%;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #fbfaf5 0%,
+            #f2efe5 100%
+        );
+
+    color: var(--text);
+
+    border-right: 1px solid rgba(23, 61, 58, 0.10);
+
+    box-shadow:
+        8px 0 35px rgba(35, 61, 54, 0.07);
+
+    backdrop-filter: none;
+}
+
+/* Decorative mountain silhouette at sidebar bottom */
+.sidebar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0.14;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 35%,
+            #3f8060 35% 48%,
+            transparent 48%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 45%,
+            #1f7a78 45% 60%,
+            transparent 60%
+        );
+
+    clip-path: polygon(
+        0 75%,
+        18% 52%,
+        31% 70%,
+        48% 34%,
+        62% 62%,
+        77% 45%,
+        100% 70%,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* ---------- LOGO ---------- */
+
+.sidebar-logo {
+    height: 105px;
+    padding: 15px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.sidebar-logo img {
+    width: 105px;
+    height: 78px;
+    object-fit: contain;
+    filter: none;
+}
+
+.sidebar-logo img:hover {
+    transform: scale(1.04);
+    filter: none;
+}
+
+
+/* ---------- NAV ---------- */
+
+.nav-title {
+    color: #78918b;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: #58716d;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    font-size: 13px;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-link:hover {
+    color: #173d3a;
+    background: #e8eee7;
+    border-color: rgba(31, 122, 120, 0.10);
+    transform: translateX(4px);
+}
+
+.nav-link.active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            #195d53,
+            #2f7668
+        );
+
+    border: 1px solid rgba(23, 61, 58, 0.15);
+
+    box-shadow:
+        inset 3px 0 0 #dca15c,
+        0 8px 20px rgba(31, 87, 73, 0.16);
+}
+
+.nav-icon {
+    color: inherit;
+    filter: none;
+}
+
+
+/* ---------- PROFILE ---------- */
+
+.user-profile {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(23, 61, 58, 0.10);
+}
+
+.user-avatar,
+.top-avatar {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1f7a78,
+            #3f8060
+        );
+
+    box-shadow: 0 5px 16px rgba(31, 122, 120, 0.20);
+}
+
+.user-info strong {
+    color: #183b3a;
+}
+
+.user-info span {
+    color: #78918b;
+}
+
+.user-menu {
+    color: #78918b;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-content {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.30),
+            rgba(244,241,232,0.85)
+        );
+}
+
+
+/* ---------- TOPBAR ---------- */
+
+.topbar {
+    background: rgba(250, 249, 244, 0.92);
+    border-bottom: 1px solid rgba(23, 61, 58, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.search-box {
+    background: #ffffff;
+    border: 1px solid rgba(23, 61, 58, 0.10);
+    color: #718985;
+    box-shadow: 0 5px 18px rgba(35, 61, 54, 0.05);
+}
+
+.search-box:focus-within {
+    border-color: rgba(31, 122, 120, 0.35);
+    box-shadow: 0 0 0 4px rgba(31, 122, 120, 0.07);
+}
+
+.search-box input {
+    color: #183b3a;
+}
+
+.search-box input::placeholder {
+    color: #91a29f;
+}
+
+.icon-button {
+    color: #56716c;
+}
+
+.icon-button:hover {
+    color: var(--cyan);
+    filter: none;
+}
+
+.notification-dot {
+    background: var(--orange);
+    box-shadow: none;
+}
+
+
+/* ---------- WELCOME ---------- */
+
+.small-label {
+    color: #2b7569;
+}
+
+.welcome-section h1 {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #173d3a;
+}
+
+.welcome-section p:not(.small-label) {
+    color: #718681;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.primary-button {
+    background:
+        linear-gradient(
+            135deg,
+            #1d7165,
+            #2d8977
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(31, 122, 120, 0.18);
+}
+
+.primary-button:hover {
+    box-shadow:
+        0 12px 28px rgba(31, 122, 120, 0.24);
+}
+
+
+/* =========================================================
+   HERO — REAL TREKKING FEEL
+   ========================================================= */
+
+.hero-card {
+    min-height: 320px;
+
+    background-color: #294e49;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(17, 48, 45, 0.92) 0%,
+            rgba(17, 48, 45, 0.78) 30%,
+            rgba(17, 48, 45, 0.38) 57%,
+            rgba(17, 48, 45, 0.08) 100%
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+
+    box-shadow:
+        0 22px 50px rgba(38, 67, 59, 0.18);
+
+    transition: 0.4s ease;
+}
+
+.hero-card:hover {
+    border-color: transparent;
+
+    box-shadow:
+        0 28px 60px rgba(38, 67, 59, 0.22);
+}
+
+.hero-content {
+    padding: 48px 42px;
+    max-width: 700px;
+}
+
+.hero-tag {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #f8f4e8;
+    backdrop-filter: blur(8px);
+    box-shadow: none;
+}
+
+.hero-content h2 {
+    color: #ffffff;
+    font-size: 45px;
+    letter-spacing: -1.2px;
+    text-shadow: 0 3px 20px rgba(0,0,0,0.20);
+}
+
+.hero-content h2 span {
+    color: #f0c27b;
+    text-shadow: none;
+}
+
+.hero-content p {
+    color: #eef4ef;
+    max-width: 650px;
+}
+
+.hero-primary {
+    background: #f0b866;
+    color: #173d3a;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.14);
+}
+
+.hero-primary:hover {
+    box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+}
+
+.hero-secondary {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.28);
+    backdrop-filter: blur(8px);
+}
+
+.hero-secondary:hover {
+    background: rgba(255,255,255,0.20);
+    border-color: rgba(255,255,255,0.45);
+    color: #ffffff;
+}
+
+
+/* ---------- STATS ---------- */
+
+.stat-card {
+    background: rgba(255,255,255,0.88);
+
+    border: 1px solid rgba(23,61,58,0.08);
+
+    box-shadow:
+        0 10px 30px rgba(38,67,59,0.07);
+
+    backdrop-filter: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(31,122,120,0.20);
+
+    box-shadow:
+        0 18px 35px rgba(38,67,59,0.11);
+}
+
+.stat-icon.blue,
+.quick-icon.blue {
+    background: #e5f1f0;
+    color: #1f7a78;
+    border: 1px solid #d3e6e3;
+}
+
+.stat-icon.green,
+.quick-icon.green {
+    background: #e7f0e7;
+    color: #3f8060;
+    border: 1px solid #d7e5d8;
+}
+
+.stat-icon.orange,
+.quick-icon.orange {
+    background: #fbefdf;
+    color: #c97c2d;
+    border: 1px solid #f0dfc7;
+}
+
+.stat-icon.purple,
+.quick-icon.purple {
+    background: #eceef7;
+    color: #6578a8;
+    border: 1px solid #dde1ef;
+}
+
+.stat-card span {
+    color: #718681;
+}
+
+.stat-card strong {
+    color: #173d3a;
+}
+
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.section-heading h2 {
+    color: #173d3a;
+}
+
+.section-heading p {
+    color: #78918b;
+}
+
+.section-heading a {
+    color: #27766d;
+}
+
+.section-heading a:hover {
+    color: #173d3a;
+}
+
+
+/* ---------- TRIP CARDS ---------- */
+
+.trip-card {
+    background: #ffffff;
+
+    border: 1px solid rgba(23,61,58,0.08);
+
+    box-shadow:
+        0 12px 30px rgba(38,67,59,0.08);
+
+    backdrop-filter: none;
+}
+
+.trip-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(31,122,120,0.18);
+
+    box-shadow:
+        0 20px 42px rgba(38,67,59,0.13);
+}
+
+.trip-image::after {
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 35%,
+            rgba(16,48,43,0.52)
+        );
+}
+
+.trip-status {
+    background: rgba(255,255,255,0.90);
+    border: 1px solid rgba(63,128,96,0.25);
+    color: #3f8060;
+    backdrop-filter: blur(8px);
+}
+
+.trip-info h3 {
+    color: #173d3a;
+}
+
+.trip-info p {
+    color: #718681;
+}
+
+.trip-info strong {
+    color: #1f7a78;
+}
+
+
+/* ---------- TRIP BUTTONS ---------- */
+
+.trip-actions .view-trip {
+    background: #e8f2ef;
+    color: #1f7167;
+    border: 1px solid #d8e8e3;
+}
+
+.trip-actions .view-trip:hover {
+    background: #1f7a78;
+    color: #ffffff;
+}
+
+.itinerary-btn {
+    background: #f4f2eb;
+    color: #54716c;
+    border: 1px solid rgba(23,61,58,0.08) !important;
+}
+
+.itinerary-btn:hover {
+    background: #e5efec;
+    color: #1f7a78;
+}
+
+.progress-btn {
+    background: #edf4ee;
+    color: #3f8060;
+    border: 1px solid #dce9df;
+    box-shadow: none;
+}
+
+.progress-btn:hover {
+    background: #3f8060;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(63,128,96,0.18);
+}
+
+.delete-trip {
+    background: #fbefea;
+    color: #c76d48;
+    border: 1px solid #f0ddd5 !important;
+}
+
+.delete-trip:hover {
+    background: #c76d48;
+    color: #ffffff;
+}
+
+
+/* ---------- QUICK ACTIONS ---------- */
+
+.quick-card {
+    background: #ffffff;
+
+    border: 1px solid rgba(23,61,58,0.08);
+
+    box-shadow:
+        0 10px 25px rgba(38,67,59,0.06);
+
+    color: #173d3a;
+}
+
+.quick-card:hover {
+    border-color: rgba(31,122,120,0.18);
+    transform: translateX(5px);
+    box-shadow: 0 15px 30px rgba(38,67,59,0.10);
+}
+
+.quick-card strong {
+    color: #173d3a;
+}
+
+.quick-card div span {
+    color: #78918b;
+}
+
+.quick-card b {
+    color: #9aaca8;
+}
+
+.quick-card:hover b {
+    color: #1f7a78;
+}
+
+
+/* =========================================================
+   ADVENTURE BANNER
+   ========================================================= */
+
+.adventure-banner {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            #dfece3,
+            #edf3e8 55%,
+            #e6eee5
+        );
+
+    color: #173d3a;
+
+    border: 1px solid rgba(63,128,96,0.12);
+
+    box-shadow:
+        0 16px 35px rgba(38,67,59,0.08);
+}
+
+/* Topographic detail inside banner */
+.adventure-banner::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    bottom: -120px;
+    width: 360px;
+    height: 360px;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 20px,
+            rgba(31,122,120,0.08) 21px 22px
+        );
+
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.adventure-banner span {
+    color: #28766b;
+}
+
+.adventure-banner h2 {
+    color: #173d3a;
+}
+
+.adventure-banner p {
+    color: #617a74;
+}
+
+.adventure-banner button {
+    position: relative;
+    z-index: 2;
+
+    background: #1c685c;
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(31,95,82,0.18);
+}
+
+.adventure-banner button:hover {
+    background: #245f55;
+    box-shadow: 0 12px 25px rgba(31,95,82,0.24);
+}
+
+
+/* ---------- MODAL ---------- */
+
+.modal-overlay {
+    background: rgba(23, 49, 45, 0.58);
+    backdrop-filter: blur(10px);
+}
+
+.trip-modal {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4f1e8
+        );
+
+    border: 1px solid rgba(23,61,58,0.10);
+
+    box-shadow:
+        0 30px 80px rgba(35,61,54,0.25);
+}
+
+.close-modal {
+    background: #edf1eb;
+    color: #5d7771;
+}
+
+.close-modal:hover {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+.modal-icon {
+    background: #e5f1f0;
+    border: 1px solid #d3e6e3;
+    color: #1f7a78;
+}
+
+.modal-header h2 {
+    color: #173d3a;
+}
+
+.modal-header p {
+    color: #718681;
+}
+
+.form-group label {
+    color: #58716d;
+}
+
+.form-group input,
+.form-group select {
+    color: #173d3a;
+    background: #ffffff;
+    border: 1px solid rgba(23,61,58,0.12);
+}
+
+.form-group input::placeholder {
+    color: #9aa9a5;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #1f7a78;
+    box-shadow: 0 0 0 3px rgba(31,122,120,0.08);
+}
+
+.modal-submit {
+    background:
+        linear-gradient(
+            135deg,
+            #1d7165,
+            #2d8977
+        );
+
+    color: #ffffff;
+}
+
+.modal-submit:hover {
+    box-shadow: 0 10px 25px rgba(31,122,120,0.20);
+}
+
+
+/* ---------- TOAST ---------- */
+
+.toast {
+    background: rgba(255,255,255,0.97);
+    border: 1px solid rgba(23,61,58,0.10);
+    border-left: 4px solid #1f7a78;
+
+    box-shadow:
+        0 18px 40px rgba(35,61,54,0.15);
+}
+
+.toast > span {
+    color: #1f7a78;
+}
+
+.toast strong {
+    color: #173d3a;
+}
+
+.toast p {
+    color: #718681;
+}
+
+
+/* ---------- SCROLLBAR ---------- */
+
+::-webkit-scrollbar-track {
+    background: #eeece4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9db5ae;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1f7a78;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+
+    .hero-card {
+        min-height: 410px;
+
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(17,48,45,0.55) 0%,
+                rgba(17,48,45,0.88) 65%,
+                rgba(17,48,45,0.96) 100%
+            ),
+            url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding: 30px 27px;
+    }
+}
+/* =========================================================
+   SIDEBAR FIX
+   Keep Settings + Logout always visible
+========================================================= */
+
+.sidebar {
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+/* Main sidebar menu can scroll */
+.sidebar-nav {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-bottom: 10px;
+}
+
+/* Hide ugly scrollbar */
+.sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(31, 122, 120, 0.20);
+    border-radius: 10px;
+}
+
+/* Settings + User profile stay at bottom */
+.sidebar-bottom {
+    flex-shrink: 0;
+
+    padding-top: 8px;
+    padding-bottom: 15px;
+
+    background: #f4f1e8;
+
+    border-top: 1px solid rgba(23, 61, 58, 0.07);
+}
+
+/* Settings */
+.sidebar-bottom .nav-link {
+    margin-bottom: 8px;
+}
+
+/* User profile */
+.user-profile {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+/* User avatar */
+.user-avatar {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2d8172;
+    color: white;
+
+    font-weight: 700;
+}
+
+/* User information */
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-info strong {
+    display: block;
+
+    color: #173d3a;
+
+    font-size: 13px;
+}
+
+.user-info span {
+    display: block;
+
+    color: #718681;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+/* Logout */
+.user-menu {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #657c78;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.2s ease;
+}
+
+.user-menu:hover {
+    color: #ffffff;
+    background: #d98b3a;
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    .sidebar-nav {
+        overflow-y: auto;
+    }
+
+    .sidebar-bottom {
+        padding-bottom: 12px;
+    }
+}

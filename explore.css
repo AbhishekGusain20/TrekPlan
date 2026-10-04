@@ -1,35 +1,53 @@
 /* =====================================================
    TREKPLAN — EXPLORE PAGE
-   BLUE DASHBOARD THEME
+   DAY 22 — NATURAL ADVENTURE THEME
 ===================================================== */
 
 
-/* ================= ROOT ================= */
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
 
 :root {
 
-    --forest: #073b5c;
-    --forest-dark: #052d46;
-    --forest-light: #0b527d;
+    --forest: #12372a;
+    --forest-dark: #0b261c;
+    --forest-light: #1d5541;
 
-    --cream: #f5f8fb;
+    --teal: #2f7d6b;
+    --teal-dark: #246456;
+    --teal-light: #e2f0eb;
+    --teal-soft: #edf6f3;
+
+    --cream: #f4f1e8;
+    --cream-light: #faf8f2;
+
     --white: #ffffff;
 
-    --orange: #149b67;
-    --orange-dark: #108357;
+    --orange: #e47c45;
+    --orange-dark: #cf6532;
+    --orange-light: #fff0e7;
 
-    --text: #172b3a;
-    --muted: #667788;
+    --text: #24362e;
+    --muted: #718078;
 
-    --border: #dce6ed;
+    --border: #e1e3d9;
 
     --radius: 18px;
 
     --max-width: 1240px;
+
+    --shadow:
+        0 10px 30px rgba(18, 55, 42, 0.08);
+
+    --shadow-hover:
+        0 16px 38px rgba(18, 55, 42, 0.13);
 }
 
 
-/* ================= RESET ================= */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -37,25 +55,44 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
 
     font-family: "DM Sans", sans-serif;
 
-    background: var(--cream);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(47, 125, 107, 0.06),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(228, 124, 69, 0.05),
+            transparent 22%
+        ),
+        var(--cream);
 
     color: var(--text);
 
     line-height: 1.6;
+
+    min-height: 100vh;
+
+    position: relative;
 }
+
 
 a {
     text-decoration: none;
     color: inherit;
 }
+
 
 button,
 input,
@@ -64,7 +101,38 @@ select {
 }
 
 
-/* ================= NAVBAR ================= */
+/* =====================================================
+   SUBTLE TOPOGRAPHIC BACKGROUND
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background-image:
+        repeating-radial-gradient(
+            ellipse at 20% 30%,
+            transparent 0,
+            transparent 28px,
+            rgba(18, 55, 42, 0.035) 29px,
+            transparent 30px
+        );
+
+    z-index: -1;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
 
 .navbar {
 
@@ -74,11 +142,16 @@ select {
 
     z-index: 1000;
 
-    background: rgba(245, 248, 251, 0.94);
+    background:
+        rgba(250, 248, 242, 0.94);
 
     backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(7, 59, 92, 0.08);
+    border-bottom:
+        1px solid rgba(18, 55, 42, 0.08);
+
+    box-shadow:
+        0 4px 18px rgba(18, 55, 42, 0.04);
 }
 
 
@@ -100,7 +173,9 @@ select {
 }
 
 
-/* LOGO */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo {
 
@@ -121,6 +196,7 @@ select {
     color: var(--forest);
 }
 
+
 .logo img {
 
     width: 35px;
@@ -130,13 +206,16 @@ select {
     object-fit: contain;
 }
 
+
 .logo span span {
 
     color: var(--orange);
 }
 
 
-/* NAV LINKS */
+/* =====================================================
+   NAV LINKS
+===================================================== */
 
 .nav-links {
 
@@ -147,16 +226,18 @@ select {
     gap: 30px;
 }
 
+
 .nav-links a {
 
     font-size: 14px;
 
     font-weight: 600;
 
-    color: #586b78;
+    color: #607068;
 
     transition: 0.25s ease;
 }
+
 
 .nav-links a:hover,
 .nav-links a.active {
@@ -165,7 +246,9 @@ select {
 }
 
 
-/* NAV ACTIONS */
+/* =====================================================
+   NAV ACTIONS
+===================================================== */
 
 .nav-actions {
 
@@ -176,6 +259,7 @@ select {
     gap: 10px;
 }
 
+
 .login-btn {
 
     padding: 10px 18px;
@@ -185,13 +269,31 @@ select {
     font-weight: 600;
 
     color: var(--forest);
+
+    transition: 0.2s ease;
 }
+
+
+.login-btn:hover {
+
+    color: var(--teal);
+}
+
+
+/* =====================================================
+   START BUTTON
+===================================================== */
 
 .start-btn {
 
     padding: 11px 19px;
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white;
 
@@ -199,20 +301,34 @@ select {
 
     font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     transition: 0.25s ease;
+
+    box-shadow:
+        0 6px 15px rgba(18, 55, 42, 0.14);
 }
+
 
 .start-btn:hover {
 
-    background: var(--forest-light);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest-dark),
+            var(--forest)
+        );
 
     transform: translateY(-1px);
+
+    box-shadow:
+        0 9px 20px rgba(18, 55, 42, 0.18);
 }
 
 
-/* MOBILE BUTTON */
+/* =====================================================
+   MOBILE BUTTON
+===================================================== */
 
 .menu-btn {
 
@@ -230,7 +346,9 @@ select {
 }
 
 
-/* MOBILE MENU */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 .mobile-menu {
 
@@ -241,7 +359,10 @@ select {
     flex-direction: column;
 
     gap: 17px;
+
+    background: var(--cream-light);
 }
+
 
 .mobile-menu a {
 
@@ -250,9 +371,15 @@ select {
     color: var(--forest);
 }
 
+
 .mobile-start {
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white !important;
 
@@ -264,7 +391,9 @@ select {
 }
 
 
-/* ================= HERO ================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .explore-hero {
 
@@ -285,6 +414,10 @@ select {
 }
 
 
+/* =====================================================
+   HERO OVERLAY
+===================================================== */
+
 .hero-overlay {
 
     position: absolute;
@@ -294,12 +427,16 @@ select {
     background:
         linear-gradient(
             90deg,
-            rgba(5, 45, 70, 0.92),
-            rgba(7, 59, 92, 0.48),
-            rgba(7, 59, 92, 0.12)
+            rgba(11, 38, 28, 0.94),
+            rgba(18, 55, 42, 0.58),
+            rgba(47, 125, 107, 0.15)
         );
 }
 
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
 .hero-content {
 
@@ -319,6 +456,10 @@ select {
 }
 
 
+/* =====================================================
+   EYEBROW
+===================================================== */
+
 .eyebrow,
 .section-label {
 
@@ -333,8 +474,14 @@ select {
     color: var(--orange);
 
     margin-bottom: 14px;
+
+    text-transform: uppercase;
 }
 
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
 
 .hero-content h1 {
 
@@ -349,23 +496,33 @@ select {
     margin-bottom: 22px;
 }
 
+
 .hero-content h1 span {
 
-    color: #8ed6b8;
+    color: #9ed6c2;
 }
 
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
 
 .hero-content p {
 
     max-width: 540px;
 
-    color: rgba(255,255,255,0.82);
+    color:
+        rgba(255, 255, 255, 0.82);
 
     font-size: 17px;
+
+    line-height: 1.7;
 }
 
 
-/* ================= MAIN ================= */
+/* =====================================================
+   MAIN
+===================================================== */
 
 .explore-main {
 
@@ -377,7 +534,9 @@ select {
 }
 
 
-/* INTRO */
+/* =====================================================
+   INTRO SECTION
+===================================================== */
 
 .intro-section {
 
@@ -391,6 +550,7 @@ select {
 
     gap: 30px;
 }
+
 
 .intro-section h2 {
 
@@ -407,6 +567,7 @@ select {
     margin-bottom: 12px;
 }
 
+
 .intro-section p {
 
     color: var(--muted);
@@ -414,6 +575,10 @@ select {
     font-size: 16px;
 }
 
+
+/* =====================================================
+   TREK COUNT
+===================================================== */
 
 .trek-count {
 
@@ -426,6 +591,7 @@ select {
     color: var(--muted);
 }
 
+
 .trek-count strong {
 
     font-family: "Manrope", sans-serif;
@@ -436,13 +602,16 @@ select {
 }
 
 
-/* ================= FILTER ================= */
+/* =====================================================
+   FILTER SECTION
+===================================================== */
 
 .filter-section {
 
-    background: white;
+    background: var(--white);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 16px;
 
@@ -450,17 +619,28 @@ select {
 
     display: grid;
 
-    grid-template-columns: 1fr 190px 190px auto;
+    grid-template-columns:
+        1fr 190px 190px auto;
 
     gap: 12px;
 
     margin-bottom: 42px;
 
-    box-shadow: 0 10px 35px rgba(7, 59, 92, 0.07);
+    box-shadow: var(--shadow);
+
+    transition: 0.25s ease;
 }
 
 
-/* SEARCH */
+.filter-section:hover {
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =====================================================
+   SEARCH BOX
+===================================================== */
 
 .search-box {
 
@@ -472,17 +652,37 @@ select {
 
     padding: 0 16px;
 
-    background: #eef4f8;
+    background:
+        var(--teal-soft);
 
     border-radius: 11px;
+
+    border:
+        1px solid transparent;
+
+    transition: 0.2s ease;
 }
+
+
+.search-box:focus-within {
+
+    background: white;
+
+    border-color:
+        rgba(47, 125, 107, 0.3);
+
+    box-shadow:
+        0 0 0 3px rgba(47, 125, 107, 0.07);
+}
+
 
 .search-box span {
 
     font-size: 26px;
 
-    color: var(--forest);
+    color: var(--teal);
 }
+
 
 .search-box input {
 
@@ -500,7 +700,15 @@ select {
 }
 
 
-/* FILTER */
+.search-box input::placeholder {
+
+    color: #87948e;
+}
+
+
+/* =====================================================
+   FILTER ITEM
+===================================================== */
 
 .filter-item {
 
@@ -512,10 +720,12 @@ select {
 
     padding: 0 12px;
 
-    background: #eef4f8;
+    background:
+        var(--teal-soft);
 
     border-radius: 11px;
 }
+
 
 .filter-item label {
 
@@ -529,6 +739,7 @@ select {
 
     letter-spacing: 0.7px;
 }
+
 
 .filter-item select {
 
@@ -548,7 +759,9 @@ select {
 }
 
 
-/* RESET */
+/* =====================================================
+   RESET BUTTON
+===================================================== */
 
 .reset-btn {
 
@@ -558,24 +771,35 @@ select {
 
     border-radius: 11px;
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white;
 
-    font-weight: 600;
+    font-weight: 700;
 
     cursor: pointer;
 
     transition: 0.25s ease;
 }
 
+
 .reset-btn:hover {
 
-    background: var(--orange);
+    background:
+        var(--orange);
+
+    transform: translateY(-1px);
 }
 
 
-/* ================= TREK GRID ================= */
+/* =====================================================
+   TREK GRID
+===================================================== */
 
 .trek-grid {
 
@@ -588,36 +812,48 @@ select {
 }
 
 
-/* CARD */
+/* =====================================================
+   TREK CARD
+===================================================== */
 
 .trek-card {
 
-    background: white;
+    background: var(--white);
 
     border-radius: var(--radius);
 
     overflow: hidden;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        0 5px 20px rgba(18, 55, 42, 0.05);
 
     transition:
         transform 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
     animation: cardIn 0.45s ease both;
 }
+
 
 .trek-card:hover {
 
     transform: translateY(-7px);
 
+    border-color:
+        #ccdcd4;
+
     box-shadow:
-        0 18px 45px
-        rgba(7, 59, 92, 0.13);
+        var(--shadow-hover);
 }
 
 
-/* IMAGE */
+/* =====================================================
+   CARD IMAGE
+===================================================== */
 
 .card-image {
 
@@ -627,6 +863,7 @@ select {
 
     overflow: hidden;
 }
+
 
 .card-image img {
 
@@ -639,13 +876,16 @@ select {
     transition: transform 0.5s ease;
 }
 
+
 .trek-card:hover .card-image img {
 
     transform: scale(1.06);
 }
 
 
-/* BADGE */
+/* =====================================================
+   DIFFICULTY BADGE
+===================================================== */
 
 .difficulty {
 
@@ -659,7 +899,8 @@ select {
 
     border-radius: 50px;
 
-    background: rgba(255,255,255,0.93);
+    background:
+        rgba(255, 255, 255, 0.93);
 
     backdrop-filter: blur(8px);
 
@@ -670,10 +911,14 @@ select {
     text-transform: uppercase;
 
     letter-spacing: 0.6px;
+
+    color: var(--forest);
 }
 
 
-/* FAVORITE */
+/* =====================================================
+   FAVORITE BUTTON
+===================================================== */
 
 .favorite-btn {
 
@@ -691,19 +936,29 @@ select {
 
     border: none;
 
-    background: rgba(255,255,255,0.92);
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    color: var(--forest);
 
     cursor: pointer;
 
     font-size: 17px;
 
     transition: 0.2s ease;
+
+    box-shadow:
+        0 4px 12px rgba(18, 55, 42, 0.10);
 }
+
 
 .favorite-btn:hover {
 
     transform: scale(1.08);
+
+    background: white;
 }
+
 
 .favorite-btn.active {
 
@@ -713,13 +968,19 @@ select {
 }
 
 
-/* CARD CONTENT */
+/* =====================================================
+   CARD CONTENT
+===================================================== */
 
 .card-content {
 
     padding: 22px;
 }
 
+
+/* =====================================================
+   LOCATION
+===================================================== */
 
 .location {
 
@@ -737,6 +998,10 @@ select {
 }
 
 
+/* =====================================================
+   CARD TITLE
+===================================================== */
+
 .card-content h3 {
 
     font-family: "Manrope", sans-serif;
@@ -745,11 +1010,17 @@ select {
 
     font-size: 22px;
 
+    font-weight: 800;
+
     letter-spacing: -0.7px;
 
     margin-bottom: 9px;
 }
 
+
+/* =====================================================
+   CARD DESCRIPTION
+===================================================== */
 
 .card-content p {
 
@@ -763,7 +1034,9 @@ select {
 }
 
 
-/* CARD DETAILS */
+/* =====================================================
+   CARD DETAILS
+===================================================== */
 
 .card-details {
 
@@ -773,12 +1046,15 @@ select {
 
     padding: 14px 0;
 
-    border-top: 1px solid #e2eaf0;
+    border-top:
+        1px solid var(--border);
 
-    border-bottom: 1px solid #e2eaf0;
+    border-bottom:
+        1px solid var(--border);
 
     margin-bottom: 17px;
 }
+
 
 .detail {
 
@@ -789,12 +1065,14 @@ select {
     gap: 2px;
 }
 
+
 .detail span {
 
     color: var(--muted);
 
     font-size: 11px;
 }
+
 
 .detail strong {
 
@@ -804,7 +1082,9 @@ select {
 }
 
 
-/* CARD FOOTER */
+/* =====================================================
+   CARD FOOTER
+===================================================== */
 
 .card-footer {
 
@@ -816,6 +1096,10 @@ select {
 }
 
 
+/* =====================================================
+   PRICE
+===================================================== */
+
 .price {
 
     color: var(--forest);
@@ -826,6 +1110,7 @@ select {
 
     font-weight: 800;
 }
+
 
 .price small {
 
@@ -839,13 +1124,22 @@ select {
 }
 
 
+/* =====================================================
+   VIEW BUTTON
+===================================================== */
+
 .view-btn {
 
     padding: 10px 15px;
 
     border-radius: 9px;
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white;
 
@@ -854,15 +1148,27 @@ select {
     font-weight: 700;
 
     transition: 0.25s ease;
+
+    box-shadow:
+        0 5px 13px rgba(18, 55, 42, 0.12);
 }
+
 
 .view-btn:hover {
 
-    background: var(--orange);
+    background:
+        var(--orange);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px rgba(228, 124, 69, 0.20);
 }
 
 
-/* ================= NO RESULTS ================= */
+/* =====================================================
+   NO RESULTS
+===================================================== */
 
 .no-results {
 
@@ -873,17 +1179,36 @@ select {
     padding: 70px 20px;
 }
 
+
 .no-results.show {
 
     display: block;
 }
 
+
 .no-results-icon {
 
-    font-size: 45px;
+    width: 60px;
 
-    margin-bottom: 12px;
+    height: 60px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--teal-light);
+
+    color: var(--teal);
+
+    font-size: 28px;
 }
+
 
 .no-results h3 {
 
@@ -896,12 +1221,14 @@ select {
     margin-bottom: 8px;
 }
 
+
 .no-results p {
 
     color: var(--muted);
 
     margin-bottom: 20px;
 }
+
 
 .no-results button {
 
@@ -911,35 +1238,94 @@ select {
 
     border-radius: 9px;
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white;
 
     font-weight: 600;
 
     cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 
-/* ================= CTA ================= */
+.no-results button:hover {
+
+    background: var(--orange);
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
 
 .explore-cta {
 
-    background: var(--forest);
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
 
     color: white;
 
     padding: 100px 28px;
 
     text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
 }
+
+
+/* =====================================================
+   CTA TOPOGRAPHIC EFFECT
+===================================================== */
+
+.explore-cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.10;
+
+    background-image:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0,
+            transparent 30px,
+            rgba(255,255,255,0.4) 31px,
+            transparent 32px
+        );
+
+    pointer-events: none;
+}
+
 
 .cta-content {
 
     max-width: 700px;
 
     margin: auto;
+
+    position: relative;
+
+    z-index: 2;
 }
+
 
 .cta-content h2 {
 
@@ -954,12 +1340,15 @@ select {
     margin-bottom: 18px;
 }
 
+
 .cta-content p {
 
-    color: rgba(255,255,255,0.72);
+    color:
+        rgba(255,255,255,0.72);
 
     margin-bottom: 30px;
 }
+
 
 .cta-btn {
 
@@ -971,7 +1360,8 @@ select {
 
     padding: 14px 20px;
 
-    background: var(--orange);
+    background:
+        var(--orange);
 
     color: white;
 
@@ -980,26 +1370,38 @@ select {
     font-weight: 700;
 
     transition: 0.25s ease;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,0.12);
 }
+
 
 .cta-btn:hover {
 
-    background: var(--orange-dark);
+    background:
+        var(--orange-dark);
 
     transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(0,0,0,0.16);
 }
 
 
-/* ================= FOOTER ================= */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer {
 
-    background: #052d46;
+    background:
+        var(--forest-dark);
 
     color: white;
 
     padding: 70px 28px 25px;
 }
+
 
 .footer-container {
 
@@ -1016,24 +1418,29 @@ select {
     padding-bottom: 50px;
 }
 
+
 .footer .logo {
 
     color: white;
 }
+
 
 .footer-brand {
 
     max-width: 340px;
 }
 
+
 .footer-brand p {
 
-    color: rgba(255,255,255,0.58);
+    color:
+        rgba(255,255,255,0.58);
 
     margin-top: 17px;
 
     font-size: 14px;
 }
+
 
 .footer-links {
 
@@ -1041,6 +1448,7 @@ select {
 
     gap: 90px;
 }
+
 
 .footer-links div {
 
@@ -1051,24 +1459,32 @@ select {
     gap: 10px;
 }
 
+
 .footer-links h4 {
 
     margin-bottom: 8px;
+
+    color: white;
 }
+
 
 .footer-links a {
 
-    color: rgba(255,255,255,0.58);
+    color:
+        rgba(255,255,255,0.58);
 
     font-size: 14px;
 
     transition: 0.2s ease;
 }
 
+
 .footer-links a:hover {
 
-    color: white;
+    color:
+        var(--orange);
 }
+
 
 .footer-bottom {
 
@@ -1078,19 +1494,23 @@ select {
 
     padding-top: 22px;
 
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top:
+        1px solid rgba(255,255,255,0.1);
 
     display: flex;
 
     justify-content: space-between;
 
-    color: rgba(255,255,255,0.45);
+    color:
+        rgba(255,255,255,0.45);
 
     font-size: 12px;
 }
 
 
-/* ================= ANIMATION ================= */
+/* =====================================================
+   CARD ANIMATION
+===================================================== */
 
 @keyframes cardIn {
 
@@ -1110,7 +1530,9 @@ select {
 }
 
 
-/* ================= TABLET ================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media (max-width: 1000px) {
 
@@ -1120,10 +1542,12 @@ select {
         display: none;
     }
 
+
     .menu-btn {
 
         display: block;
     }
+
 
     .trek-grid {
 
@@ -1131,16 +1555,19 @@ select {
             repeat(2, 1fr);
     }
 
+
     .filter-section {
 
-        grid-template-columns: 1fr 1fr;
-
+        grid-template-columns:
+            1fr 1fr;
     }
+
 
     .search-box {
 
         grid-column: 1 / -1;
     }
+
 
     .reset-btn {
 
@@ -1149,7 +1576,9 @@ select {
 }
 
 
-/* ================= MOBILE ================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 650px) {
 
@@ -1158,20 +1587,24 @@ select {
         padding: 15px 20px;
     }
 
+
     .mobile-menu.open {
 
         display: flex;
     }
+
 
     .explore-hero {
 
         min-height: 420px;
     }
 
+
     .hero-content {
 
         padding: 60px 20px;
     }
+
 
     .hero-content h1 {
 
@@ -1180,22 +1613,32 @@ select {
         letter-spacing: -2px;
     }
 
+
+    .hero-content p {
+
+        font-size: 15px;
+    }
+
+
     .explore-main {
 
         padding: 65px 20px 75px;
     }
 
+
     .intro-section {
 
-        align-items: start;
+        align-items: flex-start;
 
         flex-direction: column;
     }
+
 
     .trek-count {
 
         margin-top: -5px;
     }
+
 
     .filter-section {
 
@@ -1204,30 +1647,42 @@ select {
         padding: 10px;
     }
 
+
     .search-box {
 
         grid-column: auto;
     }
+
 
     .filter-item {
 
         padding: 11px 14px;
     }
 
+
     .reset-btn {
 
         padding: 12px;
     }
+
 
     .trek-grid {
 
         grid-template-columns: 1fr;
     }
 
+
     .card-image {
 
         height: 235px;
     }
+
+
+    .card-content {
+
+        padding: 20px;
+    }
+
 
     .footer-container {
 
@@ -1236,6 +1691,7 @@ select {
         gap: 40px;
     }
 
+
     .footer-links {
 
         gap: 45px;
@@ -1243,10 +1699,147 @@ select {
         flex-wrap: wrap;
     }
 
+
     .footer-bottom {
 
         flex-direction: column;
 
         gap: 8px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+    .nav-container {
+
+        padding: 14px 17px;
+    }
+
+
+    .logo {
+
+        font-size: 18px;
+    }
+
+
+    .logo img {
+
+        width: 31px;
+
+        height: 31px;
+    }
+
+
+    .explore-hero {
+
+        min-height: 400px;
+    }
+
+
+    .hero-content {
+
+        padding: 50px 18px;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 38px;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .hero-content p {
+
+        font-size: 14px;
+    }
+
+
+    .explore-main {
+
+        padding:
+            55px 17px 65px;
+    }
+
+
+    .intro-section h2 {
+
+        font-size: 31px;
+    }
+
+
+    .filter-section {
+
+        border-radius: 14px;
+    }
+
+
+    .trek-card {
+
+        border-radius: 15px;
+    }
+
+
+    .card-image {
+
+        height: 220px;
+    }
+
+
+    .card-content h3 {
+
+        font-size: 20px;
+    }
+
+
+    .card-content p {
+
+        font-size: 13px;
+    }
+
+
+    .price {
+
+        font-size: 18px;
+    }
+
+
+    .view-btn {
+
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+
+
+    .explore-cta {
+
+        padding:
+            75px 20px;
+    }
+
+
+    .cta-content h2 {
+
+        font-size: 37px;
+    }
+
+
+    .footer {
+
+        padding:
+            55px 20px 22px;
+    }
+
+
+    .footer-links {
+
+        gap: 30px;
     }
 }

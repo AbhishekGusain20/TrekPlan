@@ -1692,3 +1692,221 @@ a {
         width: 100%;
     }
 }
+
+/* =========================================================
+   SIDEBAR — SETTINGS & LOGOUT FIX
+   ========================================================= */
+
+/* Sidebar uses full screen */
+.sidebar {
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN SIDEBAR MENU
+   ========================================================= */
+
+.sidebar-nav {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-bottom: 8px;
+}
+
+
+/* Sidebar menu scrollbar */
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(31, 122, 120, 0.25);
+    border-radius: 10px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 122, 120, 0.45);
+}
+
+
+/* =========================================================
+   BOTTOM SECTION
+   SETTINGS + USER + LOGOUT
+   ========================================================= */
+
+.sidebar-bottom {
+    flex-shrink: 0;
+
+    margin-top: 8px;
+
+    padding-top: 8px;
+    padding-bottom: 2px;
+
+    position: relative;
+    z-index: 10;
+
+    background: transparent;
+}
+
+
+/* Settings */
+.sidebar-bottom > .nav-link {
+    flex-shrink: 0;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   USER PROFILE
+   ========================================================= */
+
+.sidebar-bottom .user-profile {
+    flex-shrink: 0;
+
+    margin-top: 0;
+
+    padding: 12px 5px 4px;
+
+    position: relative;
+    z-index: 11;
+}
+
+
+/* Logout button */
+.sidebar-bottom .user-menu {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 12;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   DECORATIVE MOUNTAIN
+   NEVER COVER SETTINGS / LOGOUT
+   ========================================================= */
+
+.sidebar::after {
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sidebar-logo,
+.sidebar-nav,
+.sidebar-bottom {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   SHORT LAPTOP SCREEN
+   ========================================================= */
+
+@media (max-height: 800px) {
+
+    .sidebar {
+        padding-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    .sidebar-logo {
+        height: 80px;
+        padding: 8px 15px;
+    }
+
+    .sidebar-logo img {
+        width: 58px;
+        height: 58px;
+    }
+
+    .sidebar-nav {
+        gap: 3px;
+    }
+
+    .nav-link {
+        padding: 9px 11px;
+    }
+
+    .sidebar-bottom {
+        margin-top: 4px;
+        padding-top: 5px;
+    }
+
+    .sidebar-bottom .user-profile {
+        margin-top: 0;
+        padding-top: 8px;
+    }
+}
+
+
+/* =========================================================
+   VERY SHORT SCREEN
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+    .sidebar {
+        padding-top: 10px;
+        padding-bottom: 7px;
+    }
+
+    .sidebar-logo {
+        height: 65px;
+    }
+
+    .sidebar-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav-title {
+        margin-bottom: 5px;
+    }
+
+    .nav-link {
+        padding: 7px 10px;
+    }
+
+    .sidebar-bottom > .nav-link {
+        margin-bottom: 4px;
+    }
+
+    .sidebar-bottom .user-profile {
+        padding-top: 6px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .user-menu {
+        width: 32px;
+        height: 32px;
+    }
+}

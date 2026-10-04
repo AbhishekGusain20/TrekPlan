@@ -1,7 +1,53 @@
-/* ================================
-   TREKPLAN TRAVEL JOURNAL
-   DASHBOARD BLUE THEME
-================================ */
+/* =========================================================
+   TREKPLAN — TRAVEL JOURNAL
+   FINAL SIDEBAR + CONTENT FIX
+========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --forest: #12372a;
+    --forest-dark: #0b261c;
+    --forest-light: #1d5541;
+
+    --teal: #2f7d6b;
+    --teal-dark: #246456;
+    --teal-light: #e2f0eb;
+    --teal-soft: #edf6f3;
+
+    --orange: #e47c45;
+    --orange-dark: #cf6532;
+    --orange-light: #fff0e7;
+
+    --cream: #f4f1e8;
+    --white: #ffffff;
+
+    --text: #24362e;
+    --muted: #718078;
+
+    --border: #e1e3d9;
+
+    --danger: #d9534f;
+
+    --sidebar-width: 270px;
+
+    --radius: 15px;
+
+    --shadow:
+        0 10px 30px rgba(18, 55, 42, 0.08);
+
+    --shadow-hover:
+        0 15px 35px rgba(18, 55, 42, 0.13);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -9,115 +55,645 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f8fb;
-    color: #073b5c;
+
+html {
+    scroll-behavior: smooth;
 }
 
 
-/* ================================
-   NAVBAR
-================================ */
+/* =========================================================
+   BODY
+========================================================= */
 
-.navbar {
-    background: #073b5c;
-    color: white;
+body {
 
-    padding: 18px 7%;
+    font-family: "DM Sans", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(47, 125, 107, 0.06),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(228, 124, 69, 0.05),
+            transparent 22%
+        ),
+
+        var(--cream);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   BACKGROUND PATTERN
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background-image:
+        repeating-radial-gradient(
+            ellipse at 20% 30%,
+            transparent 0,
+            transparent 28px,
+            rgba(18, 55, 42, 0.035) 29px,
+            transparent 30px
+        );
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: var(--sidebar-width);
+
+    height: 100vh;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between;
+
+    flex-direction: column;
+
+    padding: 20px 14px;
+
+    background: #f4f1e8;
+
+    border-right:
+        1px solid rgba(23, 61, 58, 0.08);
+
+    overflow: hidden;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   SIDEBAR LOGO
+========================================================= */
+
+.sidebar-logo {
+
+    height: 145px;
+
+    display: flex;
+
     align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 10px;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+
+.sidebar-logo img {
+
+    width: 125px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    display: block;
 }
 
-.back-btn {
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding: 0 2px 10px;
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+========================================================= */
+
+.sidebar-nav::-webkit-scrollbar {
+
+    width: 5px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(31, 122, 120, 0.25);
+
+    border-radius: 10px;
+}
+
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+
+    background:
+        rgba(31, 122, 120, 0.45);
+}
+
+
+/* Firefox */
+
+.sidebar-nav {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(31, 122, 120, 0.25)
+        transparent;
+}
+
+
+/* =========================================================
+   MENU TITLE
+========================================================= */
+
+.nav-title {
+
+    margin: 5px 16px 16px;
+
+    color: #78908b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-link {
+
+    min-height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 11px 15px;
+
+    border-radius: 17px;
+
+    color: #617a76;
+
     text-decoration: none;
-    color: white;
 
-    padding: 9px 16px;
+    font-size: 15px;
 
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 6px;
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV ICON
+========================================================= */
+
+.nav-icon {
+
+    width: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   NAV HOVER
+========================================================= */
+
+.nav-link:hover {
+
+    color: #1d7165;
+
+    background:
+        rgba(31, 122, 120, 0.07);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   ACTIVE PAGE
+========================================================= */
+
+.nav-link.active {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d7165,
+            #2d8977
+        );
+
+    border-left:
+        4px solid #d98b3a;
+
+    padding-left: 11px;
+
+    box-shadow:
+        0 15px 28px
+        rgba(31, 122, 120, 0.17);
+}
+
+
+.nav-link.active:hover {
+
+    color: #ffffff;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+
+    flex-shrink: 0;
+
+    padding-top: 8px;
+
+    border-top:
+        1px solid rgba(23, 61, 58, 0.08);
+
+    position: relative;
+
+    z-index: 10;
+
+    background: #f4f1e8;
+}
+
+
+.sidebar-bottom .nav-link {
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   USER PROFILE
+========================================================= */
+
+.user-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.62);
+
+    border:
+        1px solid rgba(23, 61, 58, 0.07);
+}
+
+
+/* =========================================================
+   USER AVATAR
+========================================================= */
+
+.user-avatar {
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2d8977;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   USER INFO
+========================================================= */
+
+.user-info {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.user-info strong {
+
+    display: block;
+
+    color: #173d3a;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.user-info span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #78908b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-button {
+
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #657c78;
+
+    cursor: pointer;
+
+    font-size: 20px;
 
     transition: 0.2s ease;
 }
 
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
+
+.logout-button:hover {
+
+    color: #ffffff;
+
+    background: #d98b3a;
 }
 
 
-/* ================================
-   CONTAINER
-================================ */
+/* =========================================================
+   MAIN CONTENT
+   IMPORTANT SIDEBAR FIX
+========================================================= */
 
 .container {
-    width: 90%;
-    max-width: 1100px;
 
-    margin: 40px auto;
+    /*
+       Sidebar is fixed.
+       Content starts after sidebar.
+    */
+
+    margin-left: var(--sidebar-width);
+
+    /*
+       DO NOT use:
+       width: calc(100% - var(--sidebar-width));
+    */
+
+    width: auto;
+
+    max-width: none;
+
+    min-height: 100vh;
+
+    padding:
+        45px 6% 70px;
+
+    position: relative;
+
+    z-index: 1;
+
+    box-sizing: border-box;
 }
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
 
 h1 {
-    font-size: 34px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 36px;
+
+    font-weight: 800;
+
+    color: var(--forest);
+
     margin-bottom: 8px;
-    color: #073b5c;
+
+    letter-spacing: -0.5px;
 }
 
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
 .subtitle {
-    color: #667788;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
     margin-bottom: 30px;
 }
 
 
-/* ================================
-   FORM
-================================ */
+/* =========================================================
+   JOURNAL FORM
+========================================================= */
 
 .journal-form {
-    background: #ffffff;
+
+    width: 100%;
+
+    background: var(--white);
 
     padding: 30px;
 
-    border-radius: 12px;
+    border-radius: var(--radius);
 
-    box-shadow: 0 4px 15px rgba(7, 59, 92, 0.08);
+    box-shadow: var(--shadow);
 
     margin-bottom: 45px;
 
-    border: 1px solid #e1eaf0;
+    border:
+        1px solid var(--border);
+
+    transition: 0.25s ease;
 }
+
+
+.journal-form:hover {
+
+    box-shadow: var(--shadow-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FORM TITLE
+========================================================= */
 
 .journal-form h2 {
+
     margin-bottom: 25px;
-    color: #073b5c;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--forest);
+
+    font-size: 21px;
+
+    font-weight: 800;
 }
 
 
-/* ================================
+/* =========================================================
    FORM GROUP
-================================ */
+========================================================= */
 
 .form-group {
+
     margin-bottom: 20px;
 }
 
+
 .form-group label {
+
     display: block;
 
     margin-bottom: 8px;
 
-    font-weight: bold;
+    font-weight: 600;
 
-    color: #24485f;
+    color: var(--text);
+
+    font-size: 13px;
 }
 
+
+/* =========================================================
+   FORM INPUTS
+========================================================= */
 
 .form-group input,
 .form-group select,
@@ -125,149 +701,317 @@ h1 {
 
     width: 100%;
 
-    padding: 12px;
+    padding: 12px 14px;
 
-    border: 1px solid #cbd9e3;
+    border:
+        1px solid var(--border);
 
-    border-radius: 7px;
+    border-radius: 9px;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-family: inherit;
 
-    background: #ffffff;
+    background: #fffefb;
 
-    color: #073b5c;
+    color: var(--text);
 
     outline: none;
 
     transition: 0.2s ease;
 }
 
+
+/* =========================================================
+   INPUT HEIGHT
+========================================================= */
+
+.form-group input,
+.form-group select {
+
+    height: 47px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.form-group textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #9aa39e;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #149b67;
 
-    box-shadow: 0 0 0 3px rgba(20, 155, 103, 0.12);
+    border-color: var(--teal);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(47, 125, 107, 0.10);
 }
 
 
-.form-group textarea {
-    resize: vertical;
-}
-
-
-/* ================================
+/* =========================================================
    PHOTO PREVIEW
-================================ */
+========================================================= */
 
 #photoPreview {
+
     margin-bottom: 20px;
 }
 
+
 #photoPreview img {
+
     width: 150px;
+
     height: 100px;
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    border: 2px solid #073b5c;
+    border:
+        2px solid var(--teal);
+
+    box-shadow:
+        0 5px 15px
+        rgba(18, 55, 42, 0.10);
 }
 
 
-/* ================================
-   BUTTONS
-================================ */
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
 
 .form-buttons {
+
     display: flex;
+
     gap: 10px;
 }
 
+
 .form-buttons button {
+
     border: none;
 
-    padding: 12px 22px;
+    min-height: 45px;
 
-    border-radius: 7px;
+    padding: 11px 22px;
+
+    border-radius: 9px;
 
     cursor: pointer;
 
-    font-size: 15px;
+    font-family: inherit;
 
-    font-weight: bold;
+    font-size: 14px;
 
-    transition: 0.2s ease;
+    font-weight: 700;
+
+    transition: 0.25s ease;
 }
+
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
 
 #saveBtn {
-    background: #149b67;
-    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest),
+            var(--forest-light)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px
+        rgba(18, 55, 42, 0.15);
 }
 
+
 #saveBtn:hover {
-    background: #108357;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--forest-dark),
+            var(--forest)
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px
+        rgba(18, 55, 42, 0.20);
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.cancel-btn {
+
+    background: var(--teal-light);
+
+    color: var(--forest);
+}
+
+
+.cancel-btn:hover {
+
+    background: var(--teal-soft);
+
+    color: var(--teal-dark);
+
     transform: translateY(-1px);
 }
 
-.cancel-btn {
-    background: #e7edf2;
-    color: #073b5c;
+
+/* =========================================================
+   MEMORIES SECTION
+========================================================= */
+
+.memories-section {
+
+    width: 100%;
 }
 
-.cancel-btn:hover {
-    background: #d9e3ea;
-}
-
-
-/* ================================
-   MEMORIES
-================================ */
 
 .memories-section h2 {
+
     margin-bottom: 20px;
-    color: #073b5c;
+
+    font-family: "Manrope", sans-serif;
+
+    color: var(--forest);
+
+    font-size: 24px;
+
+    font-weight: 800;
 }
 
 
+/* =========================================================
+   MEMORY GRID
+========================================================= */
+
 #memoriesContainer {
+
+    width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
 
     gap: 25px;
 }
 
 
+/* =========================================================
+   MEMORY CARD
+========================================================= */
+
 .memory-card {
 
-    background: #ffffff;
+    width: 100%;
 
-    border-radius: 12px;
+    min-width: 0;
+
+    background: var(--white);
+
+    border-radius: var(--radius);
 
     overflow: hidden;
 
-    box-shadow: 0 4px 15px rgba(7, 59, 92, 0.08);
+    box-shadow: var(--shadow);
 
-    border: 1px solid #e1eaf0;
+    border:
+        1px solid var(--border);
 
-    transition: 0.2s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    position: relative;
 }
+
+
+.memory-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--forest),
+            var(--teal),
+            var(--orange)
+        );
+
+    z-index: 2;
+}
+
 
 .memory-card:hover {
-    transform: translateY(-3px);
 
-    box-shadow: 0 8px 22px rgba(7, 59, 92, 0.12);
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-hover);
 }
 
 
+/* =========================================================
+   MEMORY IMAGE
+========================================================= */
+
 .memory-card img {
+
     width: 100%;
+
     height: auto;
 
     max-height: 500px;
@@ -276,44 +1020,75 @@ h1 {
 
     display: block;
 
-    background: #eef4f8;
+    background: var(--teal-soft);
 }
 
 
+/* =========================================================
+   MEMORY CONTENT
+========================================================= */
+
 .memory-content {
-    padding: 20px;
+
+    padding: 22px;
+
+    min-width: 0;
 }
 
 
 .memory-content h3 {
+
     margin-bottom: 10px;
 
-    color: #073b5c;
+    font-family: "Manrope", sans-serif;
+
+    color: var(--forest);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    overflow-wrap: anywhere;
 }
 
 
+/* =========================================================
+   RATING
+========================================================= */
+
 .rating {
+
     margin-bottom: 12px;
 
     font-size: 18px;
 
-    color: #149b67;
+    color: var(--orange);
+
+    letter-spacing: 1px;
 }
 
 
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
 .experience {
 
-    color: #526675;
+    color: #53675e;
 
     line-height: 1.6;
 
     margin-bottom: 18px;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
 }
 
 
-/* ================================
+/* =========================================================
    MEMORY BUTTONS
-================================ */
+========================================================= */
 
 .memory-buttons {
 
@@ -331,89 +1106,482 @@ h1 {
 
     padding: 10px;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     cursor: pointer;
 
-    font-weight: bold;
+    font-family: inherit;
 
-    transition: 0.2s ease;
+    font-weight: 700;
+
+    font-size: 13px;
+
+    transition: 0.25s ease;
 }
 
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
 
 .edit-btn {
 
-    background: #149b67;
+    background: var(--teal);
 
-    color: white;
+    color: #ffffff;
 }
+
 
 .edit-btn:hover {
-    background: #108357;
+
+    background: var(--teal-dark);
+
+    transform: translateY(-1px);
 }
 
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
 
 .delete-btn {
 
-    background: #d9534f;
+    background: var(--orange-light);
 
-    color: white;
+    color: var(--orange-dark);
 }
+
 
 .delete-btn:hover {
-    background: #c7433f;
+
+    background: var(--danger);
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
 }
 
 
-/* ================================
+/* =========================================================
    EMPTY MESSAGE
-================================ */
+========================================================= */
 
 .empty-message {
 
+    width: 100%;
+
     text-align: center;
 
-    padding: 40px;
+    padding: 50px 25px;
 
-    background: #ffffff;
+    background: var(--white);
 
-    border-radius: 10px;
+    border-radius: var(--radius);
 
-    color: #71808d;
+    color: var(--muted);
 
-    border: 1px solid #e1eaf0;
+    border:
+        1px solid var(--border);
+
+    box-shadow: var(--shadow);
 }
 
 
-/* ================================
+.empty-message::before {
+
+    content: "🏔️";
+
+    display: block;
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    :root {
+
+        --sidebar-width: 240px;
+    }
+
+
+    .sidebar {
+
+        width: 240px;
+    }
+
+
+    .sidebar-logo img {
+
+        width: 105px;
+    }
+
+
+    /*
+       IMPORTANT:
+       Do not use calc() here.
+    */
+
+    .container {
+
+        margin-left: 240px;
+
+        width: auto;
+
+        padding-left: 30px;
+
+        padding-right: 30px;
+    }
+
+
+    #memoriesContainer {
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(250px, 1fr)
+            );
+    }
+}
+
+
+/* =========================================================
    MOBILE
-================================ */
+========================================================= */
+
+@media (max-width: 768px) {
+
+    :root {
+
+        --sidebar-width: 270px;
+    }
+
+
+    .sidebar {
+
+        width: 270px;
+
+        transform:
+            translateX(-100%);
+
+        transition:
+            transform 0.3s ease;
+
+        box-shadow:
+            10px 0 35px
+            rgba(23, 61, 58, 0.15);
+    }
+
+
+    .sidebar.open {
+
+        transform:
+            translateX(0);
+    }
+
+
+    /*
+       Sidebar hidden.
+       Content gets full screen.
+    */
+
+    .container {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            30px 5% 50px;
+    }
+
+
+    h1 {
+
+        font-size: 30px;
+    }
+
+
+    .journal-form {
+
+        padding: 24px;
+    }
+
+
+    #memoriesContainer {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
-    .navbar {
-        padding: 15px 5%;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
     .container {
-        width: 92%;
-        margin-top: 25px;
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            25px 4% 45px;
     }
+
 
     h1 {
+
         font-size: 28px;
+
+        letter-spacing: 0;
     }
 
+
+    .subtitle {
+
+        font-size: 13px;
+
+        margin-bottom: 25px;
+    }
+
+
     .journal-form {
+
+        padding: 22px;
+
+        border-radius: 14px;
+    }
+
+
+    .journal-form h2 {
+
+        font-size: 19px;
+    }
+
+
+    .form-buttons {
+
+        flex-direction: column;
+    }
+
+
+    .form-buttons button {
+
+        width: 100%;
+    }
+
+
+    .memory-card img {
+
+        max-height: 400px;
+    }
+
+
+    .memory-content {
+
         padding: 20px;
     }
 
-    .memory-card img {
-        height: 180px;
+
+    .memory-buttons button {
+
+        padding: 11px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .container {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            22px 4% 40px;
     }
 
+
+    h1 {
+
+        font-size: 25px;
+    }
+
+
+    .journal-form {
+
+        padding: 18px;
+    }
+
+
+    .journal-form h2 {
+
+        font-size: 18px;
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+        font-size: 13px;
+    }
+
+
+    .memory-content {
+
+        padding: 18px;
+    }
+
+
+    .memory-content h3 {
+
+        font-size: 18px;
+    }
+
+
+    .experience {
+
+        font-size: 13px;
+    }
+
+
+    .empty-message {
+
+        padding: 40px 15px;
+    }
+}
+
+
+/* =========================================================
+   SHORT LAPTOP SCREEN
+========================================================= */
+
+@media (max-height: 800px) and (min-width: 769px) {
+
+    .sidebar {
+
+        padding-top: 15px;
+
+        padding-bottom: 10px;
+    }
+
+
+    .sidebar-logo {
+
+        height: 80px;
+
+        padding: 8px 15px;
+    }
+
+
+    .sidebar-logo img {
+
+        width: 58px;
+    }
+
+
+    .nav-link {
+
+        min-height: 45px;
+
+        padding: 8px 11px;
+    }
+
+
+    .sidebar-bottom {
+
+        padding-top: 5px;
+    }
+
+
+    .user-profile {
+
+        padding: 8px;
+    }
+}
+
+
+/* =========================================================
+   VERY SHORT DESKTOP
+========================================================= */
+
+@media (max-height: 650px) and (min-width: 769px) {
+
+    .sidebar {
+
+        padding-top: 10px;
+
+        padding-bottom: 7px;
+    }
+
+
+    .sidebar-logo {
+
+        height: 65px;
+    }
+
+
+    .sidebar-logo img {
+
+        width: 50px;
+    }
+
+
+    .nav-title {
+
+        margin-bottom: 5px;
+    }
+
+
+    .nav-link {
+
+        min-height: 40px;
+
+        padding: 7px 10px;
+    }
+
+
+    .sidebar-bottom .nav-link {
+
+        margin-bottom: 4px;
+    }
+
+
+    .user-profile {
+
+        padding: 6px;
+    }
+
+
+    .user-avatar {
+
+        width: 32px;
+
+        height: 32px;
+    }
+
+
+    .logout-button {
+
+        width: 32px;
+
+        height: 32px;
+    }
 }

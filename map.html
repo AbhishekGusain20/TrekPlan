@@ -1,88 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>TrekPlan - Maps & Routes</title>
-
-    <link rel="stylesheet" href="map.css">
+    <title>TrekPlan | Smart Maps</title>
 
     <!-- Leaflet CSS -->
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
+
+    <!-- Map CSS -->
+    <link
+        rel="stylesheet"
+        href="map.css"
+    >
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="navbar">
-        <h1>TrekPlan</h1>
+    <!-- ================= SIDEBAR ================= -->
 
-        <a href="dashboard.html">
-            Dashboard
-        </a>
-    </header>
+    <aside class="sidebar">
 
 
-    <!-- Main Content -->
-    <main>
+        <div class="sidebar-logo">
 
-        <section class="map-section">
+            <img src="TrekPlan-logo.png"
+                 alt="TrekPlan">
 
-            <h2>Maps & Routes</h2>
+        </div>
 
-            <p>
-                Explore your trek destination on the map.
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MAIN MENU
             </p>
 
-            <!-- Search Area -->
+
+            <a href="dashboard.html"
+               class="nav-link">
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="dashboard.html#trips"
+               class="nav-link">
+
+                <span class="nav-icon">✈</span>
+
+                <span>My Trips</span>
+
+            </a>
+
+
+            <a href="explore.html"
+               class="nav-link">
+
+                <span class="nav-icon">◎</span>
+
+                <span>Explore</span>
+
+            </a>
+
+
+            <a href="budget.html"
+               class="nav-link">
+
+                <span class="nav-icon">₹</span>
+
+                <span>Budget Planner</span>
+
+            </a>
+
+
+            <a href="journal.html"
+               class="nav-link">
+
+                <span class="nav-icon">▤</span>
+
+                <span>Travel Journal</span>
+
+            </a>
+
+
+            <a href="map.html"
+               class="nav-link active">
+
+                <span class="nav-icon">⌖</span>
+
+                <span>Maps</span>
+
+            </a>
+
+
+            <a href="checklist.html"
+               class="nav-link">
+
+                <span class="nav-icon">✓</span>
+
+                <span>Checklists</span>
+
+            </a>
+
+
+            <a href="community.html"
+               class="nav-link ">
+
+                <span class="nav-icon">♧</span>
+
+                <span>Community</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <a href="#"
+               class="nav-link">
+
+                <span class="nav-icon">⚙</span>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <div class="user-profile">
+
+
+                <div class="user-avatar"
+                     id="userAvatar">
+
+                    A
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="userName">
+                        AVI
+                    </strong>
+
+                    <span>
+                        Traveler
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="logout-button"
+                    id="logoutBtn">
+
+                    ↪
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    
+
+
+    <!-- =====================================
+         MAIN
+    ====================================== -->
+
+    <main class="main-content">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="small-title">
+                TREKPLAN NAVIGATION
+            </div>
+
+            <h2>
+                Explore the
+                <span>World.</span>
+            </h2>
+
+            <p>
+                Search any destination, find your location
+                and create a real road route.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================
+             SEARCH
+        ================================== -->
+
+        <section class="search-section">
+
             <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
 
                 <input
                     type="text"
-                    id="locationInput"
-                    placeholder="Enter destination"
+                    id="searchInput"
+                    placeholder="Search any place..."
+                    autocomplete="off"
                 >
 
-                <button id="searchBtn">
+                <button
+                    id="searchBtn"
+                    class="search-btn"
+                >
                     Search
                 </button>
 
             </div>
 
 
-            <!-- Map -->
-            <div id="map"></div>
+            <button
+                id="locationBtn"
+                class="location-btn"
+            >
+                📍 My Location
+            </button>
+
+        </section>
 
 
-            <!-- Location Information -->
-            <div class="location-info">
 
-                <h3 id="locationName">
-                    Select a destination
-                </h3>
+        <!-- SEARCH RESULTS -->
 
-                <p id="locationDetails">
-                    Search for a place to see it on the map.
-                </p>
+        <div
+            id="searchResults"
+            class="search-results"
+        ></div>
+
+
+
+        <!-- =================================
+             MAP + PANEL
+        ================================== -->
+
+        <section class="map-layout">
+
+
+            <!-- MAP -->
+
+            <div class="map-card">
+
+                <div id="map"></div>
+
+
+                <!-- CUSTOM ZOOM -->
+
+                <div class="map-controls">
+
+                    <button id="zoomIn">
+                        +
+                    </button>
+
+                    <button id="zoomOut">
+                        −
+                    </button>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="map-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="mapStatus">
+                        Map Ready
+                    </span>
+
+                </div>
 
             </div>
 
+
+
+            <!-- =================================
+                 SIDE PANEL
+            ================================== -->
+
+            <aside class="info-panel">
+
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            DESTINATION
+                        </span>
+
+                        <h3 id="destinationName">
+                            No destination
+                        </h3>
+
+                    </div>
+
+                    <div class="mountain-icon">
+                        🏔️
+                    </div>
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div class="destination-box">
+
+                    <div class="info-label">
+                        LOCATION
+                    </div>
+
+                    <p id="destinationAddress">
+                        Search a place to begin.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ROUTE INFO -->
+
+                <div class="route-info">
+
+
+                    <div class="route-stat">
+
+                        <span>
+                            DISTANCE
+                        </span>
+
+                        <strong id="distance">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-stat">
+
+                        <span>
+                            TIME
+                        </span>
+
+                        <strong id="duration">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ROUTE BUTTON -->
+
+                <button
+                    id="routeBtn"
+                    class="route-btn"
+                >
+                    🛣️ Calculate Route
+                </button>
+
+
+
+                <!-- NAVIGATION -->
+
+                <div class="navigation-section">
+
+                    <div class="navigation-title">
+
+                        <span>
+                            NAVIGATION
+                        </span>
+
+                        <span id="stepCount">
+                            0 steps
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="navigationSteps"
+                        class="navigation-steps"
+                    >
+
+                        <div class="empty-navigation">
+
+                            🧭
+
+                            <p>
+                                Select a destination
+                                and calculate a route.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
         </section>
+
 
     </main>
 
 
+
     <!-- Leaflet JS -->
+
     <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- Map JS -->
 
     <script src="map.js"></script>
 
+
 </body>
+
 </html>

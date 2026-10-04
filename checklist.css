@@ -1,95 +1,537 @@
+/* =========================================================
+   TREKPLAN — TRIP CHECKLIST
+   Clean Dashboard-style Sidebar
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    min-height: 100%;
+}
+
 body {
+    min-height: 100vh;
+
     font-family: Arial, sans-serif;
+
     background: #f5f8fb;
+
     color: #073b5c;
 }
 
-.navbar {
-    background: #073b5c;
-    color: white;
-    padding: 18px 8%;
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+
+    padding: 20px 14px;
+
+    background: #f4f1e8;
+
+    border-right: 1px solid rgba(23, 61, 58, 0.08);
+
+    overflow: hidden;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   SIDEBAR LOGO
+========================================================= */
+
+.sidebar-logo {
+    height: 145px;
+
+    display: flex;
     align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 10px;
 }
 
-.navbar a {
-    color: white;
+.sidebar-logo img {
+    width: 125px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   SIDEBAR MAIN MENU
+========================================================= */
+
+.sidebar-nav {
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0 2px 10px;
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+========================================================= */
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(31, 122, 120, 0.25);
+
+    border-radius: 10px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 122, 120, 0.45);
+}
+
+
+/* Firefox scrollbar */
+
+.sidebar-nav {
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(31, 122, 120, 0.25)
+        transparent;
+}
+
+
+/* =========================================================
+   MAIN MENU TITLE
+========================================================= */
+
+.nav-title {
+    margin: 5px 16px 16px;
+
+    color: #78908b;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   SIDEBAR LINKS
+========================================================= */
+
+.nav-link {
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 11px 15px;
+
+    border-radius: 17px;
+
+    color: #617a76;
+
     text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 50px auto;
+
+/* Icon */
+
+.nav-icon {
+    width: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
 }
+
+
+/* Hover */
+
+.nav-link:hover {
+    color: #1d7165;
+
+    background: rgba(31, 122, 120, 0.07);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   ACTIVE PAGE
+   CHECKLIST = ACTIVE
+========================================================= */
+
+.nav-link.active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d7165,
+            #2d8977
+        );
+
+    border-left: 4px solid #d98b3a;
+
+    padding-left: 11px;
+
+    box-shadow:
+        0 15px 28px rgba(31, 122, 120, 0.17);
+}
+
+.nav-link.active:hover {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d7165,
+            #2d8977
+        );
+
+    transform: none;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   SETTINGS + USER
+========================================================= */
+
+.sidebar-bottom {
+    flex-shrink: 0;
+
+    padding-top: 8px;
+
+    border-top:
+        1px solid rgba(23, 61, 58, 0.08);
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* Settings */
+
+.sidebar-bottom .nav-link {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   USER PROFILE
+========================================================= */
+
+.user-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.62);
+
+    border:
+        1px solid rgba(23, 61, 58, 0.07);
+}
+
+
+/* Avatar */
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2d8977;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+
+/* User information */
+
+.user-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.user-info strong {
+    display: block;
+
+    color: #173d3a;
+
+    font-size: 14px;
+}
+
+.user-info span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #78908b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-button {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #657c78;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.logout-button:hover {
+    color: #ffffff;
+
+    background: #d98b3a;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.content {
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    margin-left: 270px;
+
+    padding: 55px 6%;
+
+    background: #f5f8fb;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
 
 .heading {
+    max-width: 900px;
+
+    margin: 0 auto 30px;
+
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .heading h1 {
     margin-bottom: 10px;
+
     color: #073b5c;
+
+    font-size: 34px;
+
+    font-weight: 700;
 }
 
 .heading p {
     color: #667785;
+
+    font-size: 16px;
+
+    line-height: 1.6;
 }
 
+
+/* =========================================================
+   CHECKLIST BOX
+========================================================= */
+
 .checklist-box {
-    background: white;
+    width: 100%;
+
+    max-width: 800px;
+
+    margin: 0 auto;
+
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(7, 59, 92, 0.08);
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 15px rgba(7, 59, 92, 0.08);
 }
 
 .checklist-box h2 {
     margin-bottom: 20px;
+
     color: #073b5c;
+
+    font-size: 23px;
 }
+
+
+/* =========================================================
+   INPUT AREA
+========================================================= */
 
 .input-area {
     display: flex;
+
     gap: 10px;
+
     margin-bottom: 25px;
 }
 
 .input-area input {
     flex: 1;
-    padding: 12px;
-    border: 1px solid #d5dfe7;
+
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid #d5dfe7;
+
     border-radius: 6px;
+
     font-size: 16px;
+
     color: #073b5c;
+
     background: #ffffff;
 }
 
 .input-area input:focus {
     outline: none;
+
     border-color: #149b67;
-    box-shadow: 0 0 0 2px rgba(20, 155, 103, 0.1);
+
+    box-shadow:
+        0 0 0 2px rgba(20, 155, 103, 0.1);
 }
+
+
+/* Add button */
 
 .input-area button {
     background: #149b67;
-    color: white;
+
+    color: #ffffff;
+
     border: none;
+
     padding: 12px 22px;
+
     border-radius: 6px;
+
     cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: background 0.2s ease;
 }
 
 .input-area button:hover {
     background: #108456;
 }
+
+
+/* =========================================================
+   CHECKLIST
+========================================================= */
 
 #checklist {
     list-style: none;
@@ -97,67 +539,286 @@ body {
 
 .checklist-item {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
+    gap: 15px;
+
     padding: 14px;
-    border-bottom: 1px solid #e1e8ee;
+
+    border-bottom:
+        1px solid #e1e8ee;
 }
 
 .item-left {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
+
+    min-width: 0;
 }
 
 .item-left span {
     font-size: 16px;
+
     color: #073b5c;
+
+    word-break: break-word;
 }
+
+
+/* Completed */
 
 .completed {
     text-decoration: line-through;
+
     color: #8896a3;
 }
 
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
 .delete-btn {
+    flex-shrink: 0;
+
     background: #d9534f;
-    color: white;
+
+    color: #ffffff;
+
     border: none;
+
     padding: 7px 12px;
+
     border-radius: 5px;
+
     cursor: pointer;
+
+    transition: background 0.2s ease;
 }
 
 .delete-btn:hover {
     background: #c43d39;
 }
 
+
+/* =========================================================
+   EMPTY MESSAGE
+========================================================= */
+
 #emptyMessage {
     text-align: center;
+
     color: #8896a3;
+
     margin-top: 20px;
 }
 
-@media (max-width: 600px) {
 
-    .navbar {
-        padding: 15px 5%;
+/* =========================================================
+   SHORT LAPTOP SCREEN
+========================================================= */
+
+@media (max-height: 800px) {
+
+    .sidebar {
+        padding-top: 15px;
+
+        padding-bottom: 10px;
     }
 
-    .container {
-        width: 94%;
-        margin: 30px auto;
+    .sidebar-logo {
+        height: 90px;
+
+        padding: 8px 15px;
+    }
+
+    .sidebar-logo img {
+        width: 70px;
+    }
+
+    .nav-link {
+        min-height: 45px;
+
+        padding: 8px 11px;
+    }
+
+    .sidebar-bottom {
+        padding-top: 5px;
+    }
+
+    .user-profile {
+        padding: 8px;
+    }
+
+    .content {
+        padding-top: 35px;
+    }
+}
+
+
+/* =========================================================
+   VERY SHORT SCREEN
+========================================================= */
+
+@media (max-height: 650px) {
+
+    .sidebar {
+        padding-top: 10px;
+
+        padding-bottom: 7px;
+    }
+
+    .sidebar-logo {
+        height: 70px;
+    }
+
+    .sidebar-logo img {
+        width: 55px;
+    }
+
+    .nav-title {
+        margin-bottom: 5px;
+    }
+
+    .nav-link {
+        min-height: 40px;
+
+        padding: 7px 10px;
+    }
+
+    .sidebar-bottom .nav-link {
+        margin-bottom: 4px;
+    }
+
+    .user-profile {
+        padding: 6px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .logout-button {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .content {
+        width: calc(100% - 240px);
+
+        margin-left: 240px;
+
+        padding-left: 30px;
+
+        padding-right: 30px;
+    }
+
+    .sidebar-logo img {
+        width: 110px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 270px;
+
+        transform: translateX(-100%);
+
+        transition:
+            transform 0.3s ease;
+
+        box-shadow:
+            10px 0 35px rgba(23, 61, 58, 0.15);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            30px 5% 50px;
+    }
+
+    .heading h1 {
+        font-size: 28px;
     }
 
     .checklist-box {
         padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .content {
+        padding:
+            25px 4% 40px;
+    }
+
+    .heading {
+        margin-bottom: 25px;
+    }
+
+    .heading h1 {
+        font-size: 25px;
+    }
+
+    .heading p {
+        font-size: 14px;
+    }
+
+    .checklist-box {
+        padding: 20px 16px;
     }
 
     .input-area {
         flex-direction: column;
     }
 
+    .input-area input {
+        width: 100%;
+    }
+
     .input-area button {
         width: 100%;
+    }
+
+    .checklist-item {
+        align-items: flex-start;
     }
 }

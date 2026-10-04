@@ -1,40 +1,123 @@
 /* =====================================================
    TREKPLAN — BUDGET PLANNER
+   Dashboard Blue Theme
 ===================================================== */
 
 
 /* ================= GET ELEMENTS ================= */
 
-const budgetForm = document.getElementById("budgetForm");
-const budgetInput = document.getElementById("budgetInput");
+const budgetForm =
+    document.getElementById("budgetForm");
 
-const expenseForm = document.getElementById("expenseForm");
+const budgetInput =
+    document.getElementById("budgetInput");
 
-const expenseName = document.getElementById("expenseName");
-const expenseCategory = document.getElementById("expenseCategory");
-const expenseAmount = document.getElementById("expenseAmount");
+const expenseForm =
+    document.getElementById("expenseForm");
 
-const totalBudgetElement = document.getElementById("totalBudget");
-const totalSpentElement = document.getElementById("totalSpent");
-const remainingBudgetElement = document.getElementById("remainingBudget");
+const expenseName =
+    document.getElementById("expenseName");
 
-const progressFill = document.getElementById("progressFill");
-const percentageElement = document.getElementById("percentage");
-const budgetMessage = document.getElementById("budgetMessage");
+const expenseCategory =
+    document.getElementById("expenseCategory");
 
-const expenseList = document.getElementById("expenseList");
-const expenseCount = document.getElementById("expenseCount");
+const expenseAmount =
+    document.getElementById("expenseAmount");
 
-const logoutBtn = document.getElementById("logoutBtn");
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.getElementById("sidebar");
+const totalBudgetElement =
+    document.getElementById("totalBudget");
+
+const totalSpentElement =
+    document.getElementById("totalSpent");
+
+const remainingBudgetElement =
+    document.getElementById("remainingBudget");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const percentageElement =
+    document.getElementById("percentage");
+
+const budgetMessage =
+    document.getElementById("budgetMessage");
+
+const expenseList =
+    document.getElementById("expenseList");
+
+const expenseCount =
+    document.getElementById("expenseCount");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const sidebar =
+    document.getElementById("sidebar");
 
 
-/* ================= LOCAL STORAGE ================= */
+/* =====================================================
+   CURRENT TRIP
+===================================================== */
 
-let budget = Number(
-    localStorage.getItem("trekplanBudget")
-) || 0;
+let currentTrip = null;
+
+try {
+
+    currentTrip =
+        JSON.parse(
+            localStorage.getItem(
+                "trekplan_currentTrip"
+            )
+        );
+
+} catch (error) {
+
+    currentTrip = null;
+
+}
+
+
+/* =====================================================
+   GET BUDGET
+===================================================== */
+
+let budget = 0;
+
+
+/*
+   Priority:
+
+   1. Current trip budget
+   2. Saved budget
+   3. 0
+*/
+
+if (
+    currentTrip &&
+    Number(currentTrip.budget) > 0
+) {
+
+    budget =
+        Number(currentTrip.budget);
+
+} else {
+
+    budget =
+        Number(
+            localStorage.getItem(
+                "trekplanBudget"
+            )
+        ) || 0;
+
+}
+
+
+/* =====================================================
+   GET EXPENSES
+===================================================== */
 
 let expenses = [];
 
@@ -42,7 +125,9 @@ try {
 
     expenses =
         JSON.parse(
-            localStorage.getItem("trekplanExpenses")
+            localStorage.getItem(
+                "trekplanExpenses"
+            )
         ) || [];
 
 } catch (error) {
@@ -52,120 +137,329 @@ try {
 }
 
 
-/* ================= FORMAT MONEY ================= */
+/* =====================================================
+   FORMAT MONEY
+===================================================== */
 
 function formatMoney(amount) {
 
-    return "₹" + Number(amount).toLocaleString("en-IN");
+    return (
+        "₹" +
+        Number(amount || 0)
+            .toLocaleString("en-IN")
+    );
 
 }
 
 
-/* ================= SAVE BUDGET ================= */
+/* =====================================================
+   SAVE BUDGET
+===================================================== */
 
 if (budgetForm) {
 
-    budgetForm.addEventListener("submit", function (event) {
+    budgetForm.addEventListener(
+        "submit",
+        function (event) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const newBudget =
-            Number(budgetInput.value);
 
-        if (newBudget <= 0) {
+            /* ================= GET INPUT ================= */
 
-            alert("Please enter a valid budget.");
+            const inputValue =
+                budgetInput.value.trim();
 
-            return;
+            const newBudget =
+                Number(inputValue);
+
+
+            /* ================= VALIDATION ================= */
+
+            if (
+                inputValue === "" ||
+                !Number.isFinite(newBudget) ||
+                newBudget <= 0
+            ) {
+
+                alert(
+                    "Please enter a valid budget."
+                );
+
+                return;
+
+            }
+
+
+            /* ================= UPDATE BUDGET ================= */
+
+            budget =
+                newBudget;
+
+
+            /* ================= CURRENT TRIP ================= */
+
+            let trip = null;
+
+            try {
+
+                trip =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "trekplan_currentTrip"
+                        )
+                    );
+
+            } catch (error) {
+
+                trip = null;
+
+            }
+
+
+            /* =================================================
+               UPDATE CURRENT TRIP
+            ================================================= */
+
+            if (trip) {
+
+                trip.budget =
+                    newBudget;
+
+
+                /* Save current trip */
+
+                localStorage.setItem(
+                    "trekplan_currentTrip",
+                    JSON.stringify(trip)
+                );
+
+
+                /* ================= UPDATE ALL TRIPS ================= */
+
+                let trips = [];
+
+                try {
+
+                    trips =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "trekplanTrips"
+                            )
+                        ) || [];
+
+                } catch (error) {
+
+                    trips = [];
+
+                }
+
+
+                /*
+                   Find current trip.
+
+                   First try ID.
+                */
+
+                let tripIndex =
+                    trips.findIndex(
+                        function (savedTrip) {
+
+                            return (
+                                savedTrip.id &&
+                                trip.id &&
+                                savedTrip.id === trip.id
+                            );
+
+                        }
+                    );
+
+
+                /*
+                   If ID is not available,
+                   try matching destination + trip name.
+                */
+
+                if (tripIndex === -1) {
+
+                    tripIndex =
+                        trips.findIndex(
+                            function (savedTrip) {
+
+                                return (
+                                    savedTrip.tripName ===
+                                        trip.tripName &&
+
+                                    savedTrip.destination ===
+                                        trip.destination
+                                );
+
+                            }
+                        );
+
+                }
+
+
+                /* ================= UPDATE TRIP ================= */
+
+                if (tripIndex !== -1) {
+
+                    trips[tripIndex].budget =
+                        newBudget;
+
+
+                    localStorage.setItem(
+                        "trekplanTrips",
+                        JSON.stringify(trips)
+                    );
+
+                }
+
+            }
+
+
+            /* =================================================
+               SAVE GENERAL BUDGET
+            ================================================= */
+
+            localStorage.setItem(
+                "trekplanBudget",
+                String(newBudget)
+            );
+
+
+            /* =================================================
+               CLEAR INPUT
+            ================================================= */
+
+            budgetInput.value = "";
+
+
+            /* =================================================
+               UPDATE UI
+            ================================================= */
+
+            updateBudget();
+
+
+            /* =================================================
+               SUCCESS MESSAGE
+            ================================================= */
+
+            alert(
+                "Budget updated successfully! 🎉"
+            );
+
         }
-
-        budget = newBudget;
-
-        localStorage.setItem(
-            "trekplanBudget",
-            budget
-        );
-
-        budgetInput.value = "";
-
-        updateBudget();
-
-        alert("Budget saved successfully!");
-
-    });
+    );
 
 }
 
 
-/* ================= ADD EXPENSE ================= */
+/* =====================================================
+   ADD EXPENSE
+===================================================== */
 
 if (expenseForm) {
 
-    expenseForm.addEventListener("submit", function (event) {
+    expenseForm.addEventListener(
+        "submit",
+        function (event) {
 
-        event.preventDefault();
-
-        const name =
-            expenseName.value.trim();
-
-        const category =
-            expenseCategory.value;
-
-        const amount =
-            Number(expenseAmount.value);
+            event.preventDefault();
 
 
-        if (!name || !category || amount <= 0) {
+            const name =
+                expenseName.value.trim();
 
-            alert("Please enter valid expense details.");
+            const category =
+                expenseCategory.value;
 
-            return;
+            const amount =
+                Number(
+                    expenseAmount.value
+                );
+
+
+            /* ================= VALIDATION ================= */
+
+            if (
+                !name ||
+                !category ||
+                !Number.isFinite(amount) ||
+                amount <= 0
+            ) {
+
+                alert(
+                    "Please enter valid expense details."
+                );
+
+                return;
+
+            }
+
+
+            /* ================= CREATE EXPENSE ================= */
+
+            const expense = {
+
+                id: Date.now(),
+
+                name: name,
+
+                category: category,
+
+                amount: amount
+
+            };
+
+
+            /* ================= ADD ================= */
+
+            expenses.push(
+                expense
+            );
+
+
+            /* ================= SAVE ================= */
+
+            localStorage.setItem(
+                "trekplanExpenses",
+                JSON.stringify(expenses)
+            );
+
+
+            /* ================= RESET ================= */
+
+            expenseForm.reset();
+
+
+            /* ================= UPDATE ================= */
+
+            updateBudget();
+
+            renderExpenses();
+
         }
-
-
-        const expense = {
-
-            id: Date.now(),
-
-            name: name,
-
-            category: category,
-
-            amount: amount
-
-        };
-
-
-        expenses.push(expense);
-
-
-        localStorage.setItem(
-            "trekplanExpenses",
-            JSON.stringify(expenses)
-        );
-
-
-        expenseForm.reset();
-
-        updateBudget();
-
-        renderExpenses();
-
-    });
+    );
 
 }
 
 
-/* ================= DELETE EXPENSE ================= */
+/* =====================================================
+   DELETE EXPENSE
+===================================================== */
 
 function deleteExpense(id) {
 
     expenses =
-        expenses.filter(function (expense) {
+        expenses.filter(
+            function (expense) {
 
-            return expense.id !== id;
+                return expense.id !== id;
 
-        });
+            }
+        );
 
 
     localStorage.setItem(
@@ -181,7 +475,9 @@ function deleteExpense(id) {
 }
 
 
-/* ================= CALCULATE TOTAL ================= */
+/* =====================================================
+   CALCULATE TOTAL SPENT
+===================================================== */
 
 function calculateTotalSpent() {
 
@@ -189,7 +485,10 @@ function calculateTotalSpent() {
 
         function (total, expense) {
 
-            return total + Number(expense.amount);
+            return (
+                total +
+                Number(expense.amount || 0)
+            );
 
         },
 
@@ -200,16 +499,21 @@ function calculateTotalSpent() {
 }
 
 
-/* ================= UPDATE BUDGET ================= */
+/* =====================================================
+   UPDATE BUDGET
+===================================================== */
 
 function updateBudget() {
 
     const totalSpent =
         calculateTotalSpent();
 
+
     const remaining =
         budget - totalSpent;
 
+
+    /* ================= TOTAL BUDGET ================= */
 
     if (totalBudgetElement) {
 
@@ -219,6 +523,8 @@ function updateBudget() {
     }
 
 
+    /* ================= TOTAL SPENT ================= */
+
     if (totalSpentElement) {
 
         totalSpentElement.textContent =
@@ -227,12 +533,17 @@ function updateBudget() {
     }
 
 
+    /* ================= REMAINING ================= */
+
     if (remainingBudgetElement) {
 
         if (remaining < 0) {
 
             remainingBudgetElement.textContent =
-                "-" + formatMoney(Math.abs(remaining));
+                "-" +
+                formatMoney(
+                    Math.abs(remaining)
+                );
 
         } else {
 
@@ -244,7 +555,9 @@ function updateBudget() {
     }
 
 
-    /* ================= PROGRESS ================= */
+    /* =================================================
+       CALCULATE PERCENTAGE
+    ================================================= */
 
     let percentage = 0;
 
@@ -259,6 +572,8 @@ function updateBudget() {
     }
 
 
+    /* ================= PERCENTAGE ================= */
+
     if (percentageElement) {
 
         percentageElement.textContent =
@@ -267,10 +582,15 @@ function updateBudget() {
     }
 
 
-    /* Don't allow progress bar beyond 100% */
+    /* =================================================
+       PROGRESS BAR
+    ================================================= */
 
     const progress =
-        Math.min(percentage, 100);
+        Math.min(
+            Math.max(percentage, 0),
+            100
+        );
 
 
     if (progressFill) {
@@ -279,20 +599,37 @@ function updateBudget() {
             progress + "%";
 
 
-        /* Remove old classes */
-
         progressFill.classList.remove(
             "warning",
             "danger"
         );
 
+
+        if (percentage >= 100) {
+
+            progressFill.classList.add(
+                "danger"
+            );
+
+        } else if (percentage >= 70) {
+
+            progressFill.classList.add(
+                "warning"
+            );
+
+        }
+
     }
 
 
-    /* ================= STATUS ================= */
+    /* =================================================
+       BUDGET MESSAGE
+    ================================================= */
 
     if (!budgetMessage) {
+
         return;
+
     }
 
 
@@ -312,24 +649,12 @@ function updateBudget() {
 
     else if (percentage < 100) {
 
-        if (progressFill) {
-
-            progressFill.classList.add("warning");
-
-        }
-
         budgetMessage.textContent =
             "You are getting close to your budget limit.";
 
     }
 
     else {
-
-        if (progressFill) {
-
-            progressFill.classList.add("danger");
-
-        }
 
         budgetMessage.textContent =
             "You have reached or exceeded your budget.";
@@ -339,7 +664,9 @@ function updateBudget() {
 }
 
 
-/* ================= CATEGORY ICON ================= */
+/* =====================================================
+   CATEGORY ICON
+===================================================== */
 
 function getCategoryIcon(category) {
 
@@ -357,17 +684,25 @@ function getCategoryIcon(category) {
 
     };
 
-    return icons[category] || "📌";
+
+    return (
+        icons[category] ||
+        "📌"
+    );
 
 }
 
 
-/* ================= DISPLAY EXPENSES ================= */
+/* =====================================================
+   DISPLAY EXPENSES
+===================================================== */
 
 function renderExpenses() {
 
     if (!expenseList) {
+
         return;
+
     }
 
 
@@ -386,10 +721,13 @@ function renderExpenses() {
                     ₹
                 </div>
 
-                <h3>No expenses yet</h3>
+                <h3>
+                    No expenses yet
+                </h3>
 
                 <p>
-                    Add your first expense to start tracking your trip budget.
+                    Add your first expense to
+                    start tracking your trip budget.
                 </p>
 
             </div>
@@ -405,10 +743,11 @@ function renderExpenses() {
         }
 
         return;
+
     }
 
 
-    /* ================= EXPENSE COUNT ================= */
+    /* ================= COUNT ================= */
 
     if (expenseCount) {
 
@@ -423,114 +762,158 @@ function renderExpenses() {
     }
 
 
-    /* ================= CREATE EXPENSE ITEMS ================= */
+    /* ================= CREATE ITEMS ================= */
 
-    expenses.forEach(function (expense) {
+    expenses.forEach(
+        function (expense) {
 
-        const expenseItem =
-            document.createElement("div");
-
-
-        expenseItem.className =
-            "expense-item";
+            const expenseItem =
+                document.createElement("div");
 
 
-        expenseItem.innerHTML = `
+            expenseItem.className =
+                "expense-item";
 
-            <div class="expense-info">
 
-                <div class="expense-category">
-                    ${getCategoryIcon(expense.category)}
-                </div>
+            expenseItem.innerHTML = `
 
-                <div>
+                <div class="expense-info">
 
-                    <div class="expense-name">
-                        ${escapeHTML(expense.name)}
+                    <div class="expense-category">
+
+                        ${getCategoryIcon(
+                            expense.category
+                        )}
+
                     </div>
 
-                    <div class="expense-type">
-                        ${escapeHTML(expense.category)}
+
+                    <div>
+
+                        <div class="expense-name">
+
+                            ${escapeHTML(
+                                expense.name
+                            )}
+
+                        </div>
+
+
+                        <div class="expense-type">
+
+                            ${escapeHTML(
+                                expense.category
+                            )}
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+
+                <div class="expense-right">
+
+                    <span class="expense-amount">
+
+                        ${formatMoney(
+                            expense.amount
+                        )}
+
+                    </span>
 
 
-            <div class="expense-right">
+                    <button
+                        class="delete-btn"
+                        onclick="deleteExpense(${expense.id})"
+                        title="Delete expense"
+                    >
 
-                <span class="expense-amount">
-                    ${formatMoney(expense.amount)}
-                </span>
+                        🗑
 
-                <button
-                    class="delete-btn"
-                    onclick="deleteExpense(${expense.id})"
-                    title="Delete expense"
-                >
-                    🗑
-                </button>
+                    </button>
 
-            </div>
+                </div>
 
-        `;
+            `;
 
 
-        expenseList.appendChild(expenseItem);
+            expenseList.appendChild(
+                expenseItem
+            );
 
-    });
+        }
+    );
 
 }
 
 
-/* ================= ESCAPE HTML ================= */
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHTML(text) {
 
     const div =
         document.createElement("div");
 
+
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
 }
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 if (logoutBtn) {
 
-    logoutBtn.addEventListener("click", function () {
+    logoutBtn.addEventListener(
+        "click",
+        function () {
 
-        localStorage.removeItem(
-            "trekplan_currentUser"
-        );
+            localStorage.removeItem(
+                "trekplan_currentUser"
+            );
 
-        window.location.href =
-            "login.html";
 
-    });
+            window.location.href =
+                "login.html";
+
+        }
+    );
 
 }
 
 
-/* ================= MOBILE MENU ================= */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 if (menuBtn && sidebar) {
 
-    menuBtn.addEventListener("click", function () {
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-        sidebar.classList.toggle("open");
+            sidebar.classList.toggle(
+                "open"
+            );
 
-    });
+        }
+    );
 
 }
 
 
-/* ================= INITIAL LOAD ================= */
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
 
 updateBudget();
 

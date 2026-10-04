@@ -185,3 +185,23 @@ itemInput.addEventListener(
 /* ================= INITIAL LOAD ================= */
 
 displayItems();
+
+/* =========================================================
+   SIDEBAR LOGOUT
+========================================================= */
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function () {
+
+        localStorage.removeItem("trekplan_session");
+        sessionStorage.removeItem("trekplan_session");
+        localStorage.removeItem("trekplan_currentUser");
+
+        window.location.href = "login.html";
+
+    });
+
+}
