@@ -1584,4 +1584,352 @@ h1 {
 
         height: 32px;
     }
+}  
+/* =========================================================
+   FINAL FIX — JOURNAL CONTENT MUST NOT GO BEHIND SIDEBAR
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Main content area */
+.container {
+    margin-left: var(--sidebar-width);
+
+    /*
+       Keep content completely inside the available
+       space after the sidebar.
+    */
+    width: calc(100% - var(--sidebar-width));
+
+    max-width: none;
+    min-height: 100vh;
+
+    padding: 45px 5% 70px;
+
+    position: relative;
+    z-index: 1;
+
+    box-sizing: border-box;
+}
+
+/* Prevent headings from getting pushed underneath sidebar */
+.container h1,
+.container .subtitle,
+.container > * {
+    max-width: 100%;
+}
+
+/* Forms should never become wider than content area */
+.journal-form,
+.memories-section,
+#memoriesContainer {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Grid children must be allowed to shrink */
+#memoriesContainer {
+    min-width: 0;
+}
+
+.memory-card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .container {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        margin-left: 0;
+        width: 100%;
+
+        padding: 30px 5% 50px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        margin-left: 0;
+        width: 100%;
+
+        padding: 25px 4% 45px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .container {
+        margin-left: 0;
+        width: 100%;
+
+        padding: 22px 4% 40px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   TREKPLAN JOURNAL — FINAL CONTENT / SIDEBAR FIX
+========================================================= */
+
+/* ---------- PAGE ---------- */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    z-index: 1000;
+}
+
+
+/* ---------- MAIN CONTENT ---------- */
+
+/*
+   IMPORTANT:
+   HTML uses:
+   <main class="content">
+
+   NOT:
+   <main class="container">
+*/
+
+.content {
+    position: relative;
+
+    /* Leave complete space for sidebar */
+    margin-left: 270px;
+
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    padding: 45px 5% 70px;
+
+    box-sizing: border-box;
+
+    overflow-x: hidden;
+
+    z-index: 1;
+}
+
+
+/* ---------- TITLE ---------- */
+
+.content h1 {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 8px 0;
+
+    overflow-wrap: break-word;
+}
+
+
+/* ---------- SUBTITLE ---------- */
+
+.content .subtitle {
+    width: 100%;
+    max-width: 100%;
+
+    margin-bottom: 30px;
+
+    overflow-wrap: break-word;
+}
+
+
+/* ---------- JOURNAL FORM ---------- */
+
+.content .journal-form {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* ---------- FORM ---------- */
+
+.content #journalForm {
+    width: 100%;
+    max-width: 100%;
+}
+
+.content .form-group {
+    width: 100%;
+    max-width: 100%;
+}
+
+.content .form-group input,
+.content .form-group select,
+.content .form-group textarea {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- MEMORIES ---------- */
+
+.content .memories-section {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+}
+
+.content #memoriesContainer {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------- MEMORY CARDS ---------- */
+
+.content .memory-card {
+    min-width: 0;
+    max-width: 100%;
+
+    overflow: hidden;
+}
+
+.content .memory-card img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   LAPTOP / TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .content {
+        margin-left: 240px;
+
+        width: calc(100% - 240px);
+
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 270px;
+
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 30px 5% 50px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 25px 4% 45px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .content {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 22px 4% 40px;
+    }
 }

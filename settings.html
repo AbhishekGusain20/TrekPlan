@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | TrekPlan</title>
+
+    <link
+        rel="stylesheet"
+        href="settings.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <img
+                src="TrekPlan-logo.png"
+                alt="TrekPlan"
+            >
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="dashboard.html#trips"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">✈</span>
+
+                <span>My Trips</span>
+
+            </a>
+
+
+            <a
+                href="explore.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">◎</span>
+
+                <span>Explore</span>
+
+            </a>
+
+
+            <a
+                href="budget.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">₹</span>
+
+                <span>Budget Planner</span>
+
+            </a>
+
+
+            <a
+                href="journal.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">▤</span>
+
+                <span>Travel Journal</span>
+
+            </a>
+
+
+            <a
+                href="map.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">⌖</span>
+
+                <span>Maps</span>
+
+            </a>
+
+
+            <a
+                href="checklist.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">✓</span>
+
+                <span>Checklists</span>
+
+            </a>
+
+
+            <a
+                href="community.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">♧</span>
+
+                <span>Community</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="settings.html"
+                class="nav-link active"
+            >
+
+                <span class="nav-icon">⚙</span>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <!-- USER -->
+
+            <div class="user-profile">
+
+
+                <div
+                    class="user-avatar"
+                    id="sidebarAvatar"
+                >
+                    A
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="sidebarName">
+                        AVI
+                    </strong>
+
+                    <span>
+                        Traveler
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="logout-button"
+                    id="logoutBtn"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- MOBILE TOPBAR -->
+
+        <div class="mobile-topbar">
+
+            <button
+                id="mobileMenu"
+                class="mobile-menu"
+            >
+                ☰
+            </button>
+
+            <strong>
+                TrekPlan
+            </strong>
+
+        </div>
+
+
+
+        <!-- PAGE HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    TREKPLAN ACCOUNT
+                </span>
+
+                <h1>
+                    Settings ⚙️
+                </h1>
+
+                <p>
+                    Manage your profile, preferences and TrekPlan experience.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <section class="settings-card profile-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2>
+                        Profile
+                    </h2>
+
+                    <p>
+                        Update your personal information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-layout">
+
+
+                <!-- AVATAR -->
+
+                <div class="large-profile">
+
+                    <div
+                        class="large-avatar"
+                        id="profileAvatar"
+                    >
+                        A
+                    </div>
+
+                    <strong id="profilePreviewName">
+                        AVI
+                    </strong>
+
+                    <span>
+                        Traveler
+                    </span>
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <div class="profile-form">
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="userName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="userName"
+                                placeholder="Enter your name"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="userEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="userEmail"
+                                placeholder="you@example.com"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="travelerType">
+                            Traveler Type
+                        </label>
+
+                        <select id="travelerType">
+
+                            <option>
+                                Traveler
+                            </option>
+
+                            <option>
+                                Trekker
+                            </option>
+
+                            <option>
+                                Backpacker
+                            </option>
+
+                            <option>
+                                Adventure Explorer
+                            </option>
+
+                            <option>
+                                Weekend Traveler
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="saveProfile"
+                    >
+                        Save Profile
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PREFERENCES
+        ================================================== -->
+
+        <section class="settings-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    🌍
+                </div>
+
+                <div>
+
+                    <h2>
+                        Travel Preferences
+                    </h2>
+
+                    <p>
+                        Customize how TrekPlan works for you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="preference-grid">
+
+
+                <div class="form-group">
+
+                    <label for="currency">
+                        Currency
+                    </label>
+
+                    <select id="currency">
+
+                        <option value="INR">
+                            ₹ Indian Rupee (INR)
+                        </option>
+
+                        <option value="USD">
+                            $ US Dollar (USD)
+                        </option>
+
+                        <option value="EUR">
+                            € Euro (EUR)
+                        </option>
+
+                        <option value="GBP">
+                            £ British Pound (GBP)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="distanceUnit">
+                        Distance Unit
+                    </label>
+
+                    <select id="distanceUnit">
+
+                        <option value="km">
+                            Kilometers (km)
+                        </option>
+
+                        <option value="miles">
+                            Miles (mi)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="travelStyle">
+                        Travel Style
+                    </label>
+
+                    <select id="travelStyle">
+
+                        <option>
+                            Adventure
+                        </option>
+
+                        <option>
+                            Budget
+                        </option>
+
+                        <option>
+                            Luxury
+                        </option>
+
+                        <option>
+                            Backpacking
+                        </option>
+
+                        <option>
+                            Family
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="defaultTravelers">
+                        Default Travelers
+                    </label>
+
+                    <select id="defaultTravelers">
+
+                        <option value="1">
+                            1 Traveler
+                        </option>
+
+                        <option value="2">
+                            2 Travelers
+                        </option>
+
+                        <option value="3">
+                            3 Travelers
+                        </option>
+
+                        <option value="4">
+                            4 Travelers
+                        </option>
+
+                        <option value="5">
+                            5+ Travelers
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="secondary-button"
+                id="savePreferences"
+            >
+                Save Preferences
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             APPEARANCE
+        ================================================== -->
+
+        <section class="settings-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    🎨
+                </div>
+
+                <div>
+
+                    <h2>
+                        Appearance
+                    </h2>
+
+                    <p>
+                        Choose how TrekPlan looks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="appearance-options">
+
+
+                <button
+                    class="theme-option active"
+                    data-theme="light"
+                >
+
+                    <div class="theme-preview light-preview">
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                    <strong>
+                        Light
+                    </strong>
+
+                    <span>
+                        Clean & bright
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="theme-option"
+                    data-theme="dark"
+                >
+
+                    <div class="theme-preview dark-preview">
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                    <strong>
+                        Dark
+                    </strong>
+
+                    <span>
+                        Easy on the eyes
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOTIFICATIONS
+        ================================================== -->
+
+        <section class="settings-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    🔔
+                </div>
+
+                <div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        Choose which updates you want to receive.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting-list">
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <strong>
+                            Trip reminders
+                        </strong>
+
+                        <p>
+                            Get reminders about upcoming trips.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="tripNotifications"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <strong>
+                            Budget alerts
+                        </strong>
+
+                        <p>
+                            Notify me when trip expenses are getting high.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="budgetNotifications"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <strong>
+                            Community updates
+                        </strong>
+
+                        <p>
+                            Receive updates from the TrekPlan community.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="communityNotifications"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA MANAGEMENT
+        ================================================== -->
+
+        <section class="settings-card danger-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    💾
+                </div>
+
+                <div>
+
+                    <h2>
+                        Data & Privacy
+                    </h2>
+
+                    <p>
+                        Manage your TrekPlan data stored in this browser.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-actions">
+
+
+                <div class="data-action">
+
+                    <div>
+
+                        <strong>
+                            Export your data
+                        </strong>
+
+                        <p>
+                            Download your TrekPlan settings and saved data.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="secondary-button"
+                        id="exportData"
+                    >
+                        Export Data
+                    </button>
+
+                </div>
+
+
+                <div class="data-action delete-action">
+
+                    <div>
+
+                        <strong>
+                            Reset settings
+                        </strong>
+
+                        <p>
+                            Restore your TrekPlan settings to their defaults.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="danger-button"
+                        id="resetSettings"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-footer">
+
+            <span>
+                TrekPlan
+            </span>
+
+            <span>
+                Plan Your Journey. Manage Your Budget. Explore With Confidence.
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        <span>✓</span>
+        <strong id="toastMessage">
+            Settings saved
+        </strong>
+    </div>
+
+
+    <script src="settings.js"></script>
+
+</body>
+
+</html>

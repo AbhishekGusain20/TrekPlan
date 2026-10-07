@@ -2386,3 +2386,672 @@ h3 {
 .password-toggle.is-visible .icon-eye-off {
   display: block;
 }
+
+
+
+
+
+/* =========================================================
+   TREKPLAN LOGIN — DASHBOARD BLUE THEME
+   THEME ONLY
+========================================================= */
+
+
+/* ---------- THEME VARIABLES ---------- */
+
+:root {
+
+    --primary: #073b5c;
+    --primary-dark: #052c45;
+    --primary-light: #0b567e;
+
+    --blue: #278bc7;
+    --blue-dark: #176d9f;
+
+    --blue-light: #e8f3ff;
+    --blue-soft: #eef6fb;
+
+    --background: #f5f8fb;
+    --background-light: #f8fbfd;
+
+    --white: #ffffff;
+
+    --text: #102536;
+    --text-soft: #526777;
+
+    --muted: #708295;
+    --muted-light: #8b9aa8;
+
+    --border: #e3eaf0;
+
+    --danger: #d9534f;
+
+    --shadow:
+        0 20px 50px rgba(7, 59, 92, 0.12);
+
+    --shadow-small:
+        0 5px 20px rgba(7, 59, 92, 0.07);
+}
+
+
+/* =========================================================
+   LOGIN BACKGROUND
+========================================================= */
+
+.auth-body {
+
+    background: var(--background);
+
+    color: var(--text);
+
+}
+
+
+/* =========================================================
+   LEFT IMAGE OVERLAY
+========================================================= */
+
+.auth-visual-overlay {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 59, 92, 0.78) 0%,
+            rgba(7, 59, 92, 0.40) 45%,
+            rgba(5, 44, 69, 0.92) 100%
+        );
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.auth-logo {
+
+    color: #ffffff;
+
+}
+
+
+.logo-badge {
+
+    background: #ffffff;
+
+    border-color:
+        rgba(255,255,255,0.25);
+
+}
+
+
+/* =========================================================
+   LEFT SIDE HEADING
+========================================================= */
+
+.auth-visual-content h2 {
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   PERKS
+========================================================= */
+
+.auth-perk {
+
+    color:
+        rgba(255,255,255,0.90);
+
+}
+
+
+.auth-perk svg {
+
+    color: #8bcff5;
+
+}
+
+
+/* =========================================================
+   RIGHT LOGIN AREA
+========================================================= */
+
+.auth-form-side {
+
+    background: var(--background);
+
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.auth-card {
+
+    background: var(--white);
+
+    border:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+/* =========================================================
+   LOGIN HEADING
+========================================================= */
+
+.auth-form-side h1,
+.auth-title {
+
+    color: var(--primary);
+
+}
+
+
+.auth-form-side p,
+.auth-subtitle {
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.auth-form label {
+
+    color: var(--text-soft);
+
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.auth-form input {
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    border:
+        1px solid
+        var(--border);
+
+}
+
+
+.auth-form input::placeholder {
+
+    color: var(--muted-light);
+
+}
+
+
+.auth-form input:focus {
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(39,139,199,0.10);
+
+}
+
+
+/* =========================================================
+   INPUT ICONS
+========================================================= */
+
+.auth-input-icon {
+
+    color: var(--muted);
+
+}
+
+
+.auth-form input:focus
+~ .auth-input-icon {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   REMEMBER / FORGOT
+========================================================= */
+
+.auth-options {
+
+    color: var(--muted);
+
+}
+
+
+.auth-options a {
+
+    color: var(--blue-dark);
+
+}
+
+
+.auth-options a:hover {
+
+    color: var(--primary);
+
+}
+
+
+/* =========================================================
+   PRIMARY LOGIN BUTTON
+========================================================= */
+
+.auth-submit,
+.auth-button,
+.login-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 25px
+        rgba(7,59,92,0.18);
+
+}
+
+
+.auth-submit:hover,
+.auth-button:hover,
+.login-button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    box-shadow:
+        0 14px 30px
+        rgba(7,59,92,0.23);
+
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.auth-divider {
+
+    border-color:
+        var(--border);
+
+}
+
+
+.auth-divider span {
+
+    background:
+        var(--white);
+
+    color:
+        var(--muted);
+
+}
+
+
+/* =========================================================
+   GOOGLE BUTTON
+========================================================= */
+
+.auth-google {
+
+    background:
+        #ffffff;
+
+    color:
+        var(--text);
+
+    border:
+        1px solid
+        var(--border);
+
+}
+
+
+.auth-google:hover {
+
+    background:
+        var(--blue-soft);
+
+    border-color:
+        #cfe1ee;
+
+}
+
+
+/* Google circle */
+
+.google-mark {
+
+    background:
+        var(--primary);
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   SIGNUP / SWITCH LINK
+========================================================= */
+
+.auth-switch {
+
+    color:
+        var(--muted);
+
+}
+
+
+.auth-switch a {
+
+    color:
+        var(--blue-dark);
+
+}
+
+
+.auth-switch a:hover {
+
+    color:
+        var(--primary);
+
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.auth-form input[type="checkbox"] {
+
+    accent-color:
+        var(--primary);
+
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle {
+
+    color:
+        var(--muted);
+
+}
+
+
+.password-toggle:hover {
+
+    color:
+        var(--blue);
+
+}
+
+
+/* =========================================================
+   ERROR / VALIDATION
+========================================================= */
+
+.auth-error {
+
+    color:
+        var(--danger);
+
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.auth-success {
+
+    color:
+        #149b67;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 860px) {
+
+    .auth-form-side {
+
+        background:
+            var(--background);
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+   TREKPLAN LOGIN — GREEN DASHBOARD THEME
+   THEME ONLY
+========================================================= */
+
+.auth-body {
+    background: #f5f8f5;
+    color: #17352c;
+}
+
+/* LEFT IMAGE OVERLAY */
+.auth-visual-overlay {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18, 55, 42, 0.75),
+            rgba(18, 55, 42, 0.42),
+            rgba(13, 43, 32, 0.90)
+        );
+}
+
+/* LOGO AREA */
+.logo-badge {
+    background: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* LEFT HEADING */
+.auth-visual-content h2 {
+    color: #ffffff;
+}
+
+/* PERKS */
+.auth-perk {
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.auth-perk svg {
+    color: #8ac7b5;
+}
+
+/* RIGHT SIDE */
+.auth-form-side {
+    background: #f5f8f5;
+}
+
+/* LOGIN CARD */
+.auth-card {
+    background: #ffffff;
+
+    border: 1px solid #dfe8e3;
+
+    box-shadow:
+        0 20px 50px rgba(18, 55, 42, 0.12);
+}
+
+/* HEADING */
+.auth-form-side h1,
+.auth-title {
+    color: #12372a;
+}
+
+/* SUBTITLE */
+.auth-form-side p,
+.auth-subtitle {
+    color: #70827b;
+}
+
+/* LABELS */
+.auth-form label {
+    color: #526b61;
+}
+
+/* INPUTS */
+.auth-form input {
+    background: #ffffff;
+    color: #17352c;
+    border: 1px solid #dfe8e3;
+}
+
+.auth-form input::placeholder {
+    color: #8b9b94;
+}
+
+.auth-form input:focus {
+    border-color: #2b8a78;
+
+    box-shadow:
+        0 0 0 3px rgba(43, 138, 120, 0.12);
+}
+
+/* INPUT ICON */
+.auth-input-icon {
+    color: #70827b;
+}
+
+.auth-form input:focus ~ .auth-input-icon {
+    color: #2b8a78;
+}
+
+/* LINKS */
+.auth-options a,
+.auth-switch a {
+    color: #1f6048;
+}
+
+.auth-options a:hover,
+.auth-switch a:hover {
+    color: #12372a;
+}
+
+/* LOGIN BUTTON */
+.auth-submit,
+.auth-button,
+.login-button {
+    background:
+        linear-gradient(
+            135deg,
+            #12372a,
+            #2b8a78
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 25px
+        rgba(18, 55, 42, 0.18);
+}
+
+.auth-submit:hover,
+.auth-button:hover,
+.login-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #0d2b20,
+            #12372a
+        );
+
+    box-shadow:
+        0 14px 30px
+        rgba(18, 55, 42, 0.24);
+}
+
+/* DIVIDER */
+.auth-divider {
+    border-color: #dfe8e3;
+}
+
+.auth-divider span {
+    background: #ffffff;
+    color: #70827b;
+}
+
+/* GOOGLE BUTTON */
+.auth-google {
+    background: #ffffff;
+    color: #17352c;
+    border: 1px solid #dfe8e3;
+}
+
+.auth-google:hover {
+    background: #e8f3ef;
+    border-color: #c8ddd5;
+}
+
+/* PASSWORD TOGGLE */
+.password-toggle {
+    color: #70827b;
+}
+
+.password-toggle:hover {
+    color: #2b8a78;
+}
+
+/* CHECKBOX */
+.auth-form input[type="checkbox"] {
+    accent-color: #12372a;
+}
+
+/* ERROR */
+.auth-error {
+    color: #d9534f;
+}
+
+/* SUCCESS */
+.auth-success {
+    color: #16805f;
+}

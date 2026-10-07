@@ -150,3 +150,476 @@ body {
 
     font-size: 14px;
 }
+
+
+
+
+
+/* =========================================================
+   TREKPLAN SIGNUP PAGE
+   Green Mountain Theme
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eef7f3 0%,
+            #f5f8f5 55%,
+            #e5f0ea 100%
+        );
+
+    color: #17352c;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.signup-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND MOUNTAINS — FAR LAYER
+========================================================= */
+
+.signup-container::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -5%;
+    right: -5%;
+    bottom: -5px;
+
+    height: 48%;
+
+    background: #d9eae2;
+
+    clip-path: polygon(
+        0% 100%,
+        0% 72%,
+        8% 58%,
+        15% 72%,
+        23% 45%,
+        31% 70%,
+        40% 52%,
+        48% 73%,
+        57% 42%,
+        66% 68%,
+        76% 48%,
+        84% 67%,
+        93% 53%,
+        100% 69%,
+        100% 100%
+    );
+
+    z-index: -3;
+}
+
+
+/* =========================================================
+   BACKGROUND MOUNTAINS — MAIN LAYER
+========================================================= */
+
+.signup-container::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -8%;
+    right: -8%;
+    bottom: -10px;
+
+    height: 40%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b8d5c7,
+            #7fae99
+        );
+
+    clip-path: polygon(
+        0% 100%,
+        0% 76%,
+        10% 55%,
+        17% 72%,
+        27% 35%,
+        37% 70%,
+        47% 48%,
+        57% 76%,
+        67% 37%,
+        77% 70%,
+        87% 48%,
+        94% 66%,
+        100% 55%,
+        100% 100%
+    );
+
+    z-index: -2;
+}
+
+
+/* =========================================================
+   SIGNUP CARD
+========================================================= */
+
+.signup-card {
+
+    width: 100%;
+
+    max-width: 450px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    padding: 40px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(18, 55, 42, 0.08);
+
+    box-shadow:
+        0 20px 55px rgba(18, 55, 42, 0.15);
+
+    position: relative;
+
+    z-index: 5;
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+
+.logo img {
+
+    width: 160px;
+
+    display: inline-block;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.signup-card h1 {
+
+    text-align: center;
+
+    margin-bottom: 10px;
+
+    color: #12372a;
+
+    font-size: 36px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.subtitle {
+
+    text-align: center;
+
+    color: #70827b;
+
+    margin-bottom: 30px;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+
+    color: #17352c;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.form-group input {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #dfe8e3;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #17352c;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input::placeholder {
+
+    color: #8b9b94;
+}
+
+
+.form-group input:focus {
+
+    border-color: #2b8a78;
+
+    box-shadow:
+        0 0 0 3px rgba(43, 138, 120, 0.12);
+}
+
+
+/* =========================================================
+   TERMS
+========================================================= */
+
+.terms {
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    color: #667a72;
+}
+
+
+.terms input {
+
+    margin-right: 7px;
+
+    accent-color: #12372a;
+}
+
+
+/* =========================================================
+   SIGNUP BUTTON
+========================================================= */
+
+.signup-btn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12372a,
+            #2b8a78
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.signup-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d2b20,
+            #12372a
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(18, 55, 42, 0.20);
+}
+
+
+/* =========================================================
+   LOGIN LINK
+========================================================= */
+
+.login-link {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #70827b;
+}
+
+
+.login-link a {
+
+    color: #1f6048;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.login-link a:hover {
+
+    color: #12372a;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.form-error {
+
+    display: none;
+
+    margin-bottom: 15px;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    background: #ffe8e8;
+
+    color: #c62828;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SMALL DECORATIVE SUN
+========================================================= */
+
+.signup-container {
+    background-image:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(228, 124, 69, 0.22) 0,
+            rgba(228, 124, 69, 0.22) 45px,
+            transparent 46px
+        );
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .signup-container {
+
+        padding: 20px;
+
+        align-items: center;
+    }
+
+    .signup-card {
+
+        padding: 28px 22px;
+
+        max-width: 100%;
+    }
+
+    .signup-card h1 {
+
+        font-size: 30px;
+    }
+
+    .subtitle {
+
+        font-size: 16px;
+    }
+
+    .signup-container::before {
+
+        height: 35%;
+    }
+
+    .signup-container::after {
+
+        height: 30%;
+    }
+}
