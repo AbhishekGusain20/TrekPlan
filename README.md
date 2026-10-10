@@ -2,61 +2,59 @@
 
 ### Plan Your Journey. Manage Your Budget. Explore With Confidence.
 
-TrekPlan is a travel and trekking planning website that helps users plan, manage, and document their trips in one place.
+TrekPlan is a travel and trekking website that helps users plan trips, manage their budgets, organize activities, and save their travel memories in one place.
 
-## ✨ Current Features
+## ✨ Features
 
-* 🏠 Landing Page
-* 🔐 Login & Signup
-* 👤 User Authentication
-* 📊 Dynamic Dashboard
-* 🏔️ Explore Treks
-* 📖 Trek Details
-* 💰 Budget Planner
-* 🧳 Trip Planner
-* 💾 LocalStorage Data Storage
-* 🗑️ Delete Trips
-* 📅 Day-by-Day Itinerary
-* ⏰ Add Activities with Time
-* 📍 Add Activity Location
-* 📝 Add Activity Notes
-* 📖 Travel Journal
-* ✍️ Add Travel Memories
-* ⭐ Experience Rating
-* 📍 Memory Location
-* 📅 Memory Date
-* 📸 Travel Photos
-* 🗑️ Delete Journal Memories
-* 📊 Trip Completion Progress
-* 🎒 Trip Checklist
-* ✅ Mark Checklist Items Complete
-* 🗑️ Delete Checklist Items
-* 👥 Community Page
-* 📝 Create & Share Community Posts
-* ❤️ Like Community Posts
-* 🗑️ Delete Community Posts
-* 🔎 Search Community Posts
-* 🏔️ Popular Treks Section
-* 📋 Community Guidelines
-* 💾 Community Posts using LocalStorage
-* 📱 Responsive Community Page
+- 🏠 Landing Page
+- 🔐 Login and Signup
+- 👤 User Authentication
+- 📊 Dashboard to View Trip Details
+- 🏔️ Explore Treks
+- 📖 View Trek Details
+- 💰 Budget Planner
+- 🧳 Create and Manage Trips
+- 💾 Save Data Using LocalStorage
+- 🗑️ Delete Trips
+- 📅 Plan Daily Itineraries
+- ⏰ Add Activities with Time
+- 📍 Add Activity Locations
+- 📝 Add Activity Notes
+- 📖 Travel Journal
+- ✍️ Save Travel Memories
+- ⭐ Rate Travel Experiences
+- 📅 Save Memory Dates and Locations
+- 📸 Upload Travel Photos
+- 🗑️ Delete Journal Entries
+- 📊 Track Trip Progress
+- 🎒 Trip Checklist
+- ✅ Mark Checklist Items as Complete
+- 🗑️ Delete Checklist Items
+- 👥 Community Page
+- 📝 Create and Share Posts
+- ❤️ Like Posts
+- 🔎 Search Community Posts
+- 🏔️ View Popular Treks
+- 📋 Community Guidelines
+- 💾 Save Community Posts Using LocalStorage
+- 📱 Responsive Community Page
 
 ## 🚀 Planned Features
 
-* 🏨 Stay Planner
-* 🌦️ Weather Information
-* 🗺️ Maps & Routes
-* 🤖 AI Trip Planning
-* 🔌 External APIs
+- 🏨 Stay Planner
+- 🌦️ Weather Updates
+- 🗺️ Maps and Routes
+- 🤖 AI-Based Trip Planning
+- 🔌 Integration with External APIs
 
-## 🛠️ Technologies
+## 🛠️ Technologies Used
 
-* HTML
-* CSS
-* JavaScript
-* LocalStorage
-* JSON
-* Git & GitHub
+- HTML
+- CSS
+- JavaScript
+- LocalStorage
+- JSON
+- Git and GitHub
 
 ## 📌 Project Status
 
@@ -67,3 +65,4 @@ TrekPlan is a travel and trekking planning website that helps users plan, manage
 **Abhishek Gusain**
 
 B.Tech CSE Student | Aspiring Frontend Developer
+
